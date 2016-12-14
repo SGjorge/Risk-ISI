@@ -1,0 +1,12 @@
+El objetivo de este fichero es mantener un guión con las pautas de programación a seguir, además de mantener un listado de los elementos comunes de la práctica.
+
+	1.- Pautas de implementación:
+		Constantes globales --> Mayúsculas: EJEMPLOUNO
+		Variables --> Capitalización de camello: ejemploUno
+		Objetos --> Minúscula con separación por barra baja: ejemplo_uno
+		Clases --> Capitalización de camello con la inicial en mayúsculas: EjemploUno
+		Métodos --> Todo en minúsculas: metodouno
+
+A continuación se listarán las constantes globales, objetos, clases y métodos, con el fin de evitar conflictos a la hora de combinar las ramas.
+	
+	main() --> método principal del proyecto, no recibe parametros de entrada ni salida originalmente. 
