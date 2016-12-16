@@ -9,6 +9,9 @@ El objetivo de este fichero es mantener un guión con las pautas de programació
 
 A continuación se listarán las constantes globales, objetos, clases y métodos, con el fin de evitar conflictos a la hora de combinar las ramas.
 
+TEST
+	ClassTest --> Test que implementa el testeo de las clases.
+
 CLASES PRINCIPALES
 	Game --> Clase principal sobre la que se irán implementando los diferentes métodos llamados desde el main(),
 	representa a la partida, derivarán Countries y Players.
