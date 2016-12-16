@@ -8,5 +8,25 @@ El objetivo de este fichero es mantener un guión con las pautas de programació
 		Métodos --> Todo en minúsculas: metodouno
 
 A continuación se listarán las constantes globales, objetos, clases y métodos, con el fin de evitar conflictos a la hora de combinar las ramas.
+
+CLASES PRINCIPALES
+	Game --> Clase principal sobre la que se irán implementando los diferentes métodos llamados desde el main(), representa a la partida, derivarán Countries y Players.
+	Countries --> Clase abstracta que denota los elementos comunes de todos los paises.
+	Country --> Clase derivada de Countries que implementa lo necesario de paises.
+	Players --> Clase abstracta que denota lo necesario para los jugadores. Actúa como interfaz.
+	HumanPlayer --> Clase derivada de Players que implementa lo necesario del jugador humano.
+	IAPlayer --> Clase derivada de Players que implementa lo necesario del jugador de inteligencia artificial.
+	GamesRules --> Clase principal sobre las reglas y necesidades del juego.De aquí derivarán Cards y Tables.
+	Cards --> Clase abstracta que denota lo necesario sobre las cartas del juego.
+	InfantryCard --> Clase derivada que implementa lo necesario de la carta de infanteria.
+	ArtilleryCard --> Clase derivada que implementa lo necesario de la carta de artilleria.
+	CavalryCard --> Clase derivada que implementa lo necesario de la carta de caballeria.
+	Tables --> Clase abstracta que denota lo necesario para las tablas de configuración del juego.
+	CountriesTable --> Clase derivada de Tables que implementa lo necesario de la tabla de continentes.
+	FirstBattalionTable --> Clase derivada de Tables que implementa lo necesario sobre los batallones al comienzo del juego.
+	ReinforcementBattalionPerBattalionTable --> Clase derivada de Tables que implementa lo necesario sobre los refuerzos que se añaden a cada pasada del juego, según los batallones.
+	ReinforcementBattalionPerCountryTable --> Clase derivada de Tables que implementa lo necesario sobre los refuerzos que se añaden a cada pasada del juego, según los continentes ocupados.   
 	
+
+MÉTODOS	
 	main() --> método principal del proyecto, no recibe parametros de entrada ni salida originalmente. 
