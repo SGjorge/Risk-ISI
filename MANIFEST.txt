@@ -11,7 +11,7 @@ A continuación se listarán las constantes globales, objetos, clases y métodos
 
 CLASES PRINCIPALES
 	Game --> Clase principal sobre la que se irán implementando los diferentes métodos llamados desde el main(),
-representa a la partida, derivarán Countries y Players.
+	representa a la partida, derivarán Countries y Players.
 		Countries --> Clase abstracta que denota los elementos comunes de todos los paises.
 			Country --> Clase derivada de Countries que implementa lo necesario de paises.
 		Players --> Clase abstracta que denota lo necesario para los jugadores. Actúa como interfaz.
@@ -24,9 +24,12 @@ representa a la partida, derivarán Countries y Players.
 			CavalryCard --> Clase derivada que implementa lo necesario de la carta de caballeria.
 		Tables --> Clase abstracta que denota lo necesario para las tablas de configuración del juego.
 			CountriesTable --> Clase derivada de Tables que implementa lo necesario de la tabla de continentes.
-			FirstBattalionTable --> Clase derivada de Tables que implementa lo necesario sobre los batallones al comienzo del juego.
-			ReinforcementBattalionPerBattalionTable --> Clase derivada de Tables que implementa lo necesario sobre los refuerzos que se añaden a cada pasada del juego, según los batallones.
-			ReinforcementBattalionPerCountryTable --> Clase derivada de Tables que implementa lo necesario sobre los refuerzos que se añaden a cada pasada del juego, según los continentes ocupados.   
+			FirstBattalionTable --> Clase derivada de Tables que implementa lo necesario sobre los batallones
+			al comienzo del juego.
+			ReinforcementBattalionPerBattalionTable --> Clase derivada de Tables que implementa lo necesario sobre
+			los refuerzos que se añaden a cada pasada del juego, según los batallones.
+			ReinforcementBattalionPerCountryTable --> Clase derivada de Tables que implementa lo necesario sobre
+			los refuerzos que se añaden a cada pasada del juego, según los continentes ocupados.   
 	
 
 MÉTODOS	
