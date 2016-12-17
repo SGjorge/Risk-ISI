@@ -14,11 +14,14 @@ class ClassTest(unittest.TestCase):
 		expectedName = None
 		expectedBattalions = 0
 		expectedColourId = None
+		expectedSubclasses = ['HumanPlayer','IAPlayer']
 
 		# checking
 		self.assertEqual(expectedName,Players().getName())
 		self.assertEqual(expectedBattalions,Players().getBattalions())
 		self.assertEqual(expectedColourId,Players().getColourId())
+		for (cls,scls) in zip(globals()['Players'].__subclasses__(),expectedSubclasses):
+			self.assertEqual(cls.__name__,scls)
 
 	def testcountriesclass(self):
 		self.assertEqual(0,0)
