@@ -1,28 +1,30 @@
-from ../Classes/Game/Game import Game
-from ../Classes/Game/Game import Players
-from ../Classes/Game/Game import Countries
+import sys
+sys.path.append("../Classes/Game/")
+
+#from Game import Game
+#from Countries import Countries
+from Players import Players
 import unittest
 
 class ClassTest(unittest.TestCase):
 
 	def testplayersclass(self):
-		# player object
-		player = Players.newplayer()
 
 		# expected values
 		expectedName = None
 		expectedBattalions = 0
-		expectedIdColour = None
+		expectedColourId = None
 
 		# checking
-		self.assertEqual(expectedName,player.getName())
-		self.assertEqual(expectedBattalions,player.getBattalions())
-		self.assertEqual(expectedIdColour,player.getIdColour())
+		self.assertEqual(expectedName,Players().getName())
+		self.assertEqual(expectedBattalions,Players().getBattalions())
+		self.assertEqual(expectedColourId,Players().getColourId())
 
 	def testcountriesclass(self):
+		self.assertEqual(0,0)
 
 	def testgameclass(self):
-		#game = Game().newgame()
+		self.assertEqual(0,0)
 		
 
 if __name__ == '__main__':
