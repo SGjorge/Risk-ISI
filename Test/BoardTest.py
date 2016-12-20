@@ -15,5 +15,9 @@ class BoardTest(unittest.TestCase):
         expected = None
         self.assertEqual(expected, Countries().name)
 
+    def namevalid (self):
+        expected = True
+        self.assertEqual(expected, Countries().nameok("Europa del norte"))
+
 if __name__ == '__main__':
     unittest.main()
