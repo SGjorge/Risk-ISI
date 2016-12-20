@@ -29,11 +29,11 @@ CLASES PRINCIPALES
 			CountriesTable --> Clase derivada de Tables que implementa lo necesario de la tabla de continentes.
 			FirstBattalionTable --> Clase derivada de Tables que implementa lo necesario sobre los batallones
 			al comienzo del juego.
-			ReinforcementBattalionPerBattalionTable --> Clase derivada de Tables que implementa lo necesario sobre
-			los refuerzos que se añaden a cada pasada del juego, según los batallones.
 			ReinforcementBattalionPerCountryTable --> Clase derivada de Tables que implementa lo necesario sobre
-			los refuerzos que se añaden a cada pasada del juego, según los continentes ocupados.   
-	
+			los refuerzos que se añaden a cada pasada del juego, según los países ocupados.
+			ReinforcementBattalionPerContinentTable --> Clase derivada de Tables que implementa lo necesario sobre
+			los refuerzos que se añaden a cada pasada del juego, según los continentes enteros ocupados.   
 
-MÉTODOS	
-	main() --> método principal del proyecto, no recibe parametros de entrada ni salida originalmente. 
+
+MÉTODOS
+	main() --> método principal del proyecto, no recibe parametros de entrada ni salida originalmente.
