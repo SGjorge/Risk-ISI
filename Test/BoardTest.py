@@ -1,7 +1,9 @@
 import sys
 sys.path.append("../")
+sys.path.append("../Classes/Round")
 
-import Absolutos
+from Absolutos import Absolutos
+from Countries import Countries
 import unittest
 
 class BoardTest(unittest.TestCase):
