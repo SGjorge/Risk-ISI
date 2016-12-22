@@ -19,15 +19,19 @@ class PlayersTest(unittest.TestCase):
 	expectedColourIdEmpty = None
 	expectedSubclasses = ['HumanPlayers','IAPlayers']
 
+	# Players
+	global player
+	player = Players(expectedNameEmpty)
+
 	#testing
 	def test_getName(self):
-		self.assertEqual(expectedNameEmpty,Players().getName())
+		self.assertEqual(expectedNameEmpty,player.getName())
 
 	def test_getBattalion(self):
-		self.assertEqual(expectedBattalionsEmpty,Players().getBattalions())
+		self.assertEqual(expectedBattalionsEmpty,player.getBattalions())
 
 	def test_getColourId(self):
-		self.assertEqual(expectedColourIdEmpty,Players().getColourId())
+		self.assertEqual(expectedColourIdEmpty,player.getColourId())
 
 	def test_Subclasses(self):
 		for (cls,scls) in zip(globals()['Players'].__subclasses__(),expectedSubclasses):
@@ -41,9 +45,6 @@ class PlayersTest(unittest.TestCase):
 
 	def test_humanPlayerColourIdEmpty(self):
 		self.assertEqual(expectedColourIdEmpty,HumanPlayers().getColourId())
-
-	def test_humanPlayerName(self):
-		self.assertEqual(expectedName,HumanPlayers(expectedName).getName())
 
 if __name__ == '__main__':
 	unittest.main()
