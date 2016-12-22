@@ -21,7 +21,7 @@ class BoardTest(unittest.TestCase):
         expected = True
         self.assertEqual(expected, Countries().nameok("Europa del norte"))
     def test_battalion (self):
-        expected = None
+        expected = 0
         self.assertEqual(expected, Countries().countbattalion())
 
 
