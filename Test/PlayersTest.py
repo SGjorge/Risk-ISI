@@ -7,38 +7,43 @@ import unittest
 class PlayersTest(unittest.TestCase):
 
 	# expected values
+	global expectedNameEmpty
 	global expectedName
-	global expectedBattalions
-	global expectedColourId
+	global expectedBattalionsEmpty
+	global expectedColourIdEmpty
 	global expectedSubclasses
 
-	expectedName = None
-	expectedBattalions = 0
-	expectedColourId = None
+	expectedNameEmpty = None
+	expectedName = "Pepe"
+	expectedBattalionsEmpty = 0
+	expectedColourIdEmpty = None
 	expectedSubclasses = ['HumanPlayers','IAPlayers']
 
 	#testing
 	def test_getName(self):
-		self.assertEqual(expectedName,Players().getName())
+		self.assertEqual(expectedNameEmpty,Players().getName())
 
 	def test_getBattalion(self):
-		self.assertEqual(expectedBattalions,Players().getBattalions())
+		self.assertEqual(expectedBattalionsEmpty,Players().getBattalions())
 
 	def test_getColourId(self):
-		self.assertEqual(expectedColourId,Players().getColourId())
+		self.assertEqual(expectedColourIdEmpty,Players().getColourId())
 
 	def test_Subclasses(self):
 		for (cls,scls) in zip(globals()['Players'].__subclasses__(),expectedSubclasses):
 			self.assertEqual(cls.__name__,scls)
 
+	def test_humanPlayerNameEmpty(self):
+		self.assertEqual(expectedNameEmpty,HumanPlayers().getName())
+
+	def test_humanPlayerBattalionsEmpty(self):
+		self.assertEqual(expectedBattalionsEmpty,HumanPlayers().getBattalions())
+
+	def test_humanPlayerColourIdEmpty(self):
+		self.assertEqual(expectedColourIdEmpty,HumanPlayers().getColourId())
+
 	def test_humanPlayerName(self):
-		self.assertEqual(expectedName,HumanPlayers().getName())
-
-	def test_humanPlayerBattalions(self):
-		self.assertEqual(expectedBattalions,HumanPlayers().getBattalions())
-
-	def test_humanPlayerColourId(self):
-		self.assertEqual(expectedColourId,HumanPlayers().getColourId())
+		self.assertEqual(expectedName,HumanPlayers(expectedName).getName())
 
 if __name__ == '__main__':
 	unittest.main()
