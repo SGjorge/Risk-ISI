@@ -28,11 +28,11 @@ class BoardTest(unittest.TestCase):
     def test_existepais(self):
         expectedName = None
         expectedBattalions = 0
-        expectedVecinos = []
+        expectedNeighbours = []
         paisAux = Country()
         self.assertEqual(expectedName, paisAux.name)
         self.assertEqual(expectedBattalions, paisAux.battalions)
-        self.assertEqual(expectedVecinos, paisAux.vecinos)
+        self.assertEqual(expectedNeighbours, paisAux.neighbours.getneighbours())
 
 
 if __name__ == '__main__':

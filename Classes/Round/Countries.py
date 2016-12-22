@@ -9,14 +9,15 @@ class Countries(object):
 
 
 
-        
+
 class Country(Countries):
 
     global absolutes
 
     def __init__(self):
         self.name = None
-        self.battalion = 0
+        self.battalions = 0
+        self.neighbours = Neighbours()
 
     absolutes = CoreVariables()
 
@@ -27,4 +28,15 @@ class Country(Countries):
             return False;
 
     def countbattalion (self):
-        return self.battalion
+        return self.battalions
+
+class Neighbours(Countries):
+
+    def __init__(self):
+        self.array = []
+
+    def getneighbours (self):
+        if self.array == None:
+            return []
+        else:
+            return self.array
