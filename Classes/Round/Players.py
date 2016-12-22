@@ -13,17 +13,12 @@ class Players:
 	def getColourId(self):
 		return self.__COLOURID
 
-	def getChildrenClassesNames(self):
-
-
 # derivated class HumanPlayers
-class HumanPlayer(Players):
-
-	def __init__(self,name):
-		self.__NAME = name
+class HumanPlayers(Players):
+	def __init__(self):
+		None
 
 # derivated class IAPlayers
-class IAPlayer(Players):
+class IAPlayers(Players):
 	def __init__(self, name):
 		self.name = name + "IA"
-		
