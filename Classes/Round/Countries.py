@@ -1,15 +1,17 @@
 import sys
-
+from CoreVariables import CoreVariables
 
 class Countries(object):
 
-    def __init__(self, arg):
+    global absolutes
+
+    def __init__(self):
         self.name = None
 
-    paises = ["Europa Occidental", "Europa del sur", "Europa del norte"]
+    absolutes = CoreVariables()
 
     def nameok (self, name):
-        if (name in paises):
+        if (name in absolutes.paises):
             return True;
         else:
             return False;
