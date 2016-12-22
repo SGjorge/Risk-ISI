@@ -3,7 +3,7 @@ sys.path.append("../")
 sys.path.append("../Classes/Round")
 
 from CoreVariables import CoreVariables
-from Countries import Countries
+from Countries import Country
 import unittest
 
 class BoardTest(unittest.TestCase):
@@ -15,14 +15,14 @@ class BoardTest(unittest.TestCase):
 
     def test_namecountry (self):
         expected = None
-        self.assertEqual(expected, Countries().name)
+        self.assertEqual(expected, Country().name)
 
     def test_namevalid (self):
         expected = True
-        self.assertEqual(expected, Countries().nameok("Europa del norte"))
+        self.assertEqual(expected, Country().nameok("Europa del norte"))
     def test_battalion (self):
         expected = 0
-        self.assertEqual(expected, Countries().countbattalion())
+        self.assertEqual(expected, Country().countbattalion())
 
 
 if __name__ == '__main__':
