@@ -20,9 +20,19 @@ class BoardTest(unittest.TestCase):
     def test_namevalid (self):
         expected = True
         self.assertEqual(expected, Country().nameok("Europa del norte"))
+
     def test_battalion (self):
         expected = 0
         self.assertEqual(expected, Country().countbattalion())
+
+    def test_existepais(self):
+        expectedName = None
+        expectedBattalions = 0
+        expectedVecinos = []
+        paisAux = Country()
+        self.assertEqual(expectedName, paisAux.name)
+        self.assertEqual(expectedBattalions, paisAux.battalions)
+        self.assertEqual(expectedVecinos, paisAux.vecinos)
 
 
 if __name__ == '__main__':
