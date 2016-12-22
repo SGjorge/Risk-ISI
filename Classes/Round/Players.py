@@ -3,6 +3,11 @@ class Players:
 	__BATTALIONS = 0
 	__COLOURID = None
 
+	def __init__(self,name,battalions,color):
+		self.__NAME = name
+		self.__BATTALIONS = battalions
+		self.__COLOURID = color
+
 	@classmethod
 	def getName(self):
 		return self.__NAME
