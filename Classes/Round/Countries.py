@@ -7,6 +7,7 @@ class Countries(object):
 
     def __init__(self):
         self.name = None
+        self.battalion = 0
 
     absolutes = CoreVariables()
 
@@ -15,3 +16,6 @@ class Countries(object):
             return True;
         else:
             return False;
+
+    def countbattalion (self):
+        return self.battalion
