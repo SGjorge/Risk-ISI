@@ -22,8 +22,8 @@ class BoardTest(unittest.TestCase):
         self.assertEqual(expected, Countries().nameok("Europa del norte"))
     def test_battalion (self):
         expected = None
-        self.assertEqual(expected, Countries().counbattalion("Europa del norte"))
+        self.assertEqual(expected, Countries().countbattalion("Europa del norte"))
 
-        
+
 if __name__ == '__main__':
     unittest.main()
