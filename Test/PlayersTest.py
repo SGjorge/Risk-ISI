@@ -14,6 +14,7 @@ class PlayersTest(unittest.TestCase):
 	global expectedColourIdEmpty
 	global expectedColourId
 	global expectedSubclasses
+	global numPlayers
 
 	expectedNameEmpty = None
 	expectedName = "Pepe"
@@ -22,15 +23,18 @@ class PlayersTest(unittest.TestCase):
 	expectedColourIdEmpty = None
 	expectedColourId = "Orange"
 	expectedSubclasses = ['HumanPlayers','IAPlayers']
+	numPlayers = 3
 
 	# Players
 	global player
 	global humanPlayer
 	global iaPlayer
+	global arrayPlayer
 
 	player = Players(expectedNameEmpty,expectedBattalionsEmpty,expectedColourIdEmpty)
 	humanPlayer = HumanPlayers(expectedName,expectedBattalions,expectedColourId)
 	iaPlayer = IAPlayers(expectedName,expectedBattalions,expectedColourId)
+	arrayPlayer = ArrayPlayers(numPlayers)
 
 	#testing
 	def test_getName(self):
@@ -66,9 +70,11 @@ class PlayersTest(unittest.TestCase):
 		self.assertEqual(expectedColourId,iaPlayer.getColourId())
 
 	def test_arrayPlayerBuilder(self):
-		arrayPlayer = ArrayPlayers(numPlayers)
-		for i in arrayPlayer
+		for i in range(1,len(arrayPlayer)):
 			self.assertEqual(None,i)
+
+	def test_arrayPlayerLen(self):
+		self.assertEqual(numPlayers,len(arrayPlayer))
 
 if __name__ == '__main__':
 	unittest.main()
