@@ -8,7 +8,7 @@ import unittest
 
 class ClassTest(unittest.TestCase):
 
-	def testplayersclass(self):
+	def test_playersclass(self):
 
 		# expected values
 		expectedName = None
@@ -23,12 +23,12 @@ class ClassTest(unittest.TestCase):
 		for (cls,scls) in zip(globals()['Players'].__subclasses__(),expectedSubclasses):
 			self.assertEqual(cls.__name__,scls)
 
-	def testcountriesclass(self):
+	def test_countriesclass(self):
 		self.assertEqual(0,0)
 
-	def testgameclass(self):
+	def test_gameclass(self):
 		self.assertEqual(0,0)
-		
+
 
 if __name__ == '__main__':
     unittest.main()
