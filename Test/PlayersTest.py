@@ -1,7 +1,7 @@
 import sys
 sys.path.append("../Classes/Round/")
 
-from Players import Players,HumanPlayers,IAPlayers
+from Players import Players,HumanPlayers,IAPlayers,ArrayPlayers
 import unittest
 
 class PlayersTest(unittest.TestCase):
@@ -64,6 +64,11 @@ class PlayersTest(unittest.TestCase):
 
 	def test_iaPlayerColourId(self):
 		self.assertEqual(expectedColourId,iaPlayer.getColourId())
+
+	def test_arrayPlayerBuilder(self):
+		arrayPlayer = ArrayPlayers(numPlayers)
+		for i in arrayPlayer
+			self.assertEqual(None,i)
 
 if __name__ == '__main__':
 	unittest.main()
