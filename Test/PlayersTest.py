@@ -21,7 +21,7 @@ class PlayersTest(unittest.TestCase):
 
 	# Players
 	global player
-	player = Players(expectedNameEmpty)
+	player = Players(expectedNameEmpty,expectedBattalionsEmpty,expectedColourIdEmpty)
 
 	#testing
 	def test_getName(self):
