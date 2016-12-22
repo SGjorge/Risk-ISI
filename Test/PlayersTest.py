@@ -1,7 +1,7 @@
 import sys
 sys.path.append("../Classes/Round/")
 
-from Players import Players,HumanPlayers
+from Players import Players,HumanPlayers,IAPlayers
 import unittest
 
 class PlayersTest(unittest.TestCase):
@@ -56,7 +56,8 @@ class PlayersTest(unittest.TestCase):
 		self.assertEqual(expectedColourId,humanPlayer.getColourId())
 
 	def test_iaPlayerName(self):
-		self.assertEqual(expectedName,iaPlayer.getName())
+		iaName = expectedName+"IA"
+		self.assertEqual(iaName,iaPlayer.getName())
 
 	def test_iaPlayerBattalions(self):
 		self.assertEqual(expectedBattalions,iaPlayer.getBattalions())
