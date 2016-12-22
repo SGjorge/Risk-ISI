@@ -34,6 +34,11 @@ class BoardTest(unittest.TestCase):
         self.assertEqual(expectedBattalions, paisAux.battalions)
         self.assertEqual(expectedNeighbours, paisAux.neighbours.getneighbours())
 
+    def test_neighbourhood(self):
+        paisAux = Country()
+        expectedNeighbours = paisAux.neighbours.getneighbours()
+        self.assertEqual(expectedNeighbours, CoreVariables.getneighbours("Europa del norte"))
+
 
 if __name__ == '__main__':
     unittest.main()
