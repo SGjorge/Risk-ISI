@@ -26,8 +26,11 @@ class PlayersTest(unittest.TestCase):
 	# Players
 	global player
 	global humanPlayer
+	global iaPlayer
+
 	player = Players(expectedNameEmpty,expectedBattalionsEmpty,expectedColourIdEmpty)
 	humanPlayer = HumanPlayers(expectedName,expectedBattalions,expectedColourId)
+	iaPlayer = IAPlayers(expectedName,expectedBattalions,expectedColourId)
 
 	#testing
 	def test_getName(self):
@@ -51,6 +54,15 @@ class PlayersTest(unittest.TestCase):
 
 	def test_humanPlayerColourId(self):
 		self.assertEqual(expectedColourId,humanPlayer.getColourId())
+
+	def test_iaPlayerName(self):
+		self.assertEqual(expectedName,iaPlayer.getName())
+
+	def test_iaPlayerBattalions(self):
+		self.assertEqual(expectedBattalions,iaPlayer.getBattalions())
+
+	def test_iaPlayerColourId(self):
+		self.assertEqual(expectedColourId,iaPlayer.getColourId())
 
 if __name__ == '__main__':
 	unittest.main()
