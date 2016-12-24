@@ -75,9 +75,9 @@ class PlayersTest(unittest.TestCase):
 		p3 = HumanPlayers("Yo",0,"blue")
 		players = [p1,p2,p3]
 		players = ArrayPlayers().orderPlayers(players,p3)
-		self.assertEqual(players[1],p3)
-		self.assertEqual(players[2],p2)
-		self.assertEqual(players[3],p1)
+		self.assertEqual(players[0],p3)
+		self.assertEqual(players[1],p2)
+		self.assertEqual(players[2],p1)
 
 if __name__ == '__main__':
 	unittest.main()
