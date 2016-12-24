@@ -69,11 +69,15 @@ class PlayersTest(unittest.TestCase):
 	def test_iaPlayerColourId(self):
 		self.assertEqual(expectedColourId,iaPlayer.getColourId())
 
-	def test_arrayPlayerLenEmpty(self):
-		self.assertEqual(0,len(arrayPlayer))
-
-	def test_arrayPlayerBuilder(self):
-			self.assertEqual(None,arrayPlayer)
+	def test_arrayPlayerorderFisrt(self):
+		p1 = HumanPlayers("Pepe",0,"orange")
+		p2 = HumanPlayers("Ana",0,"red")
+		p3 = HumanPlayers("Yo",0,"blue")
+		players = [p1,p2,p3]
+		players = ArrayPlayers().orderPlayers(players,p3)
+		self.assertEqual(players[1],p3)
+		self.assertEqual(players[2],p2)
+		self.assertEqual(players[3],p1)
 
 if __name__ == '__main__':
 	unittest.main()
