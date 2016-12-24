@@ -24,6 +24,11 @@ class Players:
 	def getColourId(self):
 		return self.__COLOURID
 
+	def isEqual(self,player):
+		return ((self.__NAME == player.getName()) and \
+			    (self.__BATTALIONS == player.getBattalions()) and \
+			    (self.__COLOURID == player.getColourId()))
+
 	def toString(self):
 		return (self.__NAME + " " + str(self.__BATTALIONS) + " " +self.__COLOURID)
 
@@ -38,14 +43,19 @@ class IAPlayers(Players):
 		name = name + "IA"
 		super(self.__class__, self).__init__(name,battalions,color)
 
+# this class is an API to work about Players' array 
 class ArrayPlayers:
-	def __init__(self,numPlayers):
-		if not (GameRules().numberofplayers(numPlayers)):
-			arrayPlayer = [range(1,CoreVariables().numMinPlayers)]
-			for i in range(1,numPlayers):
-				arrayPlayer[i] = None
-		else:
-			arrayPlayer = [range(1,numPlayers)]
-			for i in range(1,len(arrayPlayer)):
-				arrayPlayer[i] = None
-		return arrayPlayer
+	# put first in first position array and the other to the left hand in order in new right hand array
+	def orderPlayers(self,players,first):
+		newPlayer = []
+		newPlayer.append(first)
+		try:
+			firstPosition = players.index(first)
+		except ValueError:
+			print (ValueError)
+			return players
+		for i in range(firstPosition,(1-firstPosition)):
+			newPlayer.append(players[i])
+		return newPlayer
+		
+
