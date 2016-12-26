@@ -102,13 +102,15 @@ class PlayersTest(unittest.TestCase):
 
 	def test_turnCubeRoll(self):
 		roll = p1.cubeRoll()
-		self.assertIn(roll,range(1,6))
+		self.assertIn(roll,range(1,7))
 
-	def test_areaAssault(self):
+	def test_assaultRoll(self):
 		self.assertEqual(True,True)
 
-	def test_areaDefend(self):
-		self.assertEqual(True,True)
+	def test_defendRoll(self):
+		defendRoll = p1.defendRoll(2)
+		for i in defendRoll:
+			self.assertIn(i,range(1,7))
 
 if __name__ == '__main__':
 	unittest.main()
