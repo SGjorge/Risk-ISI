@@ -7,3 +7,4 @@ class CoreVariables():
 
         self.minPlayers = 3
         self.maxPlayers = 6
+        self.colorPlayers = [orange,red,blue,green,white,black]

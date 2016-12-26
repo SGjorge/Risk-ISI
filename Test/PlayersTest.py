@@ -34,7 +34,7 @@ class PlayersTest(unittest.TestCase):
 	player = Players(expectedNameEmpty,expectedBattalionsEmpty,expectedColourIdEmpty)
 	humanPlayer = HumanPlayers(expectedName,expectedBattalions,expectedColourId)
 	iaPlayer = IAPlayers(expectedName,expectedBattalions,expectedColourId)
-	arrayPlayer = ArrayPlayers(numPlayers)
+	arrayPlayer = ArrayPlayers()
 
 	#testing
 	def test_getName(self):
@@ -69,12 +69,39 @@ class PlayersTest(unittest.TestCase):
 	def test_iaPlayerColourId(self):
 		self.assertEqual(expectedColourId,iaPlayer.getColourId())
 
-	def test_arrayPlayerBuilder(self):
-		for i in range(1,len(arrayPlayer)):
-			self.assertEqual(None,i)
+	def test_comparePlayers(self):
+		self.assertEqual(True,humanPlayer.isEqual(humanPlayer))
+		self.assertEqual(False,humanPlayer.isEqual(iaPlayer))
 
-	def test_arrayPlayerLen(self):
-		self.assertEqual(numPlayers,len(arrayPlayer))
+	def test_arrayPlayerorderFisrt(self):
+		p1 = HumanPlayers("Pepe",0,"orange")
+		p2 = HumanPlayers("Ana",0,"red")
+		p3 = HumanPlayers("Yo",0,"blue")
+		players = [p1,p2,p3]
+		nplayers = ArrayPlayers().orderPlayers(players,p1)
+		self.assertEqual(True,nplayers[0].isEqual(p1))
+		self.assertEqual(True,nplayers[1].isEqual(p2))
+		self.assertEqual(True,nplayers[2].isEqual(p3))
+
+	def test_arrayPlayerorderLast(self):
+		p1 = HumanPlayers("Pepe",0,"orange")
+		p2 = HumanPlayers("Ana",0,"red")
+		p3 = HumanPlayers("Yo",0,"blue")
+		players = [p1,p2,p3]
+		nplayers = ArrayPlayers().orderPlayers(players,p3)
+		self.assertEqual(True,nplayers[0].isEqual(p3))
+		self.assertEqual(True,nplayers[1].isEqual(p2))
+		self.assertEqual(True,nplayers[2].isEqual(p1))
+
+	def test_arrayPlayerorderMiddle(self):
+		p1 = HumanPlayers("Pepe",0,"orange")
+		p2 = HumanPlayers("Ana",0,"red")
+		p3 = HumanPlayers("Yo",0,"blue")
+		players = [p1,p2,p3]
+		nplayers = ArrayPlayers().orderPlayers(players,p2)
+		self.assertEqual(True,nplayers[0].isEqual(p2))
+		self.assertEqual(True,nplayers[1].isEqual(p1))
+		self.assertEqual(True,nplayers[2].isEqual(p3))
 
 if __name__ == '__main__':
 	unittest.main()
