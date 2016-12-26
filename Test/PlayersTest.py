@@ -103,5 +103,9 @@ class PlayersTest(unittest.TestCase):
 		self.assertEqual(True,nplayers[1].isEqual(p1))
 		self.assertEqual(True,nplayers[2].isEqual(p3))
 
+	def test_turnCubeRoll(self):
+		roll = Players().cubeRoll()
+		self.assertIn(range(1,6),roll)
+
 if __name__ == '__main__':
 	unittest.main()
