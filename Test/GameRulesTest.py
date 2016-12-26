@@ -20,20 +20,20 @@ class GameRulesTest(unittest.TestCase):
         self.assertEqual(expected, GameRules.numberofplayers(7))
 
 	#Comprueba el numero de batallones iniciales de cada jugador, segun el numero total de jugadores
-    def test_getinitialbattalions(self):
+    def test_initialbattalions3(self):
         expected = 35
         self.assertEqual(expected, GameRules.numberofinitialbattalions(3))
 
-    def test_getinitialbattalions(self):
-        expected = 35
+    def test_initialbattalions4(self):
+        expected = 30
         self.assertEqual(expected, GameRules.numberofinitialbattalions(4))
 
-    def test_getinitialbattalions(self):
-        expected = 35
+    def test_initialbattalions5(self):
+        expected = 25
         self.assertEqual(expected, GameRules.numberofinitialbattalions(5))
 
-    def test_getinitialbattalions(self):
-        expected = 35
+    def test_initialbattalions6(self):
+        expected = 20
         self.assertEqual(expected, GameRules.numberofinitialbattalions(6))
 
 

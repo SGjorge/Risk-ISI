@@ -21,7 +21,7 @@ CLASES PRINCIPALES
 			HumanPlayer --> Clase derivada de Players que implementa lo necesario del jugador humano.
 			IAPlayer --> Clase derivada de Players que implementa lo necesario del jugador de inteligencia artificial.
 			ArrayPlayer --> Clase para el manejo de array de jugadores
-	GamesRules --> Clase principal sobre las reglas y necesidades del juego.De aquí derivarán Cards y Tables.
+	GamesRules --> Clase principal sobre las reglas y necesidades del juego. De aquí derivarán Cards y Tables.
 		Cards --> Clase abstracta que denota lo necesario sobre las cartas del juego.
 			InfantryCard --> Clase derivada que implementa lo necesario de la carta de infanteria.
 			ArtilleryCard --> Clase derivada que implementa lo necesario de la carta de artilleria.
