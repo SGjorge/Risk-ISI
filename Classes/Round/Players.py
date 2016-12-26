@@ -32,7 +32,6 @@ class Players:
 
 	def cubeRoll(self):
 		roll = randint(1,6)
-		print (roll)
 		return roll
 
 	def toString(self):
