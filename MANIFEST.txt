@@ -33,7 +33,6 @@ CLASES PRINCIPALES
 			ArtilleryCard --> Clase derivada que implementa lo necesario de la carta de artillería.
 			CavalryCard --> Clase derivada que implementa lo necesario de la carta de caballería.
 		Tables --> Clase abstracta que denota lo necesario para las tablas de configuración del juego.
-			CountriesTable --> Clase derivada de Tables que implementa lo necesario de la tabla de continentes.
 			FirstBattalionTable --> Clase derivada de Tables que implementa lo necesario sobre los batallones
 			al comienzo del juego.
 			ReinforcementBattalionPerCountryTable --> Clase derivada de Tables que implementa lo necesario sobre
