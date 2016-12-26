@@ -4,7 +4,9 @@ class CoreVariables():
     def __init__(self):
         self.countries = ["Alaska", "Alberta", "Europa Occidental", "Europa del sur", "Europa del norte"]
         self.maxCountries = 42
-
+        self.minPlayers = 3
+        self.maxPlayers = 6
+        self.colorPlayers = ["orange","red","blue","green","white","black"]
 
     neighboursEuropaNorte = ['Europa del sur', 'Europa occidental']
     tableNeighbours = {'Europa del norte': neighboursEuropaNorte}
