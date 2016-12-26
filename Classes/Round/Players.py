@@ -2,6 +2,7 @@ import sys
 sys.path.append("../Classes/GameRules/")
 sys.path.append("../../")
 
+from random import randint
 from GameRules import GameRules
 from CoreVariables import CoreVariables
 
@@ -28,6 +29,10 @@ class Players:
 		return ((self.__NAME == player.getName()) and \
 			    (self.__BATTALIONS == player.getBattalions()) and \
 			    (self.__COLOURID == player.getColourId()))
+
+	def cubeRoll(self):
+		roll = randint(1,6)
+		return roll
 
 	def toString(self):
 		return (self.__NAME + " " + str(self.__BATTALIONS) + " " +self.__COLOURID)
