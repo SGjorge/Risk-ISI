@@ -55,16 +55,20 @@ class ArrayPlayers:
 		except ValueError:
 			print (ValueError)
 			return players
+
 		if(firstPosition == (len(players)-1)):
 			players.reverse()
-			print(ArrayPlayers().toString(players))
 			return players
 		elif (firstPosition == 0):
-			print(ArrayPlayers().toString(players))
 			return players
-		else:
-			print(str(firstPosition) + " " + str((1-firstPosition)))
-		return players
+		
+		newPlayer = []
+		newPlayer.append(first)
+		for i in range(1,(len(players)*2)):
+			if(first.isEqual(players[firstPosition-i])):
+				break
+			newPlayer.append(players[firstPosition-i])
+		return newPlayer
 
 	def toString(self,players):
 		string = ''
