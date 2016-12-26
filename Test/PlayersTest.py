@@ -77,12 +77,21 @@ class PlayersTest(unittest.TestCase):
 		p1 = HumanPlayers("Pepe",0,"orange")
 		p2 = HumanPlayers("Ana",0,"red")
 		p3 = HumanPlayers("Yo",0,"blue")
-		#players = [p1,p2,p3]
-		#nplayers = ArrayPlayers().orderPlayers(players,p3)
-		#print (nplayers)
-		#self.assertEqual(nplayers[0],p3)
-		#self.assertEqual(nplayers[1],p2)
-		#self.assertEqual(nplayers[2],p1)
+		players = [p1,p2,p3]
+		nplayers = ArrayPlayers().orderPlayers(players,p1)
+		self.assertEqual(True,nplayers[0].isEqual(p1))
+		self.assertEqual(True,nplayers[1].isEqual(p2))
+		self.assertEqual(True,nplayers[2].isEqual(p3))
+
+	def test_arrayPlayerorderLast(self):
+		p1 = HumanPlayers("Pepe",0,"orange")
+		p2 = HumanPlayers("Ana",0,"red")
+		p3 = HumanPlayers("Yo",0,"blue")
+		players = [p1,p2,p3]
+		nplayers = ArrayPlayers().orderPlayers(players,p3)
+		self.assertEqual(True,nplayers[0].isEqual(p3))
+		self.assertEqual(True,nplayers[1].isEqual(p2))
+		self.assertEqual(True,nplayers[2].isEqual(p1))
 
 if __name__ == '__main__':
 	unittest.main()
