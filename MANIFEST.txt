@@ -12,13 +12,16 @@ A continuación se listarán las constantes globales, objetos, clases y métodos
 
 TEST
 	ClassTest --> Test que implementa el testeo de las clases.
-	BoardTest --> Tests para la implementación del talero. 
+	BoardTest --> Tests para la implementación del talero.
 CLASES PRINCIPALES
 	CoreVariables. --> Clase que lleva todas las variables "absolutas" que se usarán en todas las demás clases.
-	Game --> Clase principal sobre la que se irán implementando los diferentes métodos llamados desde el main(),
+										*Los nombres de los países van en mayúsculas solo las letras que forman el nombre. Es decir,
+										si es 'algo' del norte/occidental etc, sólo va en mayúscula la letra del país, pero si es
+										'Nueva Guinea', las dos llevan mayúsculas.
+	Round --> Clase principal sobre la que se irán implementando los diferentes métodos llamados desde el main(),
 	representa a la partida, derivarán Countries y Players.
 		Countries --> Clase abstracta con los métodos en vacío que tendrán las clases hijas.
-			Country --> Clase hija de Countries que implementa lo necesario de paises.
+			Country --> Clase hija de Countries que implementa lo necesario de países.
 			Vecinos --> Clase hija de Countries que lleva un array de vecinos.
 		Players --> Clase abstracta que denota lo necesario para los jugadores. Actúa como interfaz.
 			HumanPlayer --> Clase derivada de Players que implementa lo necesario del jugador humano.
@@ -26,9 +29,9 @@ CLASES PRINCIPALES
 			ArrayPlayer --> Clase para el manejo de array de jugadores
 	GamesRules --> Clase principal sobre las reglas y necesidades del juego. De aquí derivarán Cards y Tables.
 		Cards --> Clase abstracta que denota lo necesario sobre las cartas del juego.
-			InfantryCard --> Clase derivada que implementa lo necesario de la carta de infanteria.
-			ArtilleryCard --> Clase derivada que implementa lo necesario de la carta de artilleria.
-			CavalryCard --> Clase derivada que implementa lo necesario de la carta de caballeria.
+			InfantryCard --> Clase derivada que implementa lo necesario de la carta de infantería.
+			ArtilleryCard --> Clase derivada que implementa lo necesario de la carta de artillería.
+			CavalryCard --> Clase derivada que implementa lo necesario de la carta de caballería.
 		Tables --> Clase abstracta que denota lo necesario para las tablas de configuración del juego.
 			CountriesTable --> Clase derivada de Tables que implementa lo necesario de la tabla de continentes.
 			FirstBattalionTable --> Clase derivada de Tables que implementa lo necesario sobre los batallones
@@ -40,4 +43,4 @@ CLASES PRINCIPALES
 
 
 MÉTODOS
-	main() --> método principal del proyecto, no recibe parametros de entrada ni salida originalmente.
+	main() --> método principal del proyecto, no recibe parametros de entrada ni salida.
