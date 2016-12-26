@@ -49,13 +49,27 @@ class ArrayPlayers:
 	def orderPlayers(self,players,first):
 		newPlayer = []
 		newPlayer.append(first)
+		firstPosition = 0
 		try:
 			firstPosition = players.index(first)
 		except ValueError:
 			print (ValueError)
 			return players
-		for i in range(firstPosition,(1-firstPosition)):
-			newPlayer.append(players[i])
-		return newPlayer
+		if(firstPosition == (len(players)-1)):
+			players.reverse()
+			print(ArrayPlayers().toString(players))
+			return players
+		elif (firstPosition == 0):
+			print(ArrayPlayers().toString(players))
+			return players
+		else:
+			print(str(firstPosition) + " " + str((1-firstPosition)))
+		return players
+
+	def toString(self,players):
+		string = ''
+		for i in players:
+			string += i.toString() + ", "
+		return string
 		
 
