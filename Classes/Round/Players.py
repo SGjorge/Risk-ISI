@@ -46,7 +46,16 @@ class Players:
 
 		return defendRoll
 
+	def assaultRoll(self,assaultBattalions):
+		if (assaultBattalions < 1) or (assaultBattalions > 3): #aqui tendremos que llamar a la regla cuando esté implementada
+			return -1
 
+		assaultRoll = []
+		for i in range(1,(assaultBattalions + 1)):
+			roll = self.cubeRoll()
+			assaultRoll.append(roll)
+
+		return assaultRoll
 
 	def toString(self):
 		return (self.__NAME + " " + str(self.__BATTALIONS) + " " +self.__COLOURID)
