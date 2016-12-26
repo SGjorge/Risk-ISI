@@ -93,5 +93,15 @@ class PlayersTest(unittest.TestCase):
 		self.assertEqual(True,nplayers[1].isEqual(p2))
 		self.assertEqual(True,nplayers[2].isEqual(p1))
 
+	def test_arrayPlayerorderMiddle(self):
+		p1 = HumanPlayers("Pepe",0,"orange")
+		p2 = HumanPlayers("Ana",0,"red")
+		p3 = HumanPlayers("Yo",0,"blue")
+		players = [p1,p2,p3]
+		nplayers = ArrayPlayers().orderPlayers(players,p2)
+		self.assertEqual(True,nplayers[0].isEqual(p2))
+		self.assertEqual(True,nplayers[1].isEqual(p1))
+		self.assertEqual(True,nplayers[2].isEqual(p3))
+
 if __name__ == '__main__':
 	unittest.main()
