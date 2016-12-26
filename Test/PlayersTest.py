@@ -105,7 +105,9 @@ class PlayersTest(unittest.TestCase):
 		self.assertIn(roll,range(1,7))
 
 	def test_assaultRoll(self):
-		self.assertEqual(True,True)
+		assaultRoll = p1.assaultRoll(2)
+		for i in assaultRoll:
+			self.assertIn(i,range(1,7))
 
 	def test_defendRoll(self):
 		defendRoll = p1.defendRoll(2)
