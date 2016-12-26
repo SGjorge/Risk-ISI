@@ -34,6 +34,28 @@ class Players:
 		roll = randint(1,6)
 		return roll
 
+	def rolls(self,index):
+		rolls = []
+		for i in range(1,(index + 1)):
+			roll = self.cubeRoll()
+			rolls.append(roll)
+		return rolls
+
+	#return -1 if batallions'll be incorrect
+	def defendRoll(self,defendBattalions):
+		if (defendBattalions < 1) or (defendBattalions > 2): #aqui tendremos que llamar a la regla cuando esté implementada
+			return -1
+
+		defendRoll = self.rolls(defendBattalions)
+		return defendRoll
+
+	def assaultRoll(self,assaultBattalions):
+		if (assaultBattalions < 1) or (assaultBattalions > 3): #aqui tendremos que llamar a la regla cuando esté implementada
+			return -1
+
+		assaultRoll = self.rolls(assaultBattalions)
+		return assaultRoll
+
 	def toString(self):
 		return (self.__NAME + " " + str(self.__BATTALIONS) + " " +self.__COLOURID)
 

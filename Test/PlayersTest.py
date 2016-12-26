@@ -30,11 +30,17 @@ class PlayersTest(unittest.TestCase):
 	global humanPlayer
 	global iaPlayer
 	global arrayPlayer
+	global p1
+	global p2
+	global p3
 
 	player = Players(expectedNameEmpty,expectedBattalionsEmpty,expectedColourIdEmpty)
 	humanPlayer = HumanPlayers(expectedName,expectedBattalions,expectedColourId)
 	iaPlayer = IAPlayers(expectedName,expectedBattalions,expectedColourId)
 	arrayPlayer = ArrayPlayers()
+	p1 = HumanPlayers("Pepe",0,"orange")
+	p2 = HumanPlayers("Ana",0,"red")
+	p3 = HumanPlayers("Yo",0,"blue")
 
 	#testing
 	def test_getName(self):
@@ -74,9 +80,6 @@ class PlayersTest(unittest.TestCase):
 		self.assertEqual(False,humanPlayer.isEqual(iaPlayer))
 
 	def test_arrayPlayerorderFisrt(self):
-		p1 = HumanPlayers("Pepe",0,"orange")
-		p2 = HumanPlayers("Ana",0,"red")
-		p3 = HumanPlayers("Yo",0,"blue")
 		players = [p1,p2,p3]
 		nplayers = ArrayPlayers().orderPlayers(players,p1)
 		self.assertEqual(True,nplayers[0].isEqual(p1))
@@ -84,9 +87,6 @@ class PlayersTest(unittest.TestCase):
 		self.assertEqual(True,nplayers[2].isEqual(p3))
 
 	def test_arrayPlayerorderLast(self):
-		p1 = HumanPlayers("Pepe",0,"orange")
-		p2 = HumanPlayers("Ana",0,"red")
-		p3 = HumanPlayers("Yo",0,"blue")
 		players = [p1,p2,p3]
 		nplayers = ArrayPlayers().orderPlayers(players,p3)
 		self.assertEqual(True,nplayers[0].isEqual(p3))
@@ -94,9 +94,6 @@ class PlayersTest(unittest.TestCase):
 		self.assertEqual(True,nplayers[2].isEqual(p1))
 
 	def test_arrayPlayerorderMiddle(self):
-		p1 = HumanPlayers("Pepe",0,"orange")
-		p2 = HumanPlayers("Ana",0,"red")
-		p3 = HumanPlayers("Yo",0,"blue")
 		players = [p1,p2,p3]
 		nplayers = ArrayPlayers().orderPlayers(players,p2)
 		self.assertEqual(True,nplayers[0].isEqual(p2))
@@ -104,9 +101,18 @@ class PlayersTest(unittest.TestCase):
 		self.assertEqual(True,nplayers[2].isEqual(p3))
 
 	def test_turnCubeRoll(self):
-		p1 = HumanPlayers("Pepe",0,"orange")
 		roll = p1.cubeRoll()
-		self.assertIn(roll,range(1,6))
+		self.assertIn(roll,range(1,7))
+
+	def test_assaultRoll(self):
+		assaultRoll = p1.assaultRoll(2)
+		for i in assaultRoll:
+			self.assertIn(i,range(1,7))
+
+	def test_defendRoll(self):
+		defendRoll = p1.defendRoll(2)
+		for i in defendRoll:
+			self.assertIn(i,range(1,7))
 
 if __name__ == '__main__':
 	unittest.main()
