@@ -6,7 +6,7 @@ import unittest
 
 class GameRulesTest(unittest.TestCase):
 
-	#Comprueba si el numero de jugadores es correcto (3-6)
+	#Checks if the number of players is ok (3-6)
     def test_isoneplayerok(self):
         expected = False
         self.assertEqual(expected, GameRules.numberofplayers(1))
@@ -19,23 +19,47 @@ class GameRulesTest(unittest.TestCase):
         expected = False
         self.assertEqual(expected, GameRules.numberofplayers(7))
 
-	#Comprueba el numero de batallones iniciales de cada jugador, segun el numero total de jugadores
+	#Checks the number of initial battalions per player, based on the total number of players
     def test_initialbattalions3(self):
         expected = 35
-        self.assertEqual(expected, GameRules.numberofinitialbattalions(3))
+        self.assertEqual(expected, GameRules.getInitialBattalions(3))
 
     def test_initialbattalions4(self):
         expected = 30
-        self.assertEqual(expected, GameRules.numberofinitialbattalions(4))
+        self.assertEqual(expected, GameRules.getInitialBattalions(4))
 
     def test_initialbattalions5(self):
         expected = 25
-        self.assertEqual(expected, GameRules.numberofinitialbattalions(5))
+        self.assertEqual(expected, GameRules.getInitialBattalions(5))
 
     def test_initialbattalions6(self):
         expected = 20
-        self.assertEqual(expected, GameRules.numberofinitialbattalions(6))
+        self.assertEqual(expected, GameRules.getInitialBattalions(6))
 
+        #Checks the number of extra battalions per each whole country conquered
+    def test_battalionsperAmericaN(self):
+        expected = 5
+        self.assertEqual(expected, GameRules.getBattalionsPerCountry("América Norte")) 
+
+    def test_battalionsperAmericaS(self):
+        expected = 7
+        self.assertEqual(expected, GameRules.getBattalionsPerCountry("Asia")) 
+
+    def test_battalionsperAmericaN(self):
+        expected = 2
+        self.assertEqual(expected, GameRules.getBattalionsPerCountry("América Sur")) 
+
+    def test_battalionsperAmericaN(self):
+        expected = 5
+        self.assertEqual(expected, GameRules.getBattalionsPerCountry("Europa"))
+
+     def test_battalionsperAmericaN(self):
+        expected = 3
+        self.assertEqual(expected, GameRules.getBattalionsPerCountry("África")) 
+
+    def test_battalionsperAmericaN(self):
+        expected = 2
+        self.assertEqual(expected, GameRules.getBattalionsPerCountry("Oceanía")) 
 
 
 if __name__ == '__main__':
