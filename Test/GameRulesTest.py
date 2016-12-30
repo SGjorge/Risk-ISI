@@ -6,7 +6,7 @@ import unittest
 
 class GameRulesTest(unittest.TestCase):
 
-	#Checks if the number of players is ok (3-6)
+        #Checks if the number of players is ok (3-6)
     def test_isoneplayerok(self):
         expected = False
         self.assertEqual(expected, GameRules.numberofplayers(1))
@@ -19,7 +19,7 @@ class GameRulesTest(unittest.TestCase):
         expected = False
         self.assertEqual(expected, GameRules.numberofplayers(7))
 
-	#Checks the number of initial battalions per player, based on the total number of players
+        #Checks the number of initial battalions per player, based on the total number of players
     def test_initialbattalions3(self):
         expected = 35
         self.assertEqual(expected, GameRules.getInitialBattalions(3))
@@ -37,27 +37,27 @@ class GameRulesTest(unittest.TestCase):
         self.assertEqual(expected, GameRules.getInitialBattalions(6))
 
         #Checks the number of extra battalions per each whole country conquered
-    def test_battalionsperAmericaN(self):
+    def test_battalionsperamericaN(self):
         expected = 5
         self.assertEqual(expected, GameRules.getBattalionsPerContinent("América Norte")) 
 
-    def test_battalionsperAmericaS(self):
+    def test_battalionsperasia(self):
         expected = 7
         self.assertEqual(expected, GameRules.getBattalionsPerContinent("Asia")) 
 
-    def test_battalionsperAmericaN(self):
+    def test_battalionsperamericaS(self):
         expected = 2
         self.assertEqual(expected, GameRules.getBattalionsPerContinent("América Sur")) 
 
-    def test_battalionsperAmericaN(self):
+    def test_battalionspereuropa(self):
         expected = 5
         self.assertEqual(expected, GameRules.getBattalionsPerContinent("Europa"))
 
-     def test_battalionsperAmericaN(self):
+    def test_battalionsperafrica(self):
         expected = 3
         self.assertEqual(expected, GameRules.getBattalionsPerContinent("África")) 
 
-    def test_battalionsperAmericaN(self):
+    def test_battalionsperoceania(self):
         expected = 2
         self.assertEqual(expected, GameRules.getBattalionsPerContinent("Oceanía")) 
 
