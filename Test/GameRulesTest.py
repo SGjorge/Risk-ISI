@@ -64,15 +64,15 @@ class GameRulesTest(unittest.TestCase):
         #Checks the number of extra battalions per conquered contries
     def test_battalionsper12countries(self):
         expected = 4
-        self.assertEqual(expected, GameRules.getBattalionsPerCountries(4)) 
+        self.assertEqual(expected, GameRules.getBattalionsPerCountries(12)) 
 
     def test_battalionsper2countries(self):
         expected = 3
-        self.assertEqual(expected, GameRules.getBattalionsPerCountries(3)) 
+        self.assertEqual(expected, GameRules.getBattalionsPerCountries(2)) 
 
     def test_battalionsper37countries(self):
         expected = 12
-        self.assertEqual(expected, GameRules.getBattalionsPerCountries(12)) 
+        self.assertEqual(expected, GameRules.getBattalionsPerCountries(37)) 
 
 
 
