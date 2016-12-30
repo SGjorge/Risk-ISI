@@ -35,9 +35,7 @@ CLASES PRINCIPALES
 		Tables --> Clase abstracta que denota lo necesario para las tablas de configuración del juego.
 			InitialBattalions --> Clase derivada de Tables que implementa lo necesario sobre los batallones
 			al comienzo del juego.
-			ReinforcementBattalionPerCountry --> Clase derivada de Tables que implementa lo necesario sobre
-			los refuerzos que se añaden a cada pasada del juego, según los países ocupados.
-			ReinforcementBattalionPerContinent --> Clase derivada de Tables que implementa lo necesario sobre
+			ReinforcementBattalionsPerContinent --> Clase derivada de Tables que implementa lo necesario sobre
 			los refuerzos que se añaden a cada pasada del juego, según los continentes enteros ocupados.
 
 
