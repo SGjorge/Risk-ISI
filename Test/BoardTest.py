@@ -5,7 +5,7 @@ sys.path.append("../")
 sys.path.append("../Classes/Round")
 
 from CoreVariables import CoreVariables
-from Countries import Countries, Country, Neighbours
+from Countries import Countries, Country, Neighbours, World
 import unittest
 
 class BoardTest(unittest.TestCase):
@@ -34,7 +34,7 @@ class BoardTest(unittest.TestCase):
 
     def test_battalion (self):
         expected = 0
-        self.assertEqual(expected, Country(None, None).getbatallions())
+        self.assertEqual(expected, Country(None, None).getbattalions())
 
     def test_existepais(self):
         expectedName = None
@@ -72,13 +72,13 @@ class BoardTest(unittest.TestCase):
         expectedConqueror = None
         self.assertEqual(expectedConqueror, Country(None, None).getconqueror())
 
-    def test_getbatallions (self):
+    def test_getbattalions (self):
         expectedBattalions = 0
-        self.assertEqual(expectedBattalions, Country(None, None).getbatallions())
+        self.assertEqual(expectedBattalions, Country(None, None).getbattalions())
 
     def test_wholeworld (self):
         absolutes = CoreVariables()
-        expectedWorld = Countries()
+        expectedWorld = World()
         lenght = len(expectedWorld.world)
         for i in range(0,lenght):
             #comparo cada nombre del array absoluto con los que he ido creando en countries

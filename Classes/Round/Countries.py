@@ -4,8 +4,16 @@ sys.path.append("../../")
 from CoreVariables import CoreVariables
 
 class Countries():
+
+    def nameok(self, name):
+        return None;
+
+        
+class World(Countries):
+
     global absolutes
     absolutes = CoreVariables()
+
 
     def __init__(self):
         self.world = []
@@ -19,8 +27,6 @@ class Countries():
         for i in range(0,lenght):
             print (self.world[i].tostring())
 
-    def nameok(self, name):
-        return None;
 
 #####clase padre#####
 
