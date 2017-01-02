@@ -45,6 +45,11 @@ class GameRules:
             return True
         return False
 
+    @classmethod
+    def countriesokforthebattle(self,countryAtt,countryDef):
+        if (countryAtt.conqueror != countryDef.conqueror):
+       	    return Country.areneighbours(countryAtt,countryDef)
+        return False
 
 
 

@@ -60,11 +60,14 @@ class Country(Countries):
     def changebattalions(self, numBattalions):
         self.battalions = self.battalions + numBattalions
 
-    def changeconqueror(self, newone):
-        self.conqueror = newone
+    def changeconqueror(self, newOne):
+        self.conqueror = newOne
 
     def tostring(self):
         return (str(self.name) + str(self.battalions) + str(self.conqueror))
+
+    def areneighbours(self, country):
+        return country.name in CoreVariables().getneighbours(self.name)
 
 
 class Neighbours(Countries):
