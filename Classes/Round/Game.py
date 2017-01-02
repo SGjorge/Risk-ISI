@@ -16,7 +16,7 @@ class Game:
 		return self.__PLAYERS
 
 	def initboard(self):
-		self.__COUNTRIES = Countries()
+		self.__COUNTRIES = Countries().world
 
 	def initplayers(self,players):
 		self.__PLAYERS = players
