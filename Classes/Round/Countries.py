@@ -17,11 +17,11 @@ class Countries():
     def printworld(self):
         lenght = len(self.world)
         for i in range(0,lenght):
-            print self.world[i].tostring()
+            print (self.world[i].tostring())
 
     def nameok(self, name):
         return None;
-    
+
 #####clase padre#####
 
 class Country(Countries):
