@@ -33,7 +33,7 @@ class Country(Countries):
         else:
             return False;
 
-    def addbattalions(self,numBattalions):
+    def changebattalions(self,numBattalions):
         self.battalions = self.battalions + numBattalions
 
 class Neighbours(Countries):
