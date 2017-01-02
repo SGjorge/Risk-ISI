@@ -46,6 +46,18 @@ class BoardTest(unittest.TestCase):
         expectedNeighbours = neighbourAux.getarray()
         self.assertEqual(expectedNeighbours, CoreVariables().getneighbours("Europa del norte"))
 
+    def test_filledcountry (self):
+        #están todas las cosas de un país (pais tonto)
+        expectedName = None
+        expectedBattalions = 0
+        expectedNeighbours = []
+        expectedConqueror = None
+        paisAux = Country(None)
+        self.assertEqual(expectedName, paisAux.name)
+        self.assertEqual(expectedBattalions, paisAux.battalions)
+        self.assertEqual(expectedConqueror, paisAux.conqueror)
+        neighbourAux = Neighbours(None)
+        self.assertEqual(expectedNeighbours, neighbourAux.getarray())
 
 if __name__ == '__main__':
     unittest.main()
