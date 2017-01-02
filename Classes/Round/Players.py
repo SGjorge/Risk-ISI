@@ -26,9 +26,9 @@ class Players:
 		return self.__COLOURID
 
 	def isequal(self,player):
-		return ((self.__NAME == player.getName()) and \
-			    (self.__BATTALIONS == player.getBattalions()) and \
-			    (self.__COLOURID == player.getColourId()))
+		return ((self.__NAME == player.getname()) and \
+			    (self.__BATTALIONS == player.getbattalions()) and \
+			    (self.__COLOURID == player.getcolourid()))
 
 	def cuberoll(self):
 		roll = randint(1,6)
@@ -37,7 +37,7 @@ class Players:
 	def rolls(self,index):
 		rolls = []
 		for i in range(1,(index + 1)):
-			roll = self.cubeRoll()
+			roll = self.cuberoll()
 			rolls.append(roll)
 		return rolls
 
@@ -92,7 +92,7 @@ class ArrayPlayers:
 		newPlayer = []
 		newPlayer.append(first)
 		for i in range(1,(len(players)*2)):
-			if(first.isEqual(players[firstPosition-i])):
+			if(first.isequal(players[firstPosition-i])):
 				break
 			newPlayer.append(players[firstPosition-i])
 		return newPlayer
