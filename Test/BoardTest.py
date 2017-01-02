@@ -61,5 +61,9 @@ class BoardTest(unittest.TestCase):
         neighbourAux = Neighbours(None)
         self.assertEqual(expectedNeighbours, neighbourAux.getarray())
 
+    def test_getplayer (self):
+        expectedConqueror = None
+        self.assertEqual(expectedConqueror, Country(None, None).getconqueror)
+
 if __name__ == '__main__':
     unittest.main()
