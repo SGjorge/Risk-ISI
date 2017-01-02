@@ -21,7 +21,7 @@ class Country(Countries):
 
     absolutes = CoreVariables()
 
-    def getbatallions(self):
+    def getbattalions(self):
         return self.battalions
         
     def getconqueror (self):
