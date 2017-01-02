@@ -1,9 +1,9 @@
 import sys
 sys.path.append("../Classes/GameRules/")
 
-from random import randint
 from GameRules import GameRules
 from CoreVariables import CoreVariables
+from Countries import Countries
 
 class Game:
 	__COUNTRIES = None
@@ -14,6 +14,9 @@ class Game:
 
 	def getplayers(self):
 		return self.__PLAYERS
+
+	def initboard(self):
+		__COUNTRIES = Countries()
 
 
 		
