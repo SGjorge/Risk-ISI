@@ -116,6 +116,39 @@ class GameRulesTest(unittest.TestCase):
         expected = False
         self.assertEqual(expected, GameRules.battalionstoattackok(country,2))
 
+        #Checks if the number of battalions is ok to defend
+    def test_is1battaliontodefendok(self):
+        country = Country("Groenlandia","blue")
+        country.changebattalions(4) #4 battalions
+        expected = True
+        self.assertEqual(expected, GameRules.battalionstodefendok(country,1))
+
+    def test_are2battalionstodefendok(self):
+        country = Country("Groenlandia","blue")
+        country.changebattalions(2) #2 battalions
+        expected = True
+        self.assertEqual(expected, GameRules.battalionstodefendok(country,2))
+
+    def test_are3battalionstodefendok(self):
+        country = Country("Groenlandia","blue")
+        country.changebattalions(8) #8 battalions
+        expected = False
+        self.assertEqual(expected, GameRules.battalionstodefendok(country,3))
+
+    def test_are2battalionsoktodefend(self):
+        country = Country("Groenlandia","blue")
+        country.changebattalions(1) #1 battalion
+        expected = False
+        self.assertEqual(expected, GameRules.battalionstodefendok(country,2))
+
+    def test_are0battalionstodefendok(self):
+        country = Country("Groenlandia","blue")
+        country.changebattalions(1) #1 battalion
+        expected = False
+        self.assertEqual(expected, GameRules.battalionstodefendok(country,0))
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
