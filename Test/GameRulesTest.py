@@ -2,9 +2,9 @@
 
 import sys
 sys.path.append("../Classes/GameRules/")
-
 from GameRules import GameRules
-#from Countries import Country
+sys.path.append("../Classes/Round/")
+from Countries import Countries, Country
 import unittest
 
 class GameRulesTest(unittest.TestCase):
@@ -79,21 +79,23 @@ class GameRulesTest(unittest.TestCase):
 
 
         #Checks if the number of battalions is ok to attack
+
+    countryA = ("Islandia","red")
     def test_is1battaliontoattackok(self):
         expected = True
-        self.assertEqual(expected, GameRules.battalionstoattackok("Islandia","Groenlandia",1))
+        self.assertEqual(expected, GameRules.battalionstoattackok(countryA,1))
 
     def test_aretwobattalionstoattackok(self):
         expected = True
-        self.assertEqual(expected, GameRules.battalionstoattackok("Islandia","Groenlandia",2))
+        self.assertEqual(expected, GameRules.battalionstoattackok(countryA,2))
 
     def test_are3battalionstoattackok(self):
         expected = True
-        self.assertEqual(expected, GameRules.battalionstoattackok("Islandia","Groenlandia",3))
+        self.assertEqual(expected, GameRules.battalionstoattackok(countryA,3))
 
     def test_are4battalionstoattackok(self):
         expected = False
-        self.assertEqual(expected, GameRules.battalionstoattackok("Islandia","Groenlandia",3))
+        self.assertEqual(expected, GameRules.battalionstoattackok(countryA,3))
 
 
 
