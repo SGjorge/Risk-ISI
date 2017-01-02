@@ -67,7 +67,7 @@ class BoardTest(unittest.TestCase):
 
     def test_getbatallions (self):
         expectedBattalions = 0
-        self.assertEqual(expectedBattalions, Country(None, None).getbatellios())
+        self.assertEqual(expectedBattalions, Country(None, None).getbatallions())
 
 if __name__ == '__main__':
     unittest.main()
