@@ -84,5 +84,11 @@ class BoardTest(unittest.TestCase):
             #comparo cada nombre del array absoluto con los que he ido creando en countries
             self.assertEqual(absolutes.countries[i], expectedWorld.world[i].getname())
 
+    def test_changecountry(self):
+        expectedNew = "Blue"
+        countryAux = Country("Islandia", "Red")
+        countryAux.changeconqueror("Blue")
+        self.assertEqual(expectedNew, countryAux.conqueror)
+
 if __name__ == '__main__':
     unittest.main()
