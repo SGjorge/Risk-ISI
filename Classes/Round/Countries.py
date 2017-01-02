@@ -21,6 +21,12 @@ class Country(Countries):
 
     absolutes = CoreVariables()
 
+    def getbatallions(self):
+        return self.battalions
+        
+    def getconqueror (self):
+        return self.conqueror
+
     def nameok (self):
         if (self.name in absolutes.countries):
             return True;
