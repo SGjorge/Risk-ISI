@@ -6,11 +6,15 @@ from Countries import Countries
 from Game import Game
 import unittest
 
-class PlayersTest(unittest.TestCase):
+class GameTest(unittest.TestCase):
 
-	def test_game(self):
-		game = Game()
-		self.assertEqual(None,Game())
+	global game
+
+	game = Game()
+
+	def test_initgame(self):
+		self.assertEqual(None,Game().getcountries())
+		self.assertEqual(None,Game().getplayers())
 
 
 if __name__ == '__main__':
