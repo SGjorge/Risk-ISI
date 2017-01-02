@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import sys
 sys.path.append("../")
 sys.path.append("../Classes/Round")
@@ -16,29 +18,29 @@ class BoardTest(unittest.TestCase):
     # @unittest.skip("skip")
     def test_namecountry (self):
         expected = None
-        self.assertEqual(expected, Country(None).name)
+        self.assertEqual(expected, Country(None, None).name)
 
     def test_namevalid (self):
         expected = True
-        paisAux = Country('Europa del norte')
+        paisAux = Country('Europa del norte', None)
         self.assertEqual(expected, paisAux.nameok())
 
     def test_battalion (self):
         expected = 0
-        self.assertEqual(expected, Country(None).countbattalion())
+        self.assertEqual(expected, Country(None, None).countbattalion())
 
     def test_existepais(self):
         expectedName = None
         expectedBattalions = 0
         expectedNeighbours = []
-        paisAux = Country(None)
+        paisAux = Country(None, None)
         self.assertEqual(expectedName, paisAux.name)
         self.assertEqual(expectedBattalions, paisAux.battalions)
         neighbourAux = Neighbours(None)
         self.assertEqual(expectedNeighbours, neighbourAux.getarray())
 
     def test_neighbourhood_1(self):
-        expectedNeighbours = ['Europa del sur', 'Europa occidental']
+        expectedNeighbours = ['Europa del Sur', 'Europa occidental','Ucrania', 'Escandinavia', "Gran Bretaña"]
         self.assertEqual(expectedNeighbours, CoreVariables().neighboursEuropaNorte)
 
     def test_neighbourhood_2(self):
@@ -47,12 +49,12 @@ class BoardTest(unittest.TestCase):
         self.assertEqual(expectedNeighbours, CoreVariables().getneighbours("Europa del norte"))
 
     def test_filledcountry (self):
-        #están todas las cosas de un país (pais tonto)
+        #estan todas las cosas de un pais (pais tonto)
         expectedName = None
         expectedBattalions = 0
         expectedNeighbours = []
         expectedConqueror = None
-        paisAux = Country(None)
+        paisAux = Country(None, None)
         self.assertEqual(expectedName, paisAux.name)
         self.assertEqual(expectedBattalions, paisAux.battalions)
         self.assertEqual(expectedConqueror, paisAux.conqueror)
