@@ -1,9 +1,11 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import sys
 sys.path.append("../")
 sys.path.append("../Classes/Round")
 
 from CoreVariables import CoreVariables
-from Countries import Countries
+from Countries import Country, Neighbours
 import unittest
 
 class BoardTest(unittest.TestCase):
@@ -13,17 +15,59 @@ class BoardTest(unittest.TestCase):
         expected = 42
         self.assertEqual(expected, CoreVariables().maxCountries)
 
+    # @unittest.skip("skip")
     def test_namecountry (self):
         expected = None
-        self.assertEqual(expected, Countries().name)
+        self.assertEqual(expected, Country(None, None).name)
 
     def test_namevalid (self):
         expected = True
-        self.assertEqual(expected, Countries().nameok("Europa del norte"))
-    def test_battalion (self):
-        expected = None
-        self.assertEqual(expected, Countries().countbattalion())
+        paisAux = Country('Europa del norte', None)
+        self.assertEqual(expected, paisAux.nameok())
 
+    def test_battalion (self):
+        expected = 0
+        self.assertEqual(expected, Country(None, None).countbattalion())
+
+    def test_existepais(self):
+        expectedName = None
+        expectedBattalions = 0
+        expectedNeighbours = []
+        paisAux = Country(None, None)
+        self.assertEqual(expectedName, paisAux.name)
+        self.assertEqual(expectedBattalions, paisAux.battalions)
+        neighbourAux = Neighbours(None)
+        self.assertEqual(expectedNeighbours, neighbourAux.getarray())
+
+    def test_neighbourhood_1(self):
+        expectedNeighbours = ['Europa del Sur', 'Europa occidental','Ucrania', 'Escandinavia', "Gran Bretaña"]
+        self.assertEqual(expectedNeighbours, CoreVariables().neighboursEuropaNorte)
+
+    def test_neighbourhood_2(self):
+        neighbourAux = Neighbours('Europa del norte')
+        expectedNeighbours = neighbourAux.getarray()
+        self.assertEqual(expectedNeighbours, CoreVariables().getneighbours("Europa del norte"))
+
+    def test_filledcountry (self):
+        #estan todas las cosas de un pais (pais tonto)
+        expectedName = None
+        expectedBattalions = 0
+        expectedNeighbours = []
+        expectedConqueror = None
+        paisAux = Country(None, None)
+        self.assertEqual(expectedName, paisAux.name)
+        self.assertEqual(expectedBattalions, paisAux.battalions)
+        self.assertEqual(expectedConqueror, paisAux.conqueror)
+        neighbourAux = Neighbours(None)
+        self.assertEqual(expectedNeighbours, neighbourAux.getarray())
+
+    def test_getplayer (self):
+        expectedConqueror = None
+        self.assertEqual(expectedConqueror, Country(None, None).getconqueror())
+
+    def test_getbatallions (self):
+        expectedBattalions = 0
+        self.assertEqual(expectedBattalions, Country(None, None).getbatallions())
 
 if __name__ == '__main__':
     unittest.main()
