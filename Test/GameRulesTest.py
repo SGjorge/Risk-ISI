@@ -148,6 +148,37 @@ class GameRulesTest(unittest.TestCase):
         self.assertEqual(expected, GameRules.battalionstodefendok(country,0))
 
 
+        #Checks if a battle can happen between two countries 
+    def test_canislandattackgroenland(self):
+        countryAtt = Country("Islandia","red")
+        countryDef = Country("Groenlandia","blue")
+        expected = True
+        self.assertEqual(expected,GameRules.countriesokforthebattle(countryAtt,countryDef))
+
+    def test_canislandattackbrazil(self):
+        countryAtt = Country("Islandia","red")
+        countryDef = Country("Brasil","blue")
+        expected = False
+        self.assertEqual(expected,GameRules.countriesokforthebattle(countryAtt,countryDef))
+
+    def test_canredattackred(self):
+        countryAtt = Country("Islandia","red")
+        countryDef = Country("Groenlandia","red")
+        expected = False
+        self.assertEqual(expected,GameRules.countriesokforthebattle(countryAtt,countryDef))
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 if __name__ == '__main__':
