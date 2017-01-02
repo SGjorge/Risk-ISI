@@ -21,7 +21,7 @@ class Country(Countries):
 
     absolutes = CoreVariables()
 
-    def getbatallions(self):
+    def getbattalions(self):
         return self.battalions
         
     def getconqueror (self):
@@ -33,8 +33,8 @@ class Country(Countries):
         else:
             return False;
 
-    def countbattalion (self):
-        return self.battalions
+    def addbattalions(self,numBattalions):
+        self.battalions = self.battalions + numBattalions
 
 class Neighbours(Countries):
 
