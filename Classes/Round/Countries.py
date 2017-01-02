@@ -7,6 +7,7 @@ class Countries():
     global absolutes
     absolutes = CoreVariables()
 
+
     def __init__(self):
         self.world = []
         lenght = len(absolutes.countries)
