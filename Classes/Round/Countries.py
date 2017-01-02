@@ -8,7 +8,7 @@ class Countries():
     def nameok(self, name):
         return None;
 
-        
+
 class World(Countries):
 
     global absolutes
@@ -57,8 +57,11 @@ class Country(Countries):
         else:
             return False;
 
-    def changebattalions(self,numBattalions):
+    def changebattalions(self, numBattalions):
         self.battalions = self.battalions + numBattalions
+
+    def changeconqueror(self, newone):
+        self.conqueror = newone
 
     def tostring(self):
         return (str(self.name) + str(self.battalions) + str(self.conqueror))
