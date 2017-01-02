@@ -34,6 +34,23 @@ class GameRules:
     @classmethod
     def battalionstoattackok(self,attackingCountry,numBattalions):
         totalBattalions = Country.getbattalions(attackingCountry)
-        if numBattalions <= 3 and (totalBattalions - numBattalions) >= 1:
+        if numBattalions > 0 and numBattalions <= 3 and (totalBattalions - numBattalions) >= 1:
             return True
         return False
+
+    @classmethod
+    def battalionstodefendok(self,defendingCountry,numBattalions):
+        totalBattalions = Country.getbattalions(defendingCountry)
+        if numBattalions > 0 and numBattalions <= 2 and (totalBattalions - numBattalions) >= 0:
+            return True
+        return False
+
+
+
+
+
+
+
+
+
+
