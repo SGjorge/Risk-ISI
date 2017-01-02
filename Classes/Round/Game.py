@@ -6,5 +6,14 @@ from GameRules import GameRules
 from CoreVariables import CoreVariables
 
 class Game:
-	def __init__(self):
-		return None
+	__COUNTRIES = None
+	__PLAYERS = None
+
+	def getcountries(self):
+		return self.__COUNTRIES
+
+	def getplayers(self):
+		return self.__PLAYERS
+
+
+		
