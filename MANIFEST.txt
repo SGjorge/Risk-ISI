@@ -13,6 +13,7 @@ A continuación se listarán las constantes globales, objetos, clases y métodos
 TEST
 	ClassTest --> Test que implementa el testeo de las clases.
 	BoardTest --> Tests para la implementación del talero.
+	GameRulesTest --> Test para la implementación de las reglas generales del juego.
 CLASES PRINCIPALES
 	CoreVariables. --> Clase que lleva todas las variables "absolutas" que se usarán en todas las demás clases.
 										*Los nombres de los países van en mayúsculas solo las letras que forman el nombre. Es decir,

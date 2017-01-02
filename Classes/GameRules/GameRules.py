@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import sys
 sys.path.append("../")
 
@@ -8,21 +10,21 @@ class GameRules:
 
 
     @classmethod
-    def numberofplayers(self,numPlayers):
+    def numberofplayersok(self,numPlayers):
         if  (numPlayers >= CV().minPlayers) and (numPlayers <= CV().maxPlayers):
             return True
         return False
 
     @classmethod
-    def getInitialBattalions(self,numPlayers):
+    def getinitialbattalions(self,numPlayers):
         return T.initialBattalions[numPlayers]
 
     @classmethod
-    def getBattalionsPerContinent(self,continent):
+    def getbattalionspercontinent(self,continent):
         return T.battalionsPerContinent[continent]
 
     @classmethod
-    def getBattalionsPerCountries(self,numCountries):
+    def getbattalionspercountries(self,numCountries):
         numBattalions = numCountries // 3
         if numBattalions < 3:
             numBattalions = 3
