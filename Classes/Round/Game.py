@@ -16,7 +16,10 @@ class Game:
 		return self.__PLAYERS
 
 	def initboard(self):
-		__COUNTRIES = Countries()
+		self.__COUNTRIES = Countries()
+
+	def initplayers(self,players):
+		self.__PLAYERS = players
 
 
 		
