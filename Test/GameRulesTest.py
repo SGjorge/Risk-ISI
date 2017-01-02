@@ -9,6 +9,12 @@ import unittest
 
 class GameRulesTest(unittest.TestCase):
 
+        #attacking country
+    global countryA
+    
+    countryA = Country("Islandia","red")
+
+
         #Checks if the number of players is ok (3-6)
     def test_is1playerok(self):
         expected = False
@@ -79,13 +85,11 @@ class GameRulesTest(unittest.TestCase):
 
 
         #Checks if the number of battalions is ok to attack
-
-    countryA = ("Islandia","red")
     def test_is1battaliontoattackok(self):
         expected = True
         self.assertEqual(expected, GameRules.battalionstoattackok(countryA,1))
 
-    def test_aretwobattalionstoattackok(self):
+    def test_are2battalionstoattackok(self):
         expected = True
         self.assertEqual(expected, GameRules.battalionstoattackok(countryA,2))
 
