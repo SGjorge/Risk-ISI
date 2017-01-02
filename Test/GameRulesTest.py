@@ -92,7 +92,7 @@ class GameRulesTest(unittest.TestCase):
         self.assertEqual(expected, GameRules.battalionstoattackok("Islandia","Groenlandia",3))
 
     def test_are4battalionstoattackok(self):
-        expected = True
+        expected = False
         self.assertEqual(expected, GameRules.battalionstoattackok("Islandia","Groenlandia",3))
 
 
