@@ -9,12 +9,7 @@ import unittest
 
 class GameRulesTest(unittest.TestCase):
 
-        #attacking country
-    global countryA
     
-    countryA = Country("Islandia","red")
-
-
         #Checks if the number of players is ok (3-6)
     def test_is1playerok(self):
         expected = False
@@ -86,21 +81,40 @@ class GameRulesTest(unittest.TestCase):
 
         #Checks if the number of battalions is ok to attack
     def test_is1battaliontoattackok(self):
+        country = Country("Islandia","red")
+        country.addbattalions(25) #25 battalions
         expected = True
-        self.assertEqual(expected, GameRules.battalionstoattackok(countryA,1))
+        self.assertEqual(expected, GameRules.battalionstoattackok(country,1))
 
     def test_are2battalionstoattackok(self):
+        country = Country("Islandia","red")
+        country.addbattalions(25) #25 battalions
         expected = True
-        self.assertEqual(expected, GameRules.battalionstoattackok(countryA,2))
+        self.assertEqual(expected, GameRules.battalionstoattackok(country,2))
 
     def test_are3battalionstoattackok(self):
+        country = Country("Islandia","red")
+        country.addbattalions(25) #25 battalions
         expected = True
-        self.assertEqual(expected, GameRules.battalionstoattackok(countryA,3))
+        self.assertEqual(expected, GameRules.battalionstoattackok(country,3))
 
     def test_are4battalionstoattackok(self):
+        country = Country("Islandia","red")
+        country.addbattalions(25) #25 battalions
         expected = False
-        self.assertEqual(expected, GameRules.battalionstoattackok(countryA,3))
+        self.assertEqual(expected, GameRules.battalionstoattackok(country,4))
 
+    def test_is1battalionoktoattack(self):
+        country = Country("Islandia","red")
+        country.addbattalions(2) #2 battalions
+        expected = True
+        self.assertEqual(expected, GameRules.battalionstoattackok(country,1))
+
+    def test_are2battalionsoktoattack(self):
+        country = Country("Islandia","red")
+        country.addbattalions(2) #2 battalions
+        expected = False
+        self.assertEqual(expected, GameRules.battalionstoattackok(country,2))
 
 
 if __name__ == '__main__':
