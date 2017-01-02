@@ -15,6 +15,13 @@ class BoardTest(unittest.TestCase):
         expected = 42
         self.assertEqual(expected, CoreVariables().maxCountries)
 
+    @unittest.skip("skip")
+    def test_thereare42countries2 (self):
+        expected = 42
+        absolutes = CoreVariables()
+        lenght = len(absolutes.countries)
+        self.assertEqual(expected, lenght)
+
     # @unittest.skip("skip")
     def test_namecountry (self):
         expected = None
