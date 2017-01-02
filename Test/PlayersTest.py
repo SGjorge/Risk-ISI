@@ -43,74 +43,74 @@ class PlayersTest(unittest.TestCase):
 	p3 = HumanPlayers("Yo",0,"blue")
 
 	#testing
-	def test_getName(self):
-		self.assertEqual(expectedNameEmpty,player.getName())
+	def test_getname(self):
+		self.assertEqual(expectedNameEmpty,player.getname())
 
-	def test_getBattalion(self):
-		self.assertEqual(expectedBattalionsEmpty,player.getBattalions())
+	def test_getbattalion(self):
+		self.assertEqual(expectedBattalionsEmpty,player.getbattalions())
 
-	def test_getColourId(self):
-		self.assertEqual(expectedColourIdEmpty,player.getColourId())
+	def test_getcolourid(self):
+		self.assertEqual(expectedColourIdEmpty,player.getcolourid())
 
-	def test_Subclasses(self):
+	def test_subclasses(self):
 		for (cls,scls) in zip(globals()['Players'].__subclasses__(),expectedSubclasses):
 			self.assertEqual(cls.__name__,scls)
 
-	def test_humanPlayerName(self):
-		self.assertEqual(expectedName,humanPlayer.getName())
+	def test_humanplayername(self):
+		self.assertEqual(expectedName,humanPlayer.getname())
 
-	def test_humanPlayerBattalions(self):
-		self.assertEqual(expectedBattalions,humanPlayer.getBattalions())
+	def test_humanplayerbattalions(self):
+		self.assertEqual(expectedBattalions,humanPlayer.getbattalions())
 
-	def test_humanPlayerColourId(self):
-		self.assertEqual(expectedColourId,humanPlayer.getColourId())
+	def test_humanplayercolourid(self):
+		self.assertEqual(expectedColourId,humanPlayer.getcolourid())
 
-	def test_iaPlayerName(self):
+	def test_iaplayername(self):
 		iaName = expectedName+"IA"
-		self.assertEqual(iaName,iaPlayer.getName())
+		self.assertEqual(iaName,iaPlayer.getname())
 
-	def test_iaPlayerBattalions(self):
-		self.assertEqual(expectedBattalions,iaPlayer.getBattalions())
+	def test_iaplayerbattalions(self):
+		self.assertEqual(expectedBattalions,iaPlayer.getbattalions())
 
-	def test_iaPlayerColourId(self):
-		self.assertEqual(expectedColourId,iaPlayer.getColourId())
+	def test_iaplayercolourid(self):
+		self.assertEqual(expectedColourId,iaPlayer.getcolourid())
 
-	def test_comparePlayers(self):
-		self.assertEqual(True,humanPlayer.isEqual(humanPlayer))
-		self.assertEqual(False,humanPlayer.isEqual(iaPlayer))
+	def test_compareplayers(self):
+		self.assertEqual(True,humanPlayer.isequal(humanPlayer))
+		self.assertEqual(False,humanPlayer.isequal(iaPlayer))
 
-	def test_arrayPlayerorderFisrt(self):
+	def test_arrayplayerorderfisrt(self):
 		players = [p1,p2,p3]
-		nplayers = ArrayPlayers().orderPlayers(players,p1)
-		self.assertEqual(True,nplayers[0].isEqual(p1))
-		self.assertEqual(True,nplayers[1].isEqual(p2))
-		self.assertEqual(True,nplayers[2].isEqual(p3))
+		nplayers = ArrayPlayers().orderplayers(players,p1)
+		self.assertEqual(True,nplayers[0].isequal(p1))
+		self.assertEqual(True,nplayers[1].isequal(p2))
+		self.assertEqual(True,nplayers[2].isequal(p3))
 
-	def test_arrayPlayerorderLast(self):
+	def test_arrayplayerorderlast(self):
 		players = [p1,p2,p3]
-		nplayers = ArrayPlayers().orderPlayers(players,p3)
-		self.assertEqual(True,nplayers[0].isEqual(p3))
-		self.assertEqual(True,nplayers[1].isEqual(p2))
-		self.assertEqual(True,nplayers[2].isEqual(p1))
+		nplayers = ArrayPlayers().orderplayers(players,p3)
+		self.assertEqual(True,nplayers[0].isequal(p3))
+		self.assertEqual(True,nplayers[1].isequal(p2))
+		self.assertEqual(True,nplayers[2].isequal(p1))
 
-	def test_arrayPlayerorderMiddle(self):
+	def test_arrayplayerordermiddle(self):
 		players = [p1,p2,p3]
-		nplayers = ArrayPlayers().orderPlayers(players,p2)
-		self.assertEqual(True,nplayers[0].isEqual(p2))
-		self.assertEqual(True,nplayers[1].isEqual(p1))
-		self.assertEqual(True,nplayers[2].isEqual(p3))
+		nplayers = ArrayPlayers().orderplayers(players,p2)
+		self.assertEqual(True,nplayers[0].isequal(p2))
+		self.assertEqual(True,nplayers[1].isequal(p1))
+		self.assertEqual(True,nplayers[2].isequal(p3))
 
-	def test_turnCubeRoll(self):
-		roll = p1.cubeRoll()
+	def test_turncuberoll(self):
+		roll = p1.cuberoll()
 		self.assertIn(roll,range(1,7))
 
-	def test_assaultRoll(self):
-		assaultRoll = p1.assaultRoll(2)
+	def test_assaultroll(self):
+		assaultRoll = p1.assaultroll(2)
 		for i in assaultRoll:
 			self.assertIn(i,range(1,7))
 
-	def test_defendRoll(self):
-		defendRoll = p1.defendRoll(2)
+	def test_defendroll(self):
+		defendRoll = p1.defendroll(2)
 		for i in defendRoll:
 			self.assertIn(i,range(1,7))
 

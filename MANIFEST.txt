@@ -11,6 +11,8 @@ El objetivo de este fichero es mantener un guión con las pautas de programació
 A continuación se listarán las constantes globales, objetos, clases y métodos, con el fin de evitar conflictos a la hora de combinar las ramas.
 
 TEST
+	ClassTest.py --> Test que implementa el testeo de las clases.
+	PlayersTest.py --> Test que implementa el testeo de la clase Players
 	ClassTest --> Test que implementa el testeo de las clases.
 	BoardTest --> Tests para la implementación del talero.
 	GameRulesTest --> Test para la implementación de las reglas generales del juego.
@@ -27,6 +29,8 @@ CLASES PRINCIPALES
 		Players --> Clase abstracta que denota lo necesario para los jugadores. Actúa como interfaz.
 			HumanPlayer --> Clase derivada de Players que implementa lo necesario del jugador humano.
 			IAPlayer --> Clase derivada de Players que implementa lo necesario del jugador de inteligencia artificial.
+			ArrayPlayers --> Implementa el manejo de arrays de jugares
+	GamesRules --> Clase principal sobre las reglas y necesidades del juego.De aquí derivarán Cards y Tables.
 			ArrayPlayer --> Clase para el manejo de array de jugadores
 	GamesRules --> Clase principal sobre las reglas y necesidades del juego. De aquí derivarán Cards y Tables.
 		Cards --> Clase abstracta que denota lo necesario sobre las cartas del juego.
