@@ -44,73 +44,73 @@ class PlayersTest(unittest.TestCase):
 
 	#testing
 	def test_getname(self):
-		self.assertEqual(expectedNameEmpty,player.getName())
+		self.assertEqual(expectedNameEmpty,player.getname())
 
 	def test_getbattalion(self):
-		self.assertEqual(expectedBattalionsEmpty,player.getBattalions())
+		self.assertEqual(expectedBattalionsEmpty,player.getbattalions())
 
 	def test_getcolourid(self):
-		self.assertEqual(expectedColourIdEmpty,player.getColourId())
+		self.assertEqual(expectedColourIdEmpty,player.getcolourid())
 
 	def test_subclasses(self):
 		for (cls,scls) in zip(globals()['Players'].__subclasses__(),expectedSubclasses):
 			self.assertEqual(cls.__name__,scls)
 
 	def test_humanplayername(self):
-		self.assertEqual(expectedName,humanPlayer.getName())
+		self.assertEqual(expectedName,humanPlayer.getname())
 
 	def test_humanplayerbattalions(self):
-		self.assertEqual(expectedBattalions,humanPlayer.getBattalions())
+		self.assertEqual(expectedBattalions,humanPlayer.getbattalions())
 
 	def test_humanplayercolourid(self):
-		self.assertEqual(expectedColourId,humanPlayer.getColourId())
+		self.assertEqual(expectedColourId,humanPlayer.getcolourid())
 
 	def test_iaplayername(self):
 		iaName = expectedName+"IA"
-		self.assertEqual(iaName,iaPlayer.getName())
+		self.assertEqual(iaName,iaPlayer.getname())
 
 	def test_iaplayerbattalions(self):
-		self.assertEqual(expectedBattalions,iaPlayer.getBattalions())
+		self.assertEqual(expectedBattalions,iaPlayer.getbattalions())
 
 	def test_iaplayercolourid(self):
-		self.assertEqual(expectedColourId,iaPlayer.getColourId())
+		self.assertEqual(expectedColourId,iaPlayer.getcolourid())
 
 	def test_compareplayers(self):
-		self.assertEqual(True,humanPlayer.isEqual(humanPlayer))
-		self.assertEqual(False,humanPlayer.isEqual(iaPlayer))
+		self.assertEqual(True,humanPlayer.isequal(humanPlayer))
+		self.assertEqual(False,humanPlayer.isequal(iaPlayer))
 
 	def test_arrayplayerorderfisrt(self):
 		players = [p1,p2,p3]
-		nplayers = ArrayPlayers().orderPlayers(players,p1)
-		self.assertEqual(True,nplayers[0].isEqual(p1))
-		self.assertEqual(True,nplayers[1].isEqual(p2))
-		self.assertEqual(True,nplayers[2].isEqual(p3))
+		nplayers = ArrayPlayers().orderplayers(players,p1)
+		self.assertEqual(True,nplayers[0].isequal(p1))
+		self.assertEqual(True,nplayers[1].isequal(p2))
+		self.assertEqual(True,nplayers[2].isequal(p3))
 
 	def test_arrayplayerorderlast(self):
 		players = [p1,p2,p3]
-		nplayers = ArrayPlayers().orderPlayers(players,p3)
-		self.assertEqual(True,nplayers[0].isEqual(p3))
-		self.assertEqual(True,nplayers[1].isEqual(p2))
-		self.assertEqual(True,nplayers[2].isEqual(p1))
+		nplayers = ArrayPlayers().orderplayers(players,p3)
+		self.assertEqual(True,nplayers[0].isequal(p3))
+		self.assertEqual(True,nplayers[1].isequal(p2))
+		self.assertEqual(True,nplayers[2].isequal(p1))
 
 	def test_arrayplayerordermiddle(self):
 		players = [p1,p2,p3]
-		nplayers = ArrayPlayers().orderPlayers(players,p2)
-		self.assertEqual(True,nplayers[0].isEqual(p2))
-		self.assertEqual(True,nplayers[1].isEqual(p1))
-		self.assertEqual(True,nplayers[2].isEqual(p3))
+		nplayers = ArrayPlayers().orderplayers(players,p2)
+		self.assertEqual(True,nplayers[0].isequal(p2))
+		self.assertEqual(True,nplayers[1].isequal(p1))
+		self.assertEqual(True,nplayers[2].isequal(p3))
 
 	def test_turncuberoll(self):
-		roll = p1.cubeRoll()
+		roll = p1.cuberoll()
 		self.assertIn(roll,range(1,7))
 
 	def test_assaultroll(self):
-		assaultRoll = p1.assaultRoll(2)
+		assaultRoll = p1.assaultroll(2)
 		for i in assaultRoll:
 			self.assertIn(i,range(1,7))
 
 	def test_defendroll(self):
-		defendRoll = p1.defendRoll(2)
+		defendRoll = p1.defendroll(2)
 		for i in defendRoll:
 			self.assertIn(i,range(1,7))
 
