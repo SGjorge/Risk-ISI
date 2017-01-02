@@ -40,7 +40,7 @@ class Country(Countries):
     def getname(self):
         return self.name
 
-    def getbatallions(self):
+    def getbattalions(self):
         return self.battalions
 
     def getconqueror (self):

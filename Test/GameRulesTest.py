@@ -82,37 +82,37 @@ class GameRulesTest(unittest.TestCase):
         #Checks if the number of battalions is ok to attack
     def test_is1battaliontoattackok(self):
         country = Country("Islandia","red")
-        country.addbattalions(25) #25 battalions
+        country.changebattalions(25) #25 battalions
         expected = True
         self.assertEqual(expected, GameRules.battalionstoattackok(country,1))
 
     def test_are2battalionstoattackok(self):
         country = Country("Islandia","red")
-        country.addbattalions(25) #25 battalions
+        country.changebattalions(25) #25 battalions
         expected = True
         self.assertEqual(expected, GameRules.battalionstoattackok(country,2))
 
     def test_are3battalionstoattackok(self):
         country = Country("Islandia","red")
-        country.addbattalions(25) #25 battalions
+        country.changebattalions(25) #25 battalions
         expected = True
         self.assertEqual(expected, GameRules.battalionstoattackok(country,3))
 
     def test_are4battalionstoattackok(self):
         country = Country("Islandia","red")
-        country.addbattalions(25) #25 battalions
+        country.changebattalions(25) #25 battalions
         expected = False
         self.assertEqual(expected, GameRules.battalionstoattackok(country,4))
 
     def test_is1battalionoktoattack(self):
         country = Country("Islandia","red")
-        country.addbattalions(2) #2 battalions
+        country.changebattalions(2) #2 battalions
         expected = True
         self.assertEqual(expected, GameRules.battalionstoattackok(country,1))
 
     def test_are2battalionsoktoattack(self):
         country = Country("Islandia","red")
-        country.addbattalions(2) #2 battalions
+        country.changebattalions(2) #2 battalions
         expected = False
         self.assertEqual(expected, GameRules.battalionstoattackok(country,2))
 

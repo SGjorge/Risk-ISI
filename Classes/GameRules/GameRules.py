@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
 import sys
-sys.path.append("../")
-
-from CoreVariables import CoreVariables as CV
 from Tables import Tables as T
+sys.path.append("../")
+from CoreVariables import CoreVariables as CV
+sys.path.append("../Classes/Round")
+from Countries import Countries, Country
 
 class GameRules:
 
@@ -29,3 +30,10 @@ class GameRules:
         if numBattalions < 3:
             numBattalions = 3
         return numBattalions
+
+    @classmethod
+    def battalionstoattackok(self,attackingCountry,numBattalions):
+        totalBattalions = Country.getbattalions(attackingCountry)
+        if numBattalions <= 3 and (totalBattalions - numBattalions) >= 1:
+            return True
+        return False
