@@ -13,10 +13,11 @@ class Country(Countries):
 
     global absolutes
 
-    def __init__(self, name):
+    def __init__(self, name, conqueror):
         self.name = name
         self.battalions = 0
         self.neighbours = Neighbours(name)
+        self.conqueror = conqueror
 
     absolutes = CoreVariables()
 

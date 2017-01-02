@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import sys
 
 class CoreVariables():
@@ -45,7 +47,7 @@ class CoreVariables():
                         'Europa occidental': neighboursEuropaOcc, 'Gran Bretaña': neighboursGB,
                         'Islandia': neighboursIsl, 'Escandinavia': neighboursEsca, 'Ucrania': neighboursUck,
                         'Venezuela': neighboursVenz, 'Brasil': neighboursBra, 'Perú': neighboursPeru,
-                        'Argentina': neighboursArg, 'África del norte' neighboursAN, 'Egipto': neighboursEgip,
+                        'Argentina': neighboursArg, 'África del norte': neighboursAN, 'Egipto': neighboursEgip,
                         'África oriental': neighboursAO, 'Madagascar': neighboursMAD, 'África del sur': neighboursAS,
                         'Congo': neighboursCon, 'Indonesia': neighboursIND, 'Nueva Guinea': neighboursNG,
                         'Australia oriental': neighboursAOriental, 'Australia occidental': neighboursAOcc}
