@@ -16,21 +16,21 @@ class Players:
 		self.__BATTALIONS = battalions
 		self.__COLOURID = color
 
-	def getName(self):
+	def getname(self):
 		return self.__NAME
 
-	def getBattalions(self):
+	def getbattalions(self):
 		return self.__BATTALIONS
 
-	def getColourId(self):
+	def getcolourid(self):
 		return self.__COLOURID
 
-	def isEqual(self,player):
+	def isequal(self,player):
 		return ((self.__NAME == player.getName()) and \
 			    (self.__BATTALIONS == player.getBattalions()) and \
 			    (self.__COLOURID == player.getColourId()))
 
-	def cubeRoll(self):
+	def cuberoll(self):
 		roll = randint(1,6)
 		return roll
 
@@ -42,21 +42,21 @@ class Players:
 		return rolls
 
 	#return -1 if batallions'll be incorrect
-	def defendRoll(self,defendBattalions):
+	def defendroll(self,defendBattalions):
 		if (defendBattalions < 1) or (defendBattalions > 2): #aqui tendremos que llamar a la regla cuando esté implementada
 			return -1
 
 		defendRoll = self.rolls(defendBattalions)
 		return defendRoll
 
-	def assaultRoll(self,assaultBattalions):
+	def assaultroll(self,assaultBattalions):
 		if (assaultBattalions < 1) or (assaultBattalions > 3): #aqui tendremos que llamar a la regla cuando esté implementada
 			return -1
 
 		assaultRoll = self.rolls(assaultBattalions)
 		return assaultRoll
 
-	def toString(self):
+	def tostring(self):
 		return (self.__NAME + " " + str(self.__BATTALIONS) + " " +self.__COLOURID)
 
 # derivated class HumanPlayers to Players
@@ -73,7 +73,7 @@ class IAPlayers(Players):
 # this class is an API to work about Players' array 
 class ArrayPlayers:
 	# put first in first position array and the other to the left hand in order in new right hand array
-	def orderPlayers(self,players,first):
+	def orderplayers(self,players,first):
 		newPlayer = []
 		newPlayer.append(first)
 		firstPosition = 0
@@ -97,7 +97,7 @@ class ArrayPlayers:
 			newPlayer.append(players[firstPosition-i])
 		return newPlayer
 
-	def toString(self,players):
+	def tostring(self,players):
 		string = ''
 		for i in players:
 			string += i.toString() + ", "
