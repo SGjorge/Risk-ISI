@@ -27,7 +27,7 @@ class BoardTest(unittest.TestCase):
 
     def test_battalion (self):
         expected = 0
-        self.assertEqual(expected, Country(None, None).countbattalion())
+        self.assertEqual(expected, Country(None, None).getbatallions())
 
     def test_existepais(self):
         expectedName = None

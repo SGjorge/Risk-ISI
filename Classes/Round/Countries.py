@@ -21,8 +21,7 @@ class Countries():
 
     def nameok(self, name):
         return None;
-    def countbattalion(self):
-        return 0;
+    
 #####clase padre#####
 
 class Country(Countries):
