@@ -15,13 +15,25 @@ class GameTest(unittest.TestCase):
 	game = Game()
 
 	def test_initgame(self):
-		self.assertEqual(None,Game().getcountries())
-		self.assertEqual(None,Game().getplayers())
+		self.assertEqual(None,game.getcountries())
+		self.assertEqual(None,game.getplayers())
 
 	def test_initboard(self):
 		world = game.getcountries() 
-		for (countrie,wCountrie) in zip(CoreVariables().countries,world):
-			assertEqual(countrie,wCountrie)
+		countries = CoreVariables().countries 
+		for (country,wCountry) in zip(countries,world):
+			self.assertEqual(country,wCountry)
+
+	def test_initplayers(self):
+		p1 = HumanPlayers("Pepe",0,"orange")
+		p2 = HumanPlayers("Ana",0,"red")
+		p3 = HumanPlayers("Yo",0,"blue")
+		playersExpected = [p1,p2,p3]
+		game.initplayers(playersExpected)
+		players = game.getplayers()
+		print(players)
+		for (pE,p) in zip(playersExpected,players):
+			self.assertEqual(True,pE.isequal(p))
 
 if __name__ == '__main__':
 	unittest.main()
