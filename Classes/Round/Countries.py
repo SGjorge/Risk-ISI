@@ -1,8 +1,24 @@
+
 import sys
 sys.path.append("../../")
 from CoreVariables import CoreVariables
 
 class Countries():
+    global absolutes
+    absolutes = CoreVariables()
+
+    def __init__(self):
+        self.world = []
+        lenght = len(absolutes.countries)
+        for i in range(0, lenght):
+            countryAux = Country(absolutes.countries[i], None)
+            self.world.append(countryAux)
+
+    def printworld(self):
+        lenght = len(self.world)
+        for i in range(0,lenght):
+            print self.world[i].tostring()
+
     def nameok(self, name):
         return None;
     def countbattalion(self):
@@ -21,9 +37,12 @@ class Country(Countries):
 
     absolutes = CoreVariables()
 
+    def getname(self):
+        return self.name
+
     def getbatallions(self):
         return self.battalions
-        
+
     def getconqueror (self):
         return self.conqueror
 
@@ -32,6 +51,9 @@ class Country(Countries):
             return True;
         else:
             return False;
+
+    def tostring(self):
+        return (str(self.name) + str(self.battalions) + str(self.conqueror))
 
     def countbattalion (self):
         return self.battalions

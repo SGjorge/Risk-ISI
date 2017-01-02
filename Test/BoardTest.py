@@ -5,7 +5,7 @@ sys.path.append("../")
 sys.path.append("../Classes/Round")
 
 from CoreVariables import CoreVariables
-from Countries import Country, Neighbours
+from Countries import Countries, Country, Neighbours
 import unittest
 
 class BoardTest(unittest.TestCase):
@@ -71,11 +71,11 @@ class BoardTest(unittest.TestCase):
 
     def test_wholeworld (self):
         absolutes = CoreVariables()
-        expectedWorld = self.countries
-        expectedWorld = Counties()
-        for i in range(0,42):
+        expectedWorld = Countries()
+        lenght = len(expectedWorld.world)
+        for i in range(0,lenght):
             #comparo cada nombre del array absoluto con los que he ido creando en countries
-            self.assertEqual(absolutes.countries[i], expectedWorld[i].name)
+            self.assertEqual(absolutes.countries[i], expectedWorld.world[i].getname())
 
 if __name__ == '__main__':
     unittest.main()
