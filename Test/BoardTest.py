@@ -69,5 +69,13 @@ class BoardTest(unittest.TestCase):
         expectedBattalions = 0
         self.assertEqual(expectedBattalions, Country(None, None).getbatallions())
 
+    def test_wholeworld (self):
+        absolutes = CoreVariables()
+        expectedWorld = self.countries
+        expectedWorld = Counties()
+        for i in range(0,42):
+            #comparo cada nombre del array absoluto con los que he ido creando en countries
+            self.assertEqual(absolutes.countries[i], expectedWorld[i].name)
+
 if __name__ == '__main__':
     unittest.main()
