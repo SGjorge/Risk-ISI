@@ -90,5 +90,10 @@ class BoardTest(unittest.TestCase):
         countryAux.changeconqueror("Blue")
         self.assertEqual(expectedNew, countryAux.conqueror)
 
+    def test_createEuropa(self):
+        expectedName = 'Europa'
+        expectedColor = 'blue'
+        continentAux = Continent('Europa')
+
 if __name__ == '__main__':
     unittest.main()

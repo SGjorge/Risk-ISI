@@ -16,8 +16,10 @@ class CoreVariables():
         self.maxCountries = 42
         self.minPlayers = 3
         self.maxPlayers = 6
-        self.colorPlayers = ["orange","red","blue","green","white","black"]
-
+        self.colorPlayers = ["orange","red","blue","green","white","grey"]
+    #tabla de colores de los continentes
+    continentColors = ['América del norte': 'yellow', 'América del sur': 'orange', 'Europa': 'blue', 'África': 'brown',
+                        'Asia': 'green', 'Oceanía': 'grey']
     #europa
     neighboursEuropaNorte = ['Europa del Sur', 'Europa occidental','Ucrania', 'Escandinavia', "Gran Bretaña"]
     neighboursEuropaSur = ['Europa del norte', 'Europa occidental', "Ucrania", 'África del norte', 'Egipto', 'Oriente medio']
