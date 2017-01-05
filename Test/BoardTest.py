@@ -93,7 +93,11 @@ class BoardTest(unittest.TestCase):
     def test_createEuropa(self):
         expectedName = 'Europa'
         expectedColor = 'blue'
+        expectedCountries = CoreVariables().getcontinent('Europa')
         continentAux = Continent('Europa')
+        self.assertEqual(expectedName, continentAux.name)
+        self.assertEqual(expectedColor, continentAux.color)
+        self.assertEqual(expectedCountries, continentAux.countries)
 
 if __name__ == '__main__':
     unittest.main()
