@@ -8,6 +8,12 @@ class Countries():
     def nameok(self, name):
         return None;
 
+class Continent(Countries):
+    def __init__(self, name):
+        self.nameCont = name
+        self.countries = []
+        self.countries = CoreVariables().getcontinent(name)
+        self.color = CoreVariables().getcontientcolor(name)
 
 class World(Countries):
 

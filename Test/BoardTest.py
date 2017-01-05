@@ -10,19 +10,18 @@ import unittest
 
 class BoardTest(unittest.TestCase):
 
+    # @unittest.skip("skip")
     #comprueba que haya 42 paises
     def test_thereare42countries (self):
         expected = 42
         self.assertEqual(expected, CoreVariables().maxCountries)
 
-    @unittest.skip("skip")
     def test_thereare42countries2 (self):
         expected = 42
         absolutes = CoreVariables()
         lenght = len(absolutes.countries)
         self.assertEqual(expected, lenght)
 
-    # @unittest.skip("skip")
     def test_namecountry (self):
         expected = None
         self.assertEqual(expected, Country(None, None).name)
@@ -95,7 +94,7 @@ class BoardTest(unittest.TestCase):
         expectedColor = 'blue'
         expectedCountries = CoreVariables().getcontinent('Europa')
         continentAux = Continent('Europa')
-        self.assertEqual(expectedName, continentAux.name)
+        self.assertEqual(expectedName, continentAux.nameCont)
         self.assertEqual(expectedColor, continentAux.color)
         self.assertEqual(expectedCountries, continentAux.countries)
 
