@@ -73,8 +73,8 @@ class Country(Countries):
         return (str(self.name) + str(self.battalions) + str(self.conqueror))
 
     def areneighbours(self, country):
-        return country.name in CoreVariables().getneighbours(self.name)
-
+        #return country.name in CoreVariables().getneighbours(self.name)
+        return country.name in self.neighbours.getarray()
 
 class Neighbours(Countries):
 
