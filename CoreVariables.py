@@ -18,7 +18,7 @@ class CoreVariables():
         self.maxPlayers = 6
         self.colorPlayers = ["orange","red","blue","green","white","grey"]
     #tabla de colores de los continentes
-    continentColors = ['América del norte': 'yellow', 'América del sur': 'orange', 'Europa': 'blue', 'África': 'brown',
+    tablecontinentcolors = ['América del norte': 'yellow', 'América del sur': 'orange', 'Europa': 'blue', 'África': 'brown',
                         'Asia': 'green', 'Oceanía': 'grey']
     #europa
     neighboursEuropaNorte = ['Europa del Sur', 'Europa occidental','Ucrania', 'Escandinavia', "Gran Bretaña"]
@@ -56,3 +56,5 @@ class CoreVariables():
 
     def getneighbours (self, name):
         return self.tableNeighbours[name]
+    def getcontientcolor (self, name):
+        return self.tablecontinentcolors[name]

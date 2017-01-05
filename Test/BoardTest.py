@@ -5,7 +5,7 @@ sys.path.append("../")
 sys.path.append("../Classes/Round")
 
 from CoreVariables import CoreVariables
-from Countries import Countries, Country, Neighbours, World
+from Countries import Countries, Country, Neighbours, World, Continent
 import unittest
 
 class BoardTest(unittest.TestCase):
