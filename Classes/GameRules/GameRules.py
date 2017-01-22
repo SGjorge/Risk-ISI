@@ -50,9 +50,9 @@ class GameRules:
        	    return Country.areneighbours(countryAtt,countryDef)
         return False
 
-
-
-
+    @classmethod
+    def getextrabattalions(self,cardExchangeNum):
+        return CV.extraBattalions[cardExchangeNum]
 
 
 
