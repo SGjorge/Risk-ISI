@@ -52,6 +52,8 @@ class GameRules:
 
     @classmethod
     def getextrabattalions(self,cardExchangeNum):
+        if cardExchangeNum > 14:
+            cardExchangeNum = 14
         return CV.extraBattalions[cardExchangeNum]
 
 
