@@ -5,24 +5,23 @@ sys.path.append("../")
 sys.path.append("../Classes/Round")
 
 from CoreVariables import CoreVariables
-from Countries import Countries, Country, Neighbours
+from Countries import Countries, Country, Neighbours, World, Continent
 import unittest
 
 class BoardTest(unittest.TestCase):
 
+    # @unittest.skip("skip")
     #comprueba que haya 42 paises
     def test_thereare42countries (self):
         expected = 42
         self.assertEqual(expected, CoreVariables().maxCountries)
 
-    @unittest.skip("skip")
     def test_thereare42countries2 (self):
         expected = 42
         absolutes = CoreVariables()
         lenght = len(absolutes.countries)
         self.assertEqual(expected, lenght)
 
-    # @unittest.skip("skip")
     def test_namecountry (self):
         expected = None
         self.assertEqual(expected, Country(None, None).name)
@@ -34,7 +33,7 @@ class BoardTest(unittest.TestCase):
 
     def test_battalion (self):
         expected = 0
-        self.assertEqual(expected, Country(None, None).getbatallions())
+        self.assertEqual(expected, Country(None, None).getbattalions())
 
     def test_existepais(self):
         expectedName = None
@@ -72,17 +71,32 @@ class BoardTest(unittest.TestCase):
         expectedConqueror = None
         self.assertEqual(expectedConqueror, Country(None, None).getconqueror())
 
-    def test_getbatallions (self):
+    def test_getbattalions (self):
         expectedBattalions = 0
-        self.assertEqual(expectedBattalions, Country(None, None).getbatallions())
+        self.assertEqual(expectedBattalions, Country(None, None).getbattalions())
 
     def test_wholeworld (self):
         absolutes = CoreVariables()
-        expectedWorld = Countries()
+        expectedWorld = World()
         lenght = len(expectedWorld.world)
         for i in range(0,lenght):
             #comparo cada nombre del array absoluto con los que he ido creando en countries
             self.assertEqual(absolutes.countries[i], expectedWorld.world[i].getname())
+
+    def test_changeconqueror(self):
+        expectedNew = "Blue"
+        countryAux = Country("Islandia", "Red")
+        countryAux.changeconqueror("Blue")
+        self.assertEqual(expectedNew, countryAux.conqueror)
+
+    def test_createEuropa(self):
+        expectedName = 'Europa'
+        expectedColor = 'blue'
+        expectedCountries = CoreVariables().getcontinent('Europa')
+        continentAux = Continent('Europa')
+        self.assertEqual(expectedName, continentAux.nameCont)
+        self.assertEqual(expectedColor, continentAux.color)
+        self.assertEqual(expectedCountries, continentAux.countries)
 
 if __name__ == '__main__':
     unittest.main()

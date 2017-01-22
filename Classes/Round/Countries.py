@@ -4,8 +4,22 @@ sys.path.append("../../")
 from CoreVariables import CoreVariables
 
 class Countries():
+
+    def nameok(self, name):
+        return None;
+
+class Continent(Countries):
+    def __init__(self, name):
+        self.nameCont = name
+        self.countries = []
+        self.countries = CoreVariables().getcontinent(name)
+        self.color = CoreVariables().getcontientcolor(name)
+
+class World(Countries):
+
     global absolutes
     absolutes = CoreVariables()
+
 
     def __init__(self):
         self.world = []
@@ -19,8 +33,6 @@ class Countries():
         for i in range(0,lenght):
             print (self.world[i].tostring())
 
-    def nameok(self, name):
-        return None;
 
 #####clase padre#####
 
@@ -39,7 +51,7 @@ class Country(Countries):
     def getname(self):
         return self.name
 
-    def getbatallions(self):
+    def getbattalions(self):
         return self.battalions
 
     def getconqueror (self):
@@ -51,12 +63,18 @@ class Country(Countries):
         else:
             return False;
 
-    def changebattalions(self,numBattalions):
+    def changebattalions(self, numBattalions):
         self.battalions = self.battalions + numBattalions
+
+    def changeconqueror(self, newOne):
+        self.conqueror = newOne
 
     def tostring(self):
         return (str(self.name) + str(self.battalions) + str(self.conqueror))
 
+    def areneighbours(self, country):
+        #return country.name in CoreVariables().getneighbours(self.name)
+        return country.name in self.neighbours.getarray()
 
 class Neighbours(Countries):
 

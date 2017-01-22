@@ -7,7 +7,7 @@ class CoreVariables():
         self.countries = ["Alaska", "Territorio del noroeste", "Groenlandia",
             "Alberta", "Ontario", "Quebec", "Estados unidos del oeste", "Estados unidos del este",
             "América central", "Venezuela", "Brasil", "Perú", "Argentina",
-            "África del norte", "Egipto", "África oriental", "Congo", "África del sur", "Madagascar"
+            "África del norte", "Egipto", "África oriental", "Congo", "África del sur", "Madagascar",
             "Europa occidental", "Europa del norte", "Europa del sur", "Gran Bretaña",
             "Islandia", "Escandinavia", "Ucrania", "Oriente medio", "India", "Siam",
             "Afganistán", "China", "Ural", "Siberia", "Irkutsk", "Mongolia",
@@ -16,8 +16,18 @@ class CoreVariables():
         self.maxCountries = 42
         self.minPlayers = 3
         self.maxPlayers = 6
-        self.colorPlayers = ["orange","red","blue","green","white","black"]
-
+        self.colorPlayers = ["orange","red","blue","green","white","grey"]
+    #tabla de colores de los continentes
+    tablecontinentcolors = {'América del norte': 'yellow', 'América del sur': 'orange', 'Europa': 'blue', 'África': 'brown', 'Asia': 'green', 'Oceanía': 'grey'}
+    #continentes:
+    counEuropa = ['Islandia', 'Escandinavia', 'Ucrania', 'Europa del sur', 'Europa del norte', 'Gran Bretaña', 'Europa occidental']
+    counAsia = ['Ural', 'Siberia', 'Yakutsk', 'Kamchatka', 'Irkutsk', 'Mongolia', 'Japón', 'China', 'Siam', 'India', 'Oriente medio', 'Afganistán']
+    counOceania = ['Indonesia', 'Nueva Guinea', 'Australia oriental', 'Australia occidental']
+    counAfrica = ['África del norte', 'Egipto', 'África oriental', 'Congo', 'África del sur', 'Madagascar']
+    counASur = ['Venezuela', 'Brasil', 'Perú', 'Argentina']
+    counANorte = ['Alaska', 'Territorio del noroeste', 'Groenlandia', 'Alberta', 'Ontario', 'Quebec',
+                'Estados Unidos del oeste', 'Estados Unidos del este', 'América central']
+    tableContinents = {'Europa': counEuropa, 'Asia': counAsia, 'Oceanía': counOceania, 'África': counAfrica, 'América del sur': counASur, 'América del norte': counANorte}
     #europa
     neighboursEuropaNorte = ['Europa del Sur', 'Europa occidental','Ucrania', 'Escandinavia', "Gran Bretaña"]
     neighboursEuropaSur = ['Europa del norte', 'Europa occidental', "Ucrania", 'África del norte', 'Egipto', 'Oriente medio']
@@ -51,6 +61,12 @@ class CoreVariables():
                         'África oriental': neighboursAO, 'Madagascar': neighboursMAD, 'África del sur': neighboursAS,
                         'Congo': neighboursCon, 'Indonesia': neighboursIND, 'Nueva Guinea': neighboursNG,
                         'Australia oriental': neighboursAOriental, 'Australia occidental': neighboursAOcc}
+    initialBattalions = {3 : 35, 4 : 30, 5 : 25, 6 : 20}
+    battalionsPerContinent = {"América del norte" : 5, "Asia" : 7, "América del sur": 2, "Europa" : 5, "África" : 3, "Oceanía" : 2}
 
     def getneighbours (self, name):
         return self.tableNeighbours[name]
+    def getcontientcolor (self, name):
+        return self.tablecontinentcolors[name]
+    def getcontinent (self, name):
+        return self.tableContinents[str(name)]

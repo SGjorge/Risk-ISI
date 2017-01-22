@@ -2,9 +2,9 @@
 
 import sys
 sys.path.append("../")
-
 from CoreVariables import CoreVariables as CV
-from Tables import Tables as T
+sys.path.append("../Classes/Round")
+from Countries import Countries, Country
 
 class GameRules:
 
@@ -17,11 +17,11 @@ class GameRules:
 
     @classmethod
     def getinitialbattalions(self,numPlayers):
-        return T.initialBattalions[numPlayers]
+        return CV.initialBattalions[numPlayers]
 
     @classmethod
     def getbattalionspercontinent(self,continent):
-        return T.battalionsPerContinent[continent]
+        return CV.battalionsPerContinent[continent]
 
     @classmethod
     def getbattalionspercountries(self,numCountries):
@@ -29,3 +29,32 @@ class GameRules:
         if numBattalions < 3:
             numBattalions = 3
         return numBattalions
+
+    @classmethod
+    def battalionstoattackok(self,attackingCountry,numBattalions):
+        totalBattalions = Country.getbattalions(attackingCountry)
+        if numBattalions > 0 and numBattalions <= 3 and (totalBattalions - numBattalions) >= 1:
+            return True
+        return False
+
+    @classmethod
+    def battalionstodefendok(self,defendingCountry,numBattalions):
+        totalBattalions = Country.getbattalions(defendingCountry)
+        if numBattalions > 0 and numBattalions <= 2 and (totalBattalions - numBattalions) >= 0:
+            return True
+        return False
+
+    @classmethod
+    def countriesokforthebattle(self,countryAtt,countryDef):
+        if (countryAtt.conqueror != countryDef.conqueror):
+       	    return Country.areneighbours(countryAtt,countryDef)
+        return False
+
+
+
+
+
+
+
+
+

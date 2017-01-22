@@ -43,7 +43,7 @@ class GameRulesTest(unittest.TestCase):
         #Checks the number of extra battalions per each whole conquered continent 
     def test_battalionsperamericaN(self):
         expected = 5
-        self.assertEqual(expected, GameRules.getbattalionspercontinent("América Norte")) 
+        self.assertEqual(expected, GameRules.getbattalionspercontinent("América del norte")) 
 
     def test_battalionsperasia(self):
         expected = 7
@@ -51,7 +51,7 @@ class GameRulesTest(unittest.TestCase):
 
     def test_battalionsperamericaS(self):
         expected = 2
-        self.assertEqual(expected, GameRules.getbattalionspercontinent("América Sur")) 
+        self.assertEqual(expected, GameRules.getbattalionspercontinent("América del sur")) 
 
     def test_battalionspereuropa(self):
         expected = 5
@@ -82,39 +82,103 @@ class GameRulesTest(unittest.TestCase):
         #Checks if the number of battalions is ok to attack
     def test_is1battaliontoattackok(self):
         country = Country("Islandia","red")
-        country.addbattalions(25) #25 battalions
+        country.changebattalions(25) #25 battalions
         expected = True
         self.assertEqual(expected, GameRules.battalionstoattackok(country,1))
 
     def test_are2battalionstoattackok(self):
         country = Country("Islandia","red")
-        country.addbattalions(25) #25 battalions
+        country.changebattalions(25) #25 battalions
         expected = True
         self.assertEqual(expected, GameRules.battalionstoattackok(country,2))
 
     def test_are3battalionstoattackok(self):
         country = Country("Islandia","red")
-        country.addbattalions(25) #25 battalions
+        country.changebattalions(25) #25 battalions
         expected = True
         self.assertEqual(expected, GameRules.battalionstoattackok(country,3))
 
     def test_are4battalionstoattackok(self):
         country = Country("Islandia","red")
-        country.addbattalions(25) #25 battalions
+        country.changebattalions(25) #25 battalions
         expected = False
         self.assertEqual(expected, GameRules.battalionstoattackok(country,4))
 
     def test_is1battalionoktoattack(self):
         country = Country("Islandia","red")
-        country.addbattalions(2) #2 battalions
+        country.changebattalions(2) #2 battalions
         expected = True
         self.assertEqual(expected, GameRules.battalionstoattackok(country,1))
 
     def test_are2battalionsoktoattack(self):
         country = Country("Islandia","red")
-        country.addbattalions(2) #2 battalions
+        country.changebattalions(2) #2 battalions
         expected = False
         self.assertEqual(expected, GameRules.battalionstoattackok(country,2))
+
+        #Checks if the number of battalions is ok to defend
+    def test_is1battaliontodefendok(self):
+        country = Country("Groenlandia","blue")
+        country.changebattalions(4) #4 battalions
+        expected = True
+        self.assertEqual(expected, GameRules.battalionstodefendok(country,1))
+
+    def test_are2battalionstodefendok(self):
+        country = Country("Groenlandia","blue")
+        country.changebattalions(2) #2 battalions
+        expected = True
+        self.assertEqual(expected, GameRules.battalionstodefendok(country,2))
+
+    def test_are3battalionstodefendok(self):
+        country = Country("Groenlandia","blue")
+        country.changebattalions(8) #8 battalions
+        expected = False
+        self.assertEqual(expected, GameRules.battalionstodefendok(country,3))
+
+    def test_are2battalionsoktodefend(self):
+        country = Country("Groenlandia","blue")
+        country.changebattalions(1) #1 battalion
+        expected = False
+        self.assertEqual(expected, GameRules.battalionstodefendok(country,2))
+
+    def test_are0battalionstodefendok(self):
+        country = Country("Groenlandia","blue")
+        country.changebattalions(1) #1 battalion
+        expected = False
+        self.assertEqual(expected, GameRules.battalionstodefendok(country,0))
+
+
+        #Checks if a battle can happen between two countries 
+    def test_canislandattackgroenland(self):
+        countryAtt = Country("Islandia","red")
+        countryDef = Country("Groenlandia","blue")
+        expected = True
+        self.assertEqual(expected,GameRules.countriesokforthebattle(countryAtt,countryDef))
+
+    def test_canislandattackbrazil(self):
+        countryAtt = Country("Islandia","red")
+        countryDef = Country("Brasil","blue")
+        expected = False
+        self.assertEqual(expected,GameRules.countriesokforthebattle(countryAtt,countryDef))
+
+    def test_canredattackred(self):
+        countryAtt = Country("Islandia","red")
+        countryDef = Country("Groenlandia","red")
+        expected = False
+        self.assertEqual(expected,GameRules.countriesokforthebattle(countryAtt,countryDef))
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 if __name__ == '__main__':
