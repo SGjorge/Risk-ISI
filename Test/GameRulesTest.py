@@ -43,7 +43,7 @@ class GameRulesTest(unittest.TestCase):
         #Checks the number of extra battalions per each whole conquered continent 
     def test_battalionsperamericaN(self):
         expected = 5
-        self.assertEqual(expected, GameRules.getbattalionspercontinent("América Norte")) 
+        self.assertEqual(expected, GameRules.getbattalionspercontinent("América del norte")) 
 
     def test_battalionsperasia(self):
         expected = 7
@@ -51,7 +51,7 @@ class GameRulesTest(unittest.TestCase):
 
     def test_battalionsperamericaS(self):
         expected = 2
-        self.assertEqual(expected, GameRules.getbattalionspercontinent("América Sur")) 
+        self.assertEqual(expected, GameRules.getbattalionspercontinent("América del sur")) 
 
     def test_battalionspereuropa(self):
         expected = 5

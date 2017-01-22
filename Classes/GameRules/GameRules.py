@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import sys
-from Tables import Tables as T
 sys.path.append("../")
 from CoreVariables import CoreVariables as CV
 sys.path.append("../Classes/Round")
@@ -18,11 +17,11 @@ class GameRules:
 
     @classmethod
     def getinitialbattalions(self,numPlayers):
-        return T.initialBattalions[numPlayers]
+        return CV.initialBattalions[numPlayers]
 
     @classmethod
     def getbattalionspercontinent(self,continent):
-        return T.battalionsPerContinent[continent]
+        return CV.battalionsPerContinent[continent]
 
     @classmethod
     def getbattalionspercountries(self,numCountries):

@@ -61,6 +61,8 @@ class CoreVariables():
                         'África oriental': neighboursAO, 'Madagascar': neighboursMAD, 'África del sur': neighboursAS,
                         'Congo': neighboursCon, 'Indonesia': neighboursIND, 'Nueva Guinea': neighboursNG,
                         'Australia oriental': neighboursAOriental, 'Australia occidental': neighboursAOcc}
+    initialBattalions = {3 : 35, 4 : 30, 5 : 25, 6 : 20}
+    battalionsPerContinent = {"América del norte" : 5, "Asia" : 7, "América del sur": 2, "Europa" : 5, "África" : 3, "Oceanía" : 2}
 
     def getneighbours (self, name):
         return self.tableNeighbours[name]
