@@ -10,6 +10,7 @@ class Players:
 	__NAME = None
 	__BATTALIONS = 0
 	__COLOURID = None
+	__CONQUEREDCOUNTRIES = []
 
 	def __init__(self,name,battalions,color):
 		self.__NAME = name
@@ -25,19 +26,25 @@ class Players:
 	def getcolourid(self):
 		return self.__COLOURID
 
+	def getconqueredcountries(self):
+		return self.__CONQUEREDCOUNTRIES
+
+	def addconqueredcountry(self,country):
+		self.__CONQUEREDCOUNTRIES.append(country)
+
 	def isequal(self,player):
 		return ((self.__NAME == player.getname()) and \
 			    (self.__BATTALIONS == player.getbattalions()) and \
 			    (self.__COLOURID == player.getcolourid()))
 
-	def cuberoll(self):
+	def diceroll(self):
 		roll = randint(1,6)
 		return roll
 
 	def rolls(self,index):
 		rolls = []
 		for i in range(1,(index + 1)):
-			roll = self.cuberoll()
+			roll = self.diceroll()
 			rolls.append(roll)
 		return rolls
 
