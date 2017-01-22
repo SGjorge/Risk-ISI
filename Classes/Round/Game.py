@@ -3,7 +3,7 @@ sys.path.append("../Classes/GameRules/")
 
 from GameRules import GameRules
 from CoreVariables import CoreVariables
-from Countries import Countries
+from Countries import Countries,World
 from Players import Players,HumanPlayers,IAPlayers,ArrayPlayers
 
 class Game:
@@ -17,25 +17,21 @@ class Game:
 		return self.__PLAYERS
 
 	def initboard(self):
-		self.__COUNTRIES = Countries().world
+		self.__COUNTRIES = World().world
 
 	def initplayers(self,players):
 		self.__PLAYERS = players
 
 	def initphaseplayers(self,numPlayers,players):
+		self.__PLAYERS = players
 		if(numPlayers > len(players)):
 			for i in range(1,(numPlayers-len(players) + 1)):
 				IA = IAPlayers(str(i),0,CoreVariables().colorPlayers[len(players)+1])
 				self.__PLAYERS.append(IA)
 
-	def initfirstconquer(self):
-		print("vamo a conquistar")
-
-
-	def firstphase(self,numPlayers,players):
-		self.__PLAYERS = players
-		self.initphaseplayers(numPlayers,players)
-		initfirstconquer()
+	def initconquers(self,country,player):
+		country.changebattalions(1)
+		country.changeconqueror(player)
 
 
 		
