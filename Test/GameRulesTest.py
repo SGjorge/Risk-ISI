@@ -189,9 +189,13 @@ class GameRulesTest(unittest.TestCase):
         expected = 35
         self.assertEqual(expected,GameRules.getextrabattalions(9))
 
-    def test_lastcardexchange(self):
+    def test_14thcardexchange(self):
         expected = 60
         self.assertEqual(expected,GameRules.getextrabattalions(14))
+
+    def test_lastcardexchange(self):
+        expected = 60
+        self.assertEqual(expected,GameRules.getextrabattalions(37))
 
 
 
