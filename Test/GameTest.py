@@ -40,7 +40,7 @@ class GameTest(unittest.TestCase):
 		for (pE,p) in zip(playersExpected,players):
 			self.assertEqual(True,pE.isequal(p))
 
-	def test_initfirstphaseincompletehumansplayer(self):
+	def test_initfirstphaseincompletehumansplayers(self):
 		playersInitExpected = playersExpected
 		game = Game()
 		numPlayersExpected = 5 
@@ -54,6 +54,14 @@ class GameTest(unittest.TestCase):
 		for (pE,p) in zip(playersInitExpected,players):
 			self.assertEqual(True,pE.isequal(p))
 
+	def test_initfirstphasecompletehumanplayers(self):
+		playersInitExpected = playersExpected
+		game = Game()
+		numPlayersExpected = len(playersExpected)
+		self.assertEqual(numPlayersExpected,len(game.getplayers()))
+		players = game.getplayers()
+		for (pE,p) in zip(playersInitExpected,players):
+			self.assertEqual(True,pE.isequal(p))
 
 if __name__ == '__main__':
 	unittest.main()
