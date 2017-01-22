@@ -22,12 +22,15 @@ class Game:
 	def initplayers(self,players):
 		self.__PLAYERS = players
 
-	def firstphase(self,numPlayers,players):
-		self.__PLAYERS = players
+	def initphaseplayers(self,numPlayers,players):
 		if(numPlayers > len(players)):
 			for i in range(1,(numPlayers-len(players) + 1)):
 				IA = IAPlayers(str(i),0,CoreVariables().colorPlayers[len(players)+1])
 				self.__PLAYERS.append(IA)
+
+	def firstphase(self,numPlayers,players):
+		self.__PLAYERS = players
+		self.initphaseplayers(numPlayers,players)
 
 
 		
