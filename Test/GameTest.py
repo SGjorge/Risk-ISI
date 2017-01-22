@@ -58,6 +58,7 @@ class GameTest(unittest.TestCase):
 		playersInitExpected = playersExpected
 		game = Game()
 		numPlayersExpected = len(playersExpected)
+		game.firstphase(3,playersExpected)
 		self.assertEqual(numPlayersExpected,len(game.getplayers()))
 		players = game.getplayers()
 		for (pE,p) in zip(playersInitExpected,players):
