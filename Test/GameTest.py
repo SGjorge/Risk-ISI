@@ -40,11 +40,11 @@ class GameTest(unittest.TestCase):
 		for (pE,p) in zip(playersExpected,players):
 			self.assertEqual(True,pE.isequal(p))
 
-	def test_initfirstphaseincompletehumansplayers(self):
+	def test_initphaseplayerswithIA(self):
 		playersInitExpected = playersExpected
 		game = Game()
 		numPlayersExpected = 5 
-		game.firstphase(5,playersExpected)
+		game.initphaseplayers(5,playersExpected)
 		self.assertEqual(numPlayersExpected,len(game.getplayers()))
 		IA1 = IAPlayers("1",0,"green")
 		IA2 = IAPlayers("2",0,"white")
@@ -53,17 +53,47 @@ class GameTest(unittest.TestCase):
 		players = game.getplayers()
 		for (pE,p) in zip(playersInitExpected,players):
 			self.assertEqual(True,pE.isequal(p))
-		
 
-	def test_initfirstphasecompletehumanplayers(self):
+	def test_initphaseplayerswithoutIA(self):
 		playersInitExpected = playersExpected
 		game = Game()
+		game.initboard()
 		numPlayersExpected = len(playersExpected)
-		game.firstphase(3,playersExpected)
+		game.initphaseplayers(3,playersExpected)
 		self.assertEqual(numPlayersExpected,len(game.getplayers()))
 		players = game.getplayers()
+		world = game.getcountries()
 		for (pE,p) in zip(playersInitExpected,players):
 			self.assertEqual(True,pE.isequal(p))
+
+	def test_initconquer(self):
+		game = Game()
+		game.initboard()
+		game.initphaseplayers(3,playersExpected)
+		players = game.getplayers()
+		world = game.getcountries()
+		for country in world:
+			index = world.index(country)
+			if( index != 0):
+				index = index % len(players)
+			player = players[index]
+			game.initconquers(country,player)
+			self.assertEqual(1,country.getbattalions())
+			self.assertEqual(player,country.getconqueror())
+
+	def test_initfirstphasecompletehumanplayers(self):
+		game = Game()
+		game.initboard()
+		game.initphaseplayers(3,playersExpected)
+		players = game.getplayers()
+		world = game.getcountries()
+		for country in world:
+			index = world.index(country)
+			if( index != 0):
+				index = index % len(players)
+			player = players[index]
+			game.initconquers(country,player)
+		self.assertEqual(True,True)
 
 if __name__ == '__main__':
 	unittest.main()
