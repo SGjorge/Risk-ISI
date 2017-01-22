@@ -28,9 +28,14 @@ class Game:
 				IA = IAPlayers(str(i),0,CoreVariables().colorPlayers[len(players)+1])
 				self.__PLAYERS.append(IA)
 
+	def initfirstconquer(self):
+		print("vamo a conquistar")
+
+
 	def firstphase(self,numPlayers,players):
 		self.__PLAYERS = players
 		self.initphaseplayers(numPlayers,players)
+		initfirstconquer()
 
 
 		
