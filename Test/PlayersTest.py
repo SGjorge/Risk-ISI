@@ -2,6 +2,7 @@ import sys
 sys.path.append("../Classes/Round/")
 
 from Players import Players,HumanPlayers,IAPlayers,ArrayPlayers
+from Countries import Country
 import unittest
 
 class PlayersTest(unittest.TestCase):
@@ -100,8 +101,8 @@ class PlayersTest(unittest.TestCase):
 		self.assertEqual(True,nplayers[1].isequal(p1))
 		self.assertEqual(True,nplayers[2].isequal(p3))
 
-	def test_turncuberoll(self):
-		roll = p1.cuberoll()
+	def test_turndiceroll(self):
+		roll = p1.diceroll()
 		self.assertIn(roll,range(1,7))
 
 	def test_assaultroll(self):
@@ -113,6 +114,15 @@ class PlayersTest(unittest.TestCase):
 		defendRoll = p1.defendroll(2)
 		for i in defendRoll:
 			self.assertIn(i,range(1,7))
+
+	def test_addconqueredcountry(self):
+		country = Country("España",p1.getname())
+		p1.addconqueredcountry(country)
+		conqueredCountries = p1.getconqueredcountries()
+		for c in conqueredCountries:
+			self.assertEqual(c.getname(),country.getname())
+
+
 
 if __name__ == '__main__':
 	unittest.main()
