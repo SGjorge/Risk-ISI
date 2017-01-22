@@ -53,6 +53,7 @@ class GameTest(unittest.TestCase):
 		players = game.getplayers()
 		for (pE,p) in zip(playersInitExpected,players):
 			self.assertEqual(True,pE.isequal(p))
+		
 
 	def test_initfirstphasecompletehumanplayers(self):
 		playersInitExpected = playersExpected
