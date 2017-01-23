@@ -52,7 +52,7 @@ class BoardTest(unittest.TestCase):
     def test_neighbourhood_2(self):
         neighbourAux = Neighbours('Europa del norte')
         expectedNeighbours = neighbourAux.getarray()
-        self.assertEqual(expectedNeighbours, CoreVariables().getneighbours("Europa del norte"))
+        self.assertEqual(expectedNeighbours, CoreVariables().areneighbours("Europa del norte"))
 
     def test_filledcountry (self):
         #estan todas las cosas de un pais (pais tonto)
