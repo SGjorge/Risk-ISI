@@ -168,11 +168,34 @@ class GameRulesTest(unittest.TestCase):
         self.assertEqual(expected,GameRules.countriesokforthebattle(countryAtt,countryDef))
 
 
+        #Checks the number of extra battalions per card exchange
+    def test_firstcardexchange(self):
+        expected = 4
+        self.assertEqual(expected,GameRules.getextrabattalions(1))
 
+    def test_secondcardexchange(self):
+        expected = 6
+        self.assertEqual(expected,GameRules.getextrabattalions(2))
 
+    def test_thirdcardexchange(self):
+        expected = 8
+        self.assertEqual(expected,GameRules.getextrabattalions(3))
 
+    def test_fourthcardexchange(self):
+        expected = 10
+        self.assertEqual(expected,GameRules.getextrabattalions(4))
 
+    def test_ninthcardexchange(self):
+        expected = 35
+        self.assertEqual(expected,GameRules.getextrabattalions(9))
 
+    def test_14thcardexchange(self):
+        expected = 60
+        self.assertEqual(expected,GameRules.getextrabattalions(14))
+
+    def test_lastcardexchange(self):
+        expected = 60
+        self.assertEqual(expected,GameRules.getextrabattalions(37))
 
 
 
