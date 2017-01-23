@@ -122,6 +122,20 @@ class PlayersTest(unittest.TestCase):
 		for c in conqueredCountries:
 			self.assertEqual(c.getname(),country.getname())
 
+	def test_usedbattalions(self):
+		paux = HumanPlayers("Pepe",35,"orange")
+		country1 = Country("España",paux.getname())
+		country2 = Country("Francia",paux.getname())
+		country3 = Country("Italia",paux.getname())
+		country1.changebattalions(7)
+		country2.changebattalions(1)
+		country3.changebattalions(5)
+		paux.addconqueredcountry(country1)
+		paux.addconqueredcountry(country2)
+		paux.addconqueredcountry(country3)
+		self.assertEqual(paux.getusedbattalions(),13)
+
+
 
 
 if __name__ == '__main__':
