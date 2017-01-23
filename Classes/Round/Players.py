@@ -37,8 +37,15 @@ class Players:
 			usedbattalion += battalionscountry
 		return usedbattalion
 
-	def addconqueredcountry(self,country):
-		self.__CONQUEREDCOUNTRIES.append(country)
+	def modifyconquered(self,c):
+		self.__CONQUEREDCOUNTRIES = c
+		#for a in self.__CONQUEREDCOUNTRIES:
+			#print("PLAYER:" + self.__NAME + " --- COUNTRY:" + a.tostring())
+
+	def addconqueredcountry(self,country,player):
+		c = player.getconqueredcountries()
+		c.append(country)
+		player.modifyconquered(c)
 
 	def isequal(self,player):
 		return ((self.__NAME == player.getname()) and \

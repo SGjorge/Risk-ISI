@@ -3,7 +3,7 @@ sys.path.append("../Classes/GameRules/")
 
 from GameRules import GameRules
 from CoreVariables import CoreVariables
-from Countries import Countries,World
+from Countries import Countries,World,Country
 from Players import Players,HumanPlayers,IAPlayers,ArrayPlayers
 
 class Game:
@@ -24,7 +24,7 @@ class Game:
 
 	def initphaseplayers(self,numPlayers,players):
 		self.__PLAYERS = players
-		if(numPlayers > len(players)):
+		if (GameRules().numberofplayersok(numPlayers)) and (numPlayers > len(players)):
 			for i in range(1,(numPlayers-len(players) + 1)):
 				IA = IAPlayers(str(i),0,CoreVariables().colorPlayers[len(players)+1])
 				self.__PLAYERS.append(IA)
@@ -32,10 +32,10 @@ class Game:
 	def initconquers(self,country,player):
 		country.changebattalions(1)
 		country.changeconqueror(player)
-		player.addconqueredcountry(country)
+		player.addconqueredcountry(country,player)
 
 	#while player has some battalion this process'll be running 
-	def distributeinitbattalions(self,unusedBattalions,playersCountries,weightArray):
+	def distributeonebattalionspercountry(self,unusedBattalions,playersCountries):
 		print("vamos a repartir todos los batallones")
 
 

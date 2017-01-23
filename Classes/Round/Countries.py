@@ -30,8 +30,8 @@ class World(Countries):
 
     def printworld(self):
         lenght = len(self.world)
-        for i in range(0,lenght):
-            print (self.world[i].tostring())
+        for i in world:
+            print (i.tostring())
 
 
 #####clase padre#####
@@ -70,7 +70,7 @@ class Country(Countries):
         self.conqueror = newOne
 
     def tostring(self):
-        return (str(self.name) + str(self.battalions) + str(self.conqueror))
+        return (str(self.name) + " "+ str(self.battalions) + ":" + self.conqueror.tostring())
 
     def areneighbours(self, country):
         #return country.name in CoreVariables().getneighbours(self.name)
