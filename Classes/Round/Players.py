@@ -22,12 +22,20 @@ class Players:
 
 	def getbattalions(self):
 		return self.__BATTALIONS
-
+		
 	def getcolourid(self):
 		return self.__COLOURID
 
 	def getconqueredcountries(self):
 		return self.__CONQUEREDCOUNTRIES
+
+	def getusedbattalions(self):
+		countries = self.getconqueredcountries()
+		usedbattalion = 0
+		for country in countries:
+			battalionscountry = country.getbattalions()
+			usedbattalion += battalionscountry
+		return usedbattalion
 
 	def addconqueredcountry(self,country):
 		self.__CONQUEREDCOUNTRIES.append(country)
