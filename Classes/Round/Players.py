@@ -62,22 +62,6 @@ class Players:
 			rolls.append(roll)
 		return rolls
 
-<<<<<<< HEAD
-	#return -1 if batallions'll be incorrect
-	def defendroll(self,defendBattalions):
-		if (defendBattalions < 1) or (defendBattalions > 2): #aqui tendremos que llamar a la regla cuando esté implementada
-			return -1
-
-		defendRoll = self.rolls(defendBattalions)
-		return defendRoll
-
-	def assaultroll(self,assaultBattalions):
-		if (assaultBattalions < 1) or (assaultBattalions > 3): #aqui tendremos que llamar a la regla cuando esté implementada
-			return -1
-
-		assaultRoll = self.rolls(assaultBattalions)
-		return assaultRoll
-
 	# en principio esta pensando para la una IA simple, pero tambien nos sirve para posteriormente simular la fase 1
 	def distributebatallions(self):
 		unusedbattalions = self.__BATTALIONS - self.getusedbattalions()
@@ -88,9 +72,6 @@ class Players:
 				country.changebattalions(1)
 				unusedbattalions -= 1
 
-
-=======
->>>>>>> d16d37b76ce0538f5457f64048707fcbb3fe6490
 	def tostring(self):
 		return (self.__NAME + " " + str(self.__BATTALIONS) + " " +self.__COLOURID)
 
