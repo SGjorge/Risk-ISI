@@ -55,7 +55,7 @@ class BoardTest(unittest.TestCase):
         absolutes = CoreVariables()
         lenght = len(absolutes.countries)
         for i in range(lenght):
-            self.assertEqual(expected, Country(absolutes.countries[i], None).ithasneighbourhood(absolutes.countries[i]))
+            self.assertEqual(expected, Country(absolutes.countries[i], None).ithasneighbourhood())
 
     def test_filledcountry (self):
         #estan todas las cosas de un pais (pais tonto)
