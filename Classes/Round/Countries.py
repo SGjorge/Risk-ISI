@@ -67,7 +67,7 @@ class Country(Countries):
         self.battalions = self.battalions + numBattalions
 
     def changeconqueror(self, newOne):
-i       self.conqueror = newOne
+        self.conqueror = newOne
 
     def tostring(self):
         try:
