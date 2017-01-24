@@ -73,22 +73,18 @@ class GameRules:
 
     @classmethod
     def getlostbattalions(self,rollsAtt,rollsDef):
-        # returns the number of lost battalions of the ATTACKING player
+        #Returns the number of lost battalions of the ATTACKING player
         rollsAtt = self.gettheresultsordered(rollsAtt)
         rollsDef = self.gettheresultsordered(rollsDef)
-
-        #Variable a retornar
         if len(rollsDef) <= len(rollsAtt):
-            lostAttBattalions = [0 for i in range(len(rollsDef))]
+            lostAttBattalions = [0 for i in range(len(rollsDef))] #Variable a retornar
             for i in range(len(rollsDef)): #comienza en cero
                 if rollsAtt[i] > rollsDef[i]:
                     lostAttBattalions[i] = 0
                 else:
                     lostAttBattalions[i] = 1
         else:
-            lostAttBattalions = [1]
+            lostAttBattalions = [1]#Variable a retornar
             if rollsAtt[0] > rollsDef[0]:
                 lostAttBattalions[0] = 0
-
-
         return  lostAttBattalions
