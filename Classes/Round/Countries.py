@@ -67,7 +67,7 @@ class Country(Countries):
         self.battalions = self.battalions + numBattalions
 
     def changeconqueror(self, newOne):
-        self.conqueror = newOne
+i       self.conqueror = newOne
 
     def tostring(self):
         try:
@@ -82,7 +82,6 @@ class Country(Countries):
         if len(self.neighbours.getarray())> 0:
             return True
         else:
-            print self.neighbours.getarray()
             return False
 class Neighbours(Countries):
 
