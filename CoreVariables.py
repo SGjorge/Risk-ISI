@@ -5,7 +5,7 @@ import sys
 class CoreVariables():
     def __init__(self):
         self.countries = ["Alaska", "Territorio del noroeste", "Groenlandia",
-            "Alberta", "Ontario", "Quebec", "Estados unidos del oeste", "Estados unidos del este",
+            "Alberta", "Ontario", "Quebec", "Estados Unidos del oeste", "Estados Unidos del este",
             "América central", "Venezuela", "Brasil", "Perú", "Argentina",
             "África del norte", "Egipto", "África oriental", "Congo", "África del sur", "Madagascar",
             "Europa occidental", "Europa del norte", "Europa del sur", "Gran Bretaña",
@@ -67,6 +67,17 @@ class CoreVariables():
     neighboursOM = ['Europa del sur', 'Ucrania', 'Afganistán', 'India', 'África oriental', 'Egipto']
     neighboursInd = ['Oriente medio', 'Afganistán', 'China', 'Siam']
     neighboursSiam = ['India', 'China', 'Indonesia']
+    #america del norte
+    neighboursAlk = ['Kamchatka', 'Territorio del noroeste', 'Alberta']
+    neighboursTNE = ['Alaska', 'Alberta', 'Groenlandia', 'Ontario']
+    neighboursGroe = ['Territorio del noroeste', 'Ontario', 'Quebec', 'Islandia']
+    neighboursAlb = ['Alaska', 'Territorio del noroeste', 'Ontario', 'Estados Unidos del oeste']
+    neighboursOnt = ['Alberta', 'Territorio del noroeste', 'Groenlandia', 'Quebec', 'Estados Unidos del este', 'Estados Unidos del oeste']
+    neighboursQue = ['Ontario', 'Groenlandia', 'Estados Unidos del este']
+    neighboursEUE = ['Estados Unidos del oeste', 'Ontario', 'Quebec', 'América central']
+    neighboursEUO = ['Estados Unidos del este', 'Alberta', 'Ontario', 'América central']
+    neighboursAmC = ['Estados Unidos del este', 'Estados Unidos del oeste', 'Venezuela']
+    #tabla de vecinos
     tableNeighbours = {'Europa del norte': neighboursEuropaNorte, 'Europa del sur': neighboursEuropaSur,
                         'Europa occidental': neighboursEuropaOcc, 'Gran Bretaña': neighboursGB,
                         'Islandia': neighboursIsl, 'Escandinavia': neighboursEsca, 'Ucrania': neighboursUck,
@@ -78,7 +89,10 @@ class CoreVariables():
                         'Ural': neighboursUral, 'Siberia': neighboursSib, 'Yakutsk': neighboursYak,
                         'Kamchatka': neighboursKam, 'Irkutsk': neighboursIrk, 'Japón': neighboursJap,
                         'Mongolia': neighboursMong, 'China': neighboursChi, 'Afganistán': neighboursAf,
-                        'Oriente medio': neighboursOM, 'India': neighboursInd, 'Siam': neighboursSiam}
+                        'Oriente medio': neighboursOM, 'India': neighboursInd, 'Siam': neighboursSiam,
+                        'Alaska': neighboursAlk, 'Territorio del noroeste': neighboursTNE, 'Groenlandia': neighboursGroe,
+                        'Alberta': neighboursAlb, 'Ontario': neighboursOnt, 'Quebec': neighboursQue,
+                        'Estados Unidos del este': neighboursEUE, 'Estados Unidos del oeste': neighboursEUO, 'Amárica central': neighboursAmC}
     initialBattalions = {3 : 35, 4 : 30, 5 : 25, 6 : 20}
     battalionsPerContinent = {"América del norte" : 5, "Asia" : 7, "América del sur": 2, "Europa" : 5, "África" : 3, "Oceanía" : 2}
     extraBattalions = {1 : 4, 2 : 6, 3 : 8, 4 : 10, 5 : 15, 6 : 20, 7 : 25, 8 : 30, 9 : 35, 10 : 40, 11 : 45, 12 : 50, 13 : 55, 14 : 60 }

@@ -70,7 +70,7 @@ class Country(Countries):
         self.conqueror = newOne
 
     def tostring(self):
-        return (str(self.name) + " "+ str(self.battalions) + ":" + self.conqueror.tostring())
+        return (str(self.name) + " " + str(self.battalions) + ":" + self.conqueror.tostring())
 
     def areneighbours(self, country):
         #return country.name in CoreVariables().getneighbours(self.name)
