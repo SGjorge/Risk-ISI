@@ -62,6 +62,7 @@ class Players:
 			rolls.append(roll)
 		return rolls
 
+<<<<<<< HEAD
 	#return -1 if batallions'll be incorrect
 	def defendroll(self,defendBattalions):
 		if (defendBattalions < 1) or (defendBattalions > 2): #aqui tendremos que llamar a la regla cuando esté implementada
@@ -88,6 +89,8 @@ class Players:
 				unusedbattalions -= 1
 
 
+=======
+>>>>>>> d16d37b76ce0538f5457f64048707fcbb3fe6490
 	def tostring(self):
 		return (self.__NAME + " " + str(self.__BATTALIONS) + " " +self.__COLOURID)
 

@@ -105,15 +105,10 @@ class PlayersTest(unittest.TestCase):
 		roll = p1.diceroll()
 		self.assertIn(roll,range(1,7))
 
-	def test_assaultroll(self):
-		assaultRoll = p1.assaultroll(2)
-		for i in assaultRoll:
-			self.assertIn(i,range(1,7))
-
-	def test_defendroll(self):
-		defendRoll = p1.defendroll(2)
-		for i in defendRoll:
-			self.assertIn(i,range(1,7))
+	def test_agroupofrolls(self):
+		rolls = p1.rolls(2)
+		for roll in rolls:
+			self.assertIn(roll,range(1,7))
 
 	def test_addconqueredcountry(self):
 		country = Country("España",p1.getname())

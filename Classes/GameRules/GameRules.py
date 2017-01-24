@@ -2,12 +2,11 @@
 
 import sys
 sys.path.append("../")
+sys.path.append("../Clases/Round/")
 from CoreVariables import CoreVariables as CV
-sys.path.append("../Classes/Round")
 from Countries import Countries, Country
 
 class GameRules:
-
 
     @classmethod
     def numberofplayersok(self,numPlayers):
@@ -56,7 +55,36 @@ class GameRules:
             cardExchangeNum = 14
         return CV.extraBattalions[cardExchangeNum]
 
+    @classmethod
+    def gettheresultsordered(self,rolls):
+        if len(rolls) > 1:
+            if rolls[1] > rolls[0]:
+                rollAux = rolls[1]
+                rolls[1] = rolls[0]
+                rolls[0] = rollAux
+        if len(rolls) == 3:
+            if rolls[2] > rolls[1]:
+                if rolls[2] > rolls[0]:
+                    rollAux = rolls[0]
+                    rolls[0] = rolls[2]
+                rolls[2] = rolls[1]
+                rolls[1] = rollAux
+        return rolls
 
-
-
-
+    @classmethod
+    def getlostbattalions(self,rollsAtt,rollsDef):
+        #Returns the number of lost battalions of the ATTACKING player
+        rollsAtt = self.gettheresultsordered(rollsAtt)
+        rollsDef = self.gettheresultsordered(rollsDef)
+        if len(rollsDef) <= len(rollsAtt):
+            lostAttBattalions = [0 for i in range(len(rollsDef))] #Variable a retornar
+            for i in range(len(rollsDef)): #comienza en cero
+                if rollsAtt[i] > rollsDef[i]:
+                    lostAttBattalions[i] = 0
+                else:
+                    lostAttBattalions[i] = 1
+        else:
+            lostAttBattalions = [1]#Variable a retornar
+            if rollsAtt[0] > rollsDef[0]:
+                lostAttBattalions[0] = 0
+        return  lostAttBattalions

@@ -49,10 +49,14 @@ class BoardTest(unittest.TestCase):
         expectedNeighbours = ['Europa del Sur', 'Europa occidental','Ucrania', 'Escandinavia', "Gran Bretaña"]
         self.assertEqual(expectedNeighbours, CoreVariables().neighboursEuropaNorte)
 
-    def test_neighbourhood_2(self):
-        neighbourAux = Neighbours('Europa del norte')
-        expectedNeighbours = neighbourAux.getarray()
-        self.assertEqual(expectedNeighbours, CoreVariables().areneighbours("Europa del norte"))
+    #@unittest.skip("skip")
+    def test_theyallhaveneighbourhood(self):
+        expected = True
+        absolutes = CoreVariables()
+        lenght = len(absolutes.countries)
+        for i in range(lenght):
+            countryAux = Country(absolutes.countries[i], None)
+            self.assertEqual(expected, countryAux.ithasneighbourhood())
 
     def test_filledcountry (self):
         #estan todas las cosas de un pais (pais tonto)
