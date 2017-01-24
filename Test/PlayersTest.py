@@ -135,6 +135,24 @@ class PlayersTest(unittest.TestCase):
 		paux.addconqueredcountry(country3)
 		self.assertEqual(paux.getusedbattalions(),13)
 
+	def test_distributebattalions(self):
+		paux = HumanPlayers("Pepe",35,"orange")
+		country1 = Country("España",paux.getname())
+		country2 = Country("Francia",paux.getname())
+		country3 = Country("Italia",paux.getname())
+		country1.changebattalions(7)
+		country2.changebattalions(1)
+		country3.changebattalions(5)
+		paux.addconqueredcountry(country1)
+		paux.addconqueredcountry(country2)
+		paux.addconqueredcountry(country3)
+		paux.distributebatallions()
+		self.assertEqual(paux.getusedbattalions(),35)
+		conqueredCountries = paux.getconqueredcountries()
+		self.assertEqual(conqueredCountries[0].tostring(),"España 15:Pepe")
+		self.assertEqual(conqueredCountries[1].tostring(),"Francia 8:Pepe")
+		self.assertEqual(conqueredCountries[2].tostring(),"Italia 12:Pepe")
+
 
 
 

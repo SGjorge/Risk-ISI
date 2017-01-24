@@ -76,9 +76,6 @@ class GameTest(unittest.TestCase):
 		game.initphaseplayers(3,playersExpected)
 		players = game.getplayers()
 		world = game.getcountries()
-		for c in world:
-			st = c.tostring
-			print("-->"+st+"<--")
 		for country in world:
 			index = world.index(country)
 			if( index != 0):
@@ -87,27 +84,60 @@ class GameTest(unittest.TestCase):
 			game.initconquers(country,player)
 			self.assertEqual(1,country.getbattalions())
 			self.assertEqual(player,country.getconqueror())
-		aux = players[0].getconqueredcountries()
 
-#	def test_initfirstphasecompletewithoutIA(self):
-#		game = Game()
-#		game.initboard()
-#		game.initphaseplayers(3,playersExpected)
-#		players = game.getplayers()
-#		world = game.getcountries()
-#		for country in world:
-#			index = world.index(country)
-#			if( index != 0):
-#				index = index % len(players)
-#			player = players[index]
-#			#print("////" + player.tostring() + "////")
-#			game.initconquers(country,player)
-#		usedBattalions = int(len(world) / len(players))
-#		for player in players:
-#			#print("---> PLAYER: " + player.tostring() + "<-----")
-#			usedBattalionsAux = player.getusedbattalions()
-#			#print(usedBattalionsAux)
-#			self.assertEqual(usedBattalions,usedBattalionsAux)
+	def test_initfirstphasecompletewithoutIA(self):
+		p1 = HumanPlayers("Pepe",initBattalions,"orange")
+		p2 = HumanPlayers("Ana",initBattalions,"red")
+		p3 = HumanPlayers("Yo",initBattalions,"blue")
+		playersExpected = [p1,p2,p3]
+		game = Game()
+		game.initboard()
+		game.initphaseplayers(3,playersExpected)
+		players = game.getplayers()
+		world = game.getcountries()
+		for country in world:
+			index = world.index(country)
+			if( index != 0):
+				index = index % len(players)
+			player = players[index]
+			game.initconquers(country,player)
+		usedBattalions = int(len(world) / len(players))
+		for player in players:
+			usedBattalionsAux = player.getusedbattalions()
+			self.assertEqual(usedBattalions,usedBattalionsAux)
+			player.distributebatallions()
+			usedBeforeBattalions = player.getusedbattalions()
+			self.assertEqual(usedBeforeBattalions,35)
+
+	def test_phaseonecomplete(self):
+		p1 = HumanPlayers("Pepe",initBattalions,"orange")
+		p2 = HumanPlayers("Ana",initBattalions,"red")
+		p3 = HumanPlayers("Yo",initBattalions,"blue")
+		playersExpected = [p1,p2,p3]
+		tidyrolls = [3,5,2]
+		game = Game()
+		game.initboard()
+		firstPlayer = game.firstplayer(tidyrolls,playersExpected)
+		orderedPlayers = ArrayPlayers().orderplayers(playersExpected,firstPlayer)
+		self.assertEqual(orderedPlayers[0].isequal(playersExpected[1]),True)
+		self.assertEqual(orderedPlayers[1].isequal(playersExpected[0]),True)
+		self.assertEqual(orderedPlayers[2].isequal(playersExpected[2]),True)
+		game.initphaseplayers(3,orderedPlayers)
+		players = game.getplayers()
+		world = game.getcountries()
+		for country in world:
+			index = world.index(country)
+			if( index != 0):
+				index = index % len(players)
+			player = players[index]
+			game.initconquers(country,player)
+		usedBattalions = int(len(world) / len(players))
+		for player in players:
+			usedBattalionsAux = player.getusedbattalions()
+			self.assertEqual(usedBattalions,usedBattalionsAux)
+			player.distributebatallions()
+			usedBeforeBattalions = player.getusedbattalions()
+			self.assertEqual(usedBeforeBattalions,35)
 
 
 
