@@ -13,6 +13,7 @@ class CoreVariables():
             "Afganistán", "China", "Ural", "Siberia", "Irkutsk", "Mongolia",
             "Yakutsk", "Kamchatka", "Japón", "Indonesia", "Nueva Guinea",
             "Australia occidental", "Australia oriental"]
+        self.cardsTotalNum = 44
         self.maxCountries = 42
         self.minPlayers = 3
         self.maxPlayers = 6

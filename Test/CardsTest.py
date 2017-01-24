@@ -27,23 +27,23 @@ class CardsTest(unittest.TestCase):
 
     def test_totalnumberofcards(self):
         expected = CV().cardsTotalNum
-        self.assertEqual(expected, Cards(None).getcardstotal)
+        self.assertEqual(expected, Cards(None).getcardstotal())
 
     def test_totaljokers(self):
         expected = 2
-        self.assertEqual(expected, Cards(None).gettotal)
+        self.assertEqual(expected, Cards(None).gettotal())
 
     def test_totalinfantery(self):
         expected = 14
-        self.assertEqual(expected, Infantery(None).gettotal)
+        self.assertEqual(expected, Infantry(None).gettotal())
 
     def test_totalchivalry(self):
         expected = 14
-        self.assertEqual(expected, Chivalry(None).gettotal)
+        self.assertEqual(expected, Chivalry(None).gettotal())
 
     def test_totalartillery(self):
         expected = 14
-        self.assertEqual(expected, Artillery(None).gettotal)
+        self.assertEqual(expected, Artillery(None).gettotal())
 
 
 if __name__ == '__main__':
