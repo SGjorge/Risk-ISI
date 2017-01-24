@@ -76,7 +76,11 @@ class Country(Countries):
         #return country.name in CoreVariables().getneighbours(self.name)
         return country.name in self.neighbours.getarray()
     def ithasneighbourhood (self):
-        return True
+        if len(self.neighbours.getarray())> 0:
+            return True
+        else:
+            print self.neighbours.getarray()
+            return False
 class Neighbours(Countries):
 
     global absolutes
