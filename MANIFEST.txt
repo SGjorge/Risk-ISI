@@ -16,6 +16,7 @@ TEST
 	ClassTest --> Test que implementa el testeo de las clases.
 	BoardTest --> Tests para la implementación del talero.
 	GameRulesTest --> Test para la implementación de las reglas generales del juego.
+	CardsTest --> Test para la implementación de las cartas del juego.
 CLASES PRINCIPALES
 	CoreVariables. --> Clase que lleva todas las variables "absolutas" que se usarán en todas las demás clases.
 										*Los nombres de los países van en mayúsculas solo las letras que forman el nombre. Es decir,
@@ -35,16 +36,14 @@ CLASES PRINCIPALES
 		Players --> Clase abstracta que denota lo necesario para los jugadores. Actúa como interfaz.
 			HumanPlayer --> Clase derivada de Players que implementa lo necesario del jugador humano.
 			IAPlayer --> Clase derivada de Players que implementa lo necesario del jugador de inteligencia artificial.
-			ArrayPlayers --> Implementa el manejo de arrays de jugares
-	GamesRules --> Clase principal sobre las reglas y necesidades del juego.De aquí derivarán Cards y Tables.
 			ArrayPlayer --> Clase para el manejo de array de jugadores
-	GamesRules --> Clase principal sobre las reglas y necesidades del juego. De aquí derivarán Cards y Tables.
+	GameRules --> Clase principal sobre las reglas y necesidades del juego. De aquí derivará Cards.
 		Cards --> Clase abstracta que denota lo necesario sobre las cartas del juego.
-			InfantryCard --> Clase derivada que implementa lo necesario de la carta de infantería.
-			ArtilleryCard --> Clase derivada que implementa lo necesario de la carta de artillería.
-			CavalryCard --> Clase derivada que implementa lo necesario de la carta de caballería.
-		
-	
+			Infantry --> Clase derivada que implementa lo necesario de la carta de infantería.
+			Artillery --> Clase derivada que implementa lo necesario de la carta de artillería.
+			Cavalry --> Clase derivada que implementa lo necesario de la carta de caballería.
+
+
 
 
 MÉTODOS
