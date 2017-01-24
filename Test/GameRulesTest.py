@@ -9,7 +9,7 @@ import unittest
 
 class GameRulesTest(unittest.TestCase):
 
-    
+
         #Checks if the number of players is ok (3-6)
     def test_is1playerok(self):
         expected = False
@@ -40,18 +40,18 @@ class GameRulesTest(unittest.TestCase):
         expected = 20
         self.assertEqual(expected, GameRules.getinitialbattalions(6))
 
-        #Checks the number of extra battalions per each whole conquered continent 
+        #Checks the number of extra battalions per each whole conquered continent
     def test_battalionsperamericaN(self):
         expected = 5
-        self.assertEqual(expected, GameRules.getbattalionspercontinent("América del norte")) 
+        self.assertEqual(expected, GameRules.getbattalionspercontinent("América del norte"))
 
     def test_battalionsperasia(self):
         expected = 7
-        self.assertEqual(expected, GameRules.getbattalionspercontinent("Asia")) 
+        self.assertEqual(expected, GameRules.getbattalionspercontinent("Asia"))
 
     def test_battalionsperamericaS(self):
         expected = 2
-        self.assertEqual(expected, GameRules.getbattalionspercontinent("América del sur")) 
+        self.assertEqual(expected, GameRules.getbattalionspercontinent("América del sur"))
 
     def test_battalionspereuropa(self):
         expected = 5
@@ -59,7 +59,7 @@ class GameRulesTest(unittest.TestCase):
 
     def test_battalionsperafrica(self):
         expected = 3
-        self.assertEqual(expected, GameRules.getbattalionspercontinent("África")) 
+        self.assertEqual(expected, GameRules.getbattalionspercontinent("África"))
 
     def test_battalionsperoceania(self):
         expected = 2
@@ -68,15 +68,15 @@ class GameRulesTest(unittest.TestCase):
         #Checks the number of extra battalions per conquered contries
     def test_battalionsper12countries(self):
         expected = 4
-        self.assertEqual(expected, GameRules.getbattalionspercountries(12)) 
+        self.assertEqual(expected, GameRules.getbattalionspercountries(12))
 
     def test_battalionsper2countries(self):
         expected = 3
-        self.assertEqual(expected, GameRules.getbattalionspercountries(2)) 
+        self.assertEqual(expected, GameRules.getbattalionspercountries(2))
 
     def test_battalionsper37countries(self):
         expected = 12
-        self.assertEqual(expected, GameRules.getbattalionspercountries(37)) 
+        self.assertEqual(expected, GameRules.getbattalionspercountries(37))
 
 
         #Checks if the number of battalions is ok to attack
@@ -148,7 +148,7 @@ class GameRulesTest(unittest.TestCase):
         self.assertEqual(expected, GameRules.battalionstodefendok(country,0))
 
 
-        #Checks if a battle can happen between two countries 
+        #Checks if a battle can happen between two countries
     def test_canislandattackgroenland(self):
         countryAtt = Country("Islandia","red")
         countryDef = Country("Groenlandia","blue")
@@ -198,12 +198,57 @@ class GameRulesTest(unittest.TestCase):
         self.assertEqual(expected,GameRules.getextrabattalions(37))
 
 
+        #Checks the number of battalions that loses the attacking player
+    def test_firstbattle(self):
+        rollsAtt = [5,5]
+        rollsDef = [6,6]
+        expected = [1,1]
+        self.assertEqual(expected,GameRules.getlostbattalions(rollsAtt,rollsDef))
 
+    def test_secondbattle(self):
+        rollsAtt = [6,6]
+        rollsDef = [5,5]
+        expected = [0,0]
+        self.assertEqual(expected,GameRules.getlostbattalions(rollsAtt,rollsDef))
 
+    def test_thirdbattle(self):
+        rollsAtt = [6,6]
+        rollsDef = [5,6]
+        expected = [1,0]
+        self.assertEqual(expected,GameRules.getlostbattalions(rollsAtt,rollsDef))
+
+    def test_fourthbattle(self):
+        rollsAtt = [3,5,4]
+        rollsDef = [6,5]
+        expected = [1,1]
+        self.assertEqual(expected,GameRules.getlostbattalions(rollsAtt,rollsDef))
+
+    def test_fifthbattle(self):
+        rollsAtt = [4,4,4]
+        rollsDef = [3]
+        expected = [0]
+        self.assertEqual(expected,GameRules.getlostbattalions(rollsAtt,rollsDef))
+
+    def test_sixthbattle(self):
+        rollsAtt = [5,5,5]
+        rollsDef = [6]
+        expected = [1]
+        self.assertEqual(expected,GameRules.getlostbattalions(rollsAtt,rollsDef))
+
+    def test_seventhbattle(self):
+        rollsAtt = [2]
+        rollsDef = [5,4]
+        expected = [1]
+        self.assertEqual(expected,GameRules.getlostbattalions(rollsAtt,rollsDef))
+
+    def test_eighthbattle(self):
+        rollsAtt = [6]
+        rollsDef = [5,4,3]
+        expected = [0]
+        self.assertEqual(expected,GameRules.getlostbattalions(rollsAtt,rollsDef))
 
 
 
 
 if __name__ == '__main__':
     unittest.main()
-
