@@ -105,6 +105,9 @@ class GameTest(unittest.TestCase):
 		for player in players:
 			usedBattalionsAux = player.getusedbattalions()
 			self.assertEqual(usedBattalions,usedBattalionsAux)
+			player.distributebatallions()
+			usedBeforeBattalions = player.getusedbattalions()
+			self.assertEqual(usedBeforeBattalions,35)
 
 
 
