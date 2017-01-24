@@ -16,6 +16,7 @@ class Players:
 		self.__NAME = name
 		self.__BATTALIONS = battalions
 		self.__COLOURID = color
+		self.__CONQUEREDCOUNTRIES = []
 
 	def getname(self):
 		return self.__NAME
@@ -42,10 +43,10 @@ class Players:
 		#for a in self.__CONQUEREDCOUNTRIES:
 			#print("PLAYER:" + self.__NAME + " --- COUNTRY:" + a.tostring())
 
-	def addconqueredcountry(self,country,player):
-		c = player.getconqueredcountries()
+	def addconqueredcountry(self,country):
+		c = self.__CONQUEREDCOUNTRIES
 		c.append(country)
-		player.modifyconquered(c)
+		self.__CONQUEREDCOUNTRIES = c
 
 	def isequal(self,player):
 		return ((self.__NAME == player.getname()) and \
