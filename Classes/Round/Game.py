@@ -34,6 +34,16 @@ class Game:
 		country.changeconqueror(player)
 		player.addconqueredcountry(country)
 
+	def firstplayer(self,rolls,players):
+		first = rolls[0]
+		for roll in rolls:
+			if (roll >= first):
+				first = roll
+			if (rolls.index(roll) == len(rolls)):
+				break
+		return players[rolls.index(first)]
+
+
 
 
 
