@@ -11,12 +11,14 @@ class Players:
 	__BATTALIONS = 0
 	__COLOURID = None
 	__CONQUEREDCOUNTRIES = []
+	__CARDS = []
 
-	def __init__(self,name,battalions,color):
+	def __init__(self,name,battalions,color,cards):
 		self.__NAME = name
 		self.__BATTALIONS = battalions
 		self.__COLOURID = color
 		self.__CONQUEREDCOUNTRIES = []
+		self.__CARDS = cards
 
 	def getname(self):
 		return self.__NAME
@@ -29,6 +31,9 @@ class Players:
 
 	def getconqueredcountries(self):
 		return self.__CONQUEREDCOUNTRIES
+
+	def getcards(self):
+		return self.__CARDS
 
 	def getusedbattalions(self):
 		countries = self.getconqueredcountries()
@@ -77,14 +82,14 @@ class Players:
 
 # derivated class HumanPlayers to Players
 class HumanPlayers(Players):
-	def __init__(self,name,battalions,color):
-		super(self.__class__, self).__init__(name,battalions,color)
+	def __init__(self,name,battalions,color,cards):
+		super(self.__class__, self).__init__(name,battalions,color,cards)
 
 # derivated class IAPlayers to Players
 class IAPlayers(Players):
-	def __init__(self,name,battalions,color):
+	def __init__(self,name,battalions,color,cards):
 		name = name + "IA"
-		super(self.__class__, self).__init__(name,battalions,color)
+		super(self.__class__, self).__init__(name,battalions,color,cards)
 	def attack (self, country):
 		countriesAux = self.getconqueredcountries()
 		if (country in countriesAux):
