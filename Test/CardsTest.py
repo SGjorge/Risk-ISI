@@ -45,6 +45,27 @@ class CardsTest(unittest.TestCase):
         expected = 14
         self.assertEqual(expected, Artillery(None).gettotal())
 
+    def test_jokername(self):
+        player = Cards("joker")
+        expected = "joker"
+        self.assertEqual(expected, player.getname())
+
+    def test_infantryname(self):
+        player = Infantry("infantry")
+        expected = "infantry"
+        self.assertEqual(expected, player.getname())
+
+    def test_chivalryname(self):
+        player = Chivalry("chivalry")
+        expected = "chivalry"
+        self.assertEqual(expected, player.getname())
+
+    def test_artilleryname(self):
+        player = Artillery("artillery")
+        expected = "artillery"
+        self.assertEqual(expected, player.getname())
+
+
 
 if __name__ == '__main__':
     unittest.main()
