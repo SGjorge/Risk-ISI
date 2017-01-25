@@ -177,6 +177,11 @@ class PlayersTest(unittest.TestCase):
 		expected = True
 		self.assertEqual(expected,p1.addcards(expectedCards))
 
+	def test_delcards(self):
+		cards = [Infantry(), Cards()]
+		expected = True
+		self.assertEqual(expected,p1.delcards(cards))
+
 
 
 if __name__ == '__main__':
