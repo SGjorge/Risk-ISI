@@ -35,6 +35,10 @@ class Players:
 	def getcards(self):
 		return self.__CARDS
 
+	def getcardsnumber(self):
+		cards = self.getcards()
+		return  len(cards)
+
 	def getusedbattalions(self):
 		countries = self.getconqueredcountries()
 		usedbattalion = 0
