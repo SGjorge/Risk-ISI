@@ -133,7 +133,7 @@ class PlayersTest(unittest.TestCase):
 			self.assertEqual(c.getname(),country.getname())
 
 	def test_usedbattalions(self):
-		paux = HumanPlayers("Pepe",35,"orange")
+		paux = HumanPlayers("Pepe",35,"orange",[])
 		country1 = Country("España",paux.getname())
 		country2 = Country("Francia",paux.getname())
 		country3 = Country("Italia",paux.getname())
@@ -146,7 +146,7 @@ class PlayersTest(unittest.TestCase):
 		self.assertEqual(paux.getusedbattalions(),13)
 
 	def test_distributebattalions(self):
-		paux = HumanPlayers("Pepe",35,"orange")
+		paux = HumanPlayers("Pepe",35,"orange",[])
 		country1 = Country("España",paux.getname())
 		country2 = Country("Francia",paux.getname())
 		country3 = Country("Italia",paux.getname())
