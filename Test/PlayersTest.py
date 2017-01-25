@@ -173,6 +173,9 @@ class PlayersTest(unittest.TestCase):
 		self.assertEqual(conqueredCountries[1].tostring(),"Francia 8:Pepe")
 		self.assertEqual(conqueredCountries[2].tostring(),"Italia 12:Pepe")
 
+	def test_addcards(self):
+		expected = True
+		self.assertEqual(expected,p1.addcards(expectedCards))
 
 
 
