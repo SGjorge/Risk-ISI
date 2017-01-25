@@ -3,8 +3,9 @@ sys.path.append("../Classes/GameRules/")
 sys.path.append("../../")
 
 from random import randint
-from GameRules import GameRules
+from Cards import Cards, Infantry, Chivalry, Artillery
 from CoreVariables import CoreVariables
+
 
 class Players:
 	__NAME = None
