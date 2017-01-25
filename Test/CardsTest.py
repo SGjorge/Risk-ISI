@@ -9,61 +9,51 @@ import unittest
 
 class CardsTest(unittest.TestCase):
 
-    def test_jokercard (self):
-        expected = None
-        self.assertEqual(expected, Cards(None).name)
-
-    def test_infantrycard (self):
-        expected = None
-        self.assertEqual(expected, Infantry(None).name)
-
-    def test_chivalrycard (self):
-        expected = None
-        self.assertEqual(expected, Chivalry(None).name)
-
-    def test_artillerycard (self):
-        expected = None
-        self.assertEqual(expected, Artillery(None).name)
-
-    def test_totalnumberofcards(self):
-        expected = CV().cardsTotalNum
-        self.assertEqual(expected, Cards(None).getcardstotal())
-
+        #checks the number of cards for every type
     def test_totaljokers(self):
         expected = 2
-        self.assertEqual(expected, Cards(None).gettotal())
+        self.assertEqual(expected, Cards().gettotal())
 
     def test_totalinfantery(self):
         expected = 14
-        self.assertEqual(expected, Infantry(None).gettotal())
+        self.assertEqual(expected, Infantry().gettotal())
 
     def test_totalchivalry(self):
         expected = 14
-        self.assertEqual(expected, Chivalry(None).gettotal())
+        self.assertEqual(expected, Chivalry().gettotal())
 
     def test_totalartillery(self):
         expected = 14
-        self.assertEqual(expected, Artillery(None).gettotal())
+        self.assertEqual(expected, Artillery().gettotal())
 
+
+        #checks the name of every type of card
     def test_jokername(self):
-        player = Cards("joker")
+        card = Cards()
         expected = "joker"
-        self.assertEqual(expected, player.getname())
+        self.assertEqual(expected, card.getname())
 
     def test_infantryname(self):
-        player = Infantry("infantry")
+        card = Infantry()
         expected = "infantry"
-        self.assertEqual(expected, player.getname())
+        self.assertEqual(expected, card.getname())
 
     def test_chivalryname(self):
-        player = Chivalry("chivalry")
+        card = Chivalry()
         expected = "chivalry"
-        self.assertEqual(expected, player.getname())
+        self.assertEqual(expected, card.getname())
 
     def test_artilleryname(self):
-        player = Artillery("artillery")
+        card = Artillery()
         expected = "artillery"
-        self.assertEqual(expected, player.getname())
+        self.assertEqual(expected, card.getname())
+
+
+        #checks the total number of cards
+    def test_totalnumberofcards(self):
+        expected = CV().cardsTotalNum
+        self.assertEqual(expected, Cards().getcardstotal())
+
 
 
 
