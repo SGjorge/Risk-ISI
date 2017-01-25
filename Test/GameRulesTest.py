@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 
 import sys
-sys.path.append("../Classes/GameRules/")
-from GameRules import GameRules
-sys.path.append("../Classes/Round/")
-from Countries import Countries, Country
 import unittest
+
+sys.path.append("../Classes/GameRules/")
+sys.path.append("../Classes/Round/")
+
+from GameRules import GameRules
+from Countries import Countries, Country
+from Players import Players, HumanPlayers, IAPlayers, ArrayPlayers
 
 class GameRulesTest(unittest.TestCase):
 
@@ -247,8 +250,16 @@ class GameRulesTest(unittest.TestCase):
         expected = [0]
         self.assertEqual(expected,GameRules.getlostbattalions(rollsAtt,rollsDef))
 
+    def test_maximumcardsperhumanplayer(self):
+        player = HumanPlayers("Pepe",0,"orange",8)
+        expected = False
+        self.assertEqual(expected,GameRules.numberofcardsok(player))
 
-
+    def test_maximumcardsperIAplayer(self):
+        player = IAPlayers("Pepe",0,"orange",4)
+        expected = True
+        self.assertEqual(expected,GameRules.numberofcardsok(player))
+        
 
 if __name__ == '__main__':
     unittest.main()
