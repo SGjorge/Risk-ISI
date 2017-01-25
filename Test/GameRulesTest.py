@@ -239,7 +239,7 @@ class GameRulesTest(unittest.TestCase):
 
     def test_seventhbattle(self):
         rollsAtt = [2]
-        rollsDef = [5,4]
+        rollsDef = [5,4,3]
         expected = [1]
         self.assertEqual(expected,GameRules.getlostbattalions(rollsAtt,rollsDef))
 
