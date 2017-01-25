@@ -1,8 +1,10 @@
 import sys
 sys.path.append("../Classes/Round/")
+sys.path.append("../Classes/GameRules")
 
 from Players import Players,HumanPlayers,IAPlayers,ArrayPlayers
 from Countries import Country
+from Cards import Cards, Infantry, Chivalry, Artillery
 import unittest
 
 class PlayersTest(unittest.TestCase):
@@ -14,6 +16,8 @@ class PlayersTest(unittest.TestCase):
 	global expectedBattalions
 	global expectedColourIdEmpty
 	global expectedColourId
+	global expectedCardsEmpty
+	global expectedCards
 	global expectedSubclasses
 	global numPlayers
 
@@ -23,6 +27,8 @@ class PlayersTest(unittest.TestCase):
 	expectedBattalions = 7
 	expectedColourIdEmpty = None
 	expectedColourId = "Orange"
+	expectedCardsEmpty = []
+	expectedCards = [Cards(),Infantry(),Chivalry(),Artillery()]
 	expectedSubclasses = ['HumanPlayers','IAPlayers']
 	numPlayers = 3
 
@@ -35,13 +41,13 @@ class PlayersTest(unittest.TestCase):
 	global p2
 	global p3
 
-	player = Players(expectedNameEmpty,expectedBattalionsEmpty,expectedColourIdEmpty)
-	humanPlayer = HumanPlayers(expectedName,expectedBattalions,expectedColourId)
-	iaPlayer = IAPlayers(expectedName,expectedBattalions,expectedColourId)
+	player = Players(expectedNameEmpty,expectedBattalionsEmpty,expectedColourIdEmpty,expectedCardsEmpty)
+	humanPlayer = HumanPlayers(expectedName,expectedBattalions,expectedColourId,expectedCards)
+	iaPlayer = IAPlayers(expectedName,expectedBattalions,expectedColourId,expectedCards)
 	arrayPlayer = ArrayPlayers()
-	p1 = HumanPlayers("Pepe",0,"orange")
-	p2 = HumanPlayers("Ana",0,"red")
-	p3 = HumanPlayers("Yo",0,"blue")
+	p1 = HumanPlayers("Pepe",0,"orange",[])
+	p2 = HumanPlayers("Ana",0,"red",[])
+	p3 = HumanPlayers("Yo",0,"blue",[])
 
 	#testing
 	def test_getname(self):
@@ -52,6 +58,9 @@ class PlayersTest(unittest.TestCase):
 
 	def test_getcolourid(self):
 		self.assertEqual(expectedColourIdEmpty,player.getcolourid())
+
+	def test_getname(self):
+		self.assertEqual(expectedCardsEmpty,player.getcards())
 
 	def test_subclasses(self):
 		for (cls,scls) in zip(globals()['Players'].__subclasses__(),expectedSubclasses):
@@ -66,6 +75,9 @@ class PlayersTest(unittest.TestCase):
 	def test_humanplayercolourid(self):
 		self.assertEqual(expectedColourId,humanPlayer.getcolourid())
 
+	def test_humanplayercards(self):
+		self.assertEqual(expectedCards,humanPlayer.getcards())
+
 	def test_iaplayername(self):
 		iaName = expectedName+"IA"
 		self.assertEqual(iaName,iaPlayer.getname())
@@ -75,6 +87,9 @@ class PlayersTest(unittest.TestCase):
 
 	def test_iaplayercolourid(self):
 		self.assertEqual(expectedColourId,iaPlayer.getcolourid())
+
+	def test_iaplayercards(self):
+		self.assertEqual(expectedCards,iaPlayer.getcards())
 
 	def test_compareplayers(self):
 		self.assertEqual(True,humanPlayer.isequal(humanPlayer))
