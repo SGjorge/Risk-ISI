@@ -50,7 +50,7 @@ class PlayersTest(unittest.TestCase):
 	iaPlayer = IAPlayers(expectedName,expectedBattalions,expectedColourId,expectedCards)
 	arrayPlayer = ArrayPlayers()
 	p1 = HumanPlayers("Pepe",0,"orange",[])
-	p2 = HumanPlayers("Ana",0,"red",[])
+	p2 = HumanPlayers("Ana",0,"red",expectedCards)
 	p3 = HumanPlayers("Yo",0,"blue",[])
 
 	#testing
@@ -178,9 +178,8 @@ class PlayersTest(unittest.TestCase):
 		self.assertEqual(expected,p1.addcards(expectedCards))
 
 	def test_delcards(self):
-		cards = [Infantry(), Cards()]
 		expected = True
-		self.assertEqual(expected,p1.delcards(cards))
+		self.assertEqual(expected,p2.delcards("infantry",2))
 
 
 
