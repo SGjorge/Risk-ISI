@@ -32,11 +32,19 @@ class Game:
 	def initconquers(self,country,player):
 		country.changebattalions(1)
 		country.changeconqueror(player)
-		player.addconqueredcountry(country,player)
+		player.addconqueredcountry(country)
 
-	#while player has some battalion this process'll be running 
-	def distributeonebattalionspercountry(self,unusedBattalions,playersCountries):
-		print("vamos a repartir todos los batallones")
+	def firstplayer(self,rolls,players):
+		first = rolls[0]
+		for roll in rolls:
+			if (roll >= first):
+				first = roll
+			if (rolls.index(roll) == len(rolls)):
+				break
+		return players[rolls.index(first)]
+
+
+
 
 
 		

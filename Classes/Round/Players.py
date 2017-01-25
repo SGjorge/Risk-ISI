@@ -16,13 +16,14 @@ class Players:
 		self.__NAME = name
 		self.__BATTALIONS = battalions
 		self.__COLOURID = color
+		self.__CONQUEREDCOUNTRIES = []
 
 	def getname(self):
 		return self.__NAME
 
 	def getbattalions(self):
 		return self.__BATTALIONS
-		
+
 	def getcolourid(self):
 		return self.__COLOURID
 
@@ -39,13 +40,11 @@ class Players:
 
 	def modifyconquered(self,c):
 		self.__CONQUEREDCOUNTRIES = c
-		#for a in self.__CONQUEREDCOUNTRIES:
-			#print("PLAYER:" + self.__NAME + " --- COUNTRY:" + a.tostring())
 
-	def addconqueredcountry(self,country,player):
-		c = player.getconqueredcountries()
+	def addconqueredcountry(self,country):
+		c = self.__CONQUEREDCOUNTRIES
 		c.append(country)
-		player.modifyconquered(c)
+		self.__CONQUEREDCOUNTRIES = c
 
 	def isequal(self,player):
 		return ((self.__NAME == player.getname()) and \
@@ -63,6 +62,16 @@ class Players:
 			rolls.append(roll)
 		return rolls
 
+	# en principio esta pensando para la una IA simple, pero tambien nos sirve para posteriormente simular la fase 1
+	def distributebatallions(self):
+		unusedbattalions = self.__BATTALIONS - self.getusedbattalions()
+		while (unusedbattalions > 0):
+			for country in self.__CONQUEREDCOUNTRIES:
+				if not (unusedbattalions > 0):
+					break
+				country.changebattalions(1)
+				unusedbattalions -= 1
+
 	def tostring(self):
 		return (self.__NAME + " " + str(self.__BATTALIONS) + " " +self.__COLOURID)
 
@@ -76,8 +85,13 @@ class IAPlayers(Players):
 	def __init__(self,name,battalions,color):
 		name = name + "IA"
 		super(self.__class__, self).__init__(name,battalions,color)
-
-# this class is an API to work about Players' array 
+	def attack (self, country):
+		countriesAux = self.getconqueredcountries()
+		if (country in countriesAux):
+			if (country.battalions > 4):
+				return True
+		return False
+# this class is an API to work about Players' array
 class ArrayPlayers:
 	# put first in first position array and the other to the left hand in order in new right hand array
 	def orderplayers(self,players,first):
@@ -95,7 +109,7 @@ class ArrayPlayers:
 			return players
 		elif (firstPosition == 0):
 			return players
-		
+
 		newPlayer = []
 		newPlayer.append(first)
 		for i in range(1,(len(players)*2)):
@@ -109,5 +123,3 @@ class ArrayPlayers:
 		for i in players:
 			string += i.toString() + ", "
 		return string
-		
-

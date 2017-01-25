@@ -21,7 +21,11 @@ class BoardTest(unittest.TestCase):
         absolutes = CoreVariables()
         lenght = len(absolutes.countries)
         self.assertEqual(expected, lenght)
-
+    def test_allcontinents (self):
+        expected = 6
+        absolutes = CoreVariables()
+        lenght = len(absolutes.tableContinents)
+        self.assertEqual(expected, lenght)
     def test_namecountry (self):
         expected = None
         self.assertEqual(expected, Country(None, None).name)

@@ -70,7 +70,10 @@ class Country(Countries):
         self.conqueror = newOne
 
     def tostring(self):
-        return (str(self.name) + " " + str(self.battalions) + ":" + self.conqueror.tostring())
+        try:
+            return (str(self.name) + " "+ str(self.battalions) + ":" + self.conqueror.tostring())
+        except:
+            return (str(self.name) + " "+ str(self.battalions) + ":" + str(self.conqueror))
 
     def areneighbours(self, country):
         #return country.name in CoreVariables().getneighbours(self.name)
@@ -79,7 +82,6 @@ class Country(Countries):
         if len(self.neighbours.getarray())> 0:
             return True
         else:
-            print self.neighbours.getarray()
             return False
 class Neighbours(Countries):
 
