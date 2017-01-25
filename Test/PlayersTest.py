@@ -18,6 +18,8 @@ class PlayersTest(unittest.TestCase):
 	global expectedColourId
 	global expectedCardsEmpty
 	global expectedCards
+	global expectedCardsEmptyNum
+	global expectedCardsNum
 	global expectedSubclasses
 	global numPlayers
 
