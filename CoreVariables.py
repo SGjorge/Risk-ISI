@@ -14,6 +14,7 @@ class CoreVariables():
             "Yakutsk", "Kamchatka", "Japón", "Indonesia", "Nueva Guinea",
             "Australia occidental", "Australia oriental"]
         self.cardsTotalNum = 44
+        self.maxCards = 4  #maximum number of cards per player at the end of its turn.
         self.maxCountries = 42
         self.minPlayers = 3
         self.maxPlayers = 6
