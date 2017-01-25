@@ -40,6 +40,18 @@ class Players:
 		cards = self.getcards()
 		return  len(cards)
 
+	def addcards(self,newCards):
+		for card in newCards:
+			if card.getname() == "infantry":
+				self.__CARDS.append(Infantry())
+			elif card.getname() == "chivalry":
+				self.__CARDS.append(Chivalry())
+			elif card.getname() == "artillery":
+				self.__CARDS.append(Artillery())
+			elif card.getname() == "joker":
+				self.__CARDS.append(Cards())
+		return True
+
 	def getusedbattalions(self):
 		countries = self.getconqueredcountries()
 		usedbattalion = 0
