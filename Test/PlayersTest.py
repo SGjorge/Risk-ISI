@@ -29,6 +29,8 @@ class PlayersTest(unittest.TestCase):
 	expectedColourId = "Orange"
 	expectedCardsEmpty = []
 	expectedCards = [Cards(),Infantry(),Chivalry(),Artillery()]
+	expectedCardsEmptyNum = 0
+	expectedCardsNum = 4
 	expectedSubclasses = ['HumanPlayers','IAPlayers']
 	numPlayers = 3
 
@@ -59,8 +61,11 @@ class PlayersTest(unittest.TestCase):
 	def test_getcolourid(self):
 		self.assertEqual(expectedColourIdEmpty,player.getcolourid())
 
-	def test_getname(self):
+	def test_getcards(self):
 		self.assertEqual(expectedCardsEmpty,player.getcards())
+
+	def test_getcardsnumber(self):
+		self.assertEqual(expectedCardsEmptyNum,player.getcardsnumber())
 
 	def test_subclasses(self):
 		for (cls,scls) in zip(globals()['Players'].__subclasses__(),expectedSubclasses):
@@ -77,6 +82,9 @@ class PlayersTest(unittest.TestCase):
 
 	def test_humanplayercards(self):
 		self.assertEqual(expectedCards,humanPlayer.getcards())
+
+	def test_humancardsnumber(self):
+		self.assertEqual(expectedCardsNum,humanPlayer.getcardsnumber())
 
 	def test_iaplayername(self):
 		iaName = expectedName+"IA"
