@@ -98,3 +98,14 @@ class GameRules:
         if (player.getcardsnumber() < 5):
             return True
         return False
+
+    @classmethod
+    def cardstoexchangeok(self, player, cardname):
+        cards = player.getcards()
+        count = 0
+        for card in cards:
+            if card.getname() == cardname or card.getname() == "joker":
+                count = count + 1
+        if count >= 3:
+            return True
+        return False
