@@ -272,6 +272,25 @@ class GameRulesTest(unittest.TestCase):
         self.assertEqual(expected,GameRules.checkcardsnum(player))
 
 
+        #checks if the player has three cards, of the type chosen, to exchange per extra battalions
+    def test_threeintantryexchange(self):
+        cards = [Cards(),Infantry(),Chivalry(),Artillery(),Cards(),Infantry()]
+        player = IAPlayers("Pepe",0,"orange",cards)
+        expected = True
+        self.assertEqual(expected,GameRules.cardstoexchangeok(player,"infantry"))
+
+    def test_threeintantryexchange(self):
+        cards = [Cards(),Infantry(),Chivalry(),Artillery(),Cards(),Infantry()]
+        player = IAPlayers("Pepe",0,"orange",cards)
+        expected = True
+        self.assertEqual(expected,GameRules.cardstoexchangeok(player,"chivalry"))
+
+    def test_threeintantryexchange(self):
+        cards = [Cards(),Infantry(),Chivalry(),Artillery(),Infantry()]
+        player = IAPlayers("Pepe",0,"orange",cards)
+        expected = False
+        self.assertEqual(expected,GameRules.cardstoexchangeok(player,"artillery"))
+
 
 
 if __name__ == '__main__':
