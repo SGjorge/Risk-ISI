@@ -23,7 +23,7 @@ class Players:
 
 	def getbattalions(self):
 		return self.__BATTALIONS
-		
+
 	def getcolourid(self):
 		return self.__COLOURID
 
@@ -85,8 +85,13 @@ class IAPlayers(Players):
 	def __init__(self,name,battalions,color):
 		name = name + "IA"
 		super(self.__class__, self).__init__(name,battalions,color)
-
-# this class is an API to work about Players' array 
+	def attack (self, country):
+		countriesAux = self.getconqueredcountries()
+		if (country in countriesAux):
+			if (country.battalions > 4):
+				return True
+		return False
+# this class is an API to work about Players' array
 class ArrayPlayers:
 	# put first in first position array and the other to the left hand in order in new right hand array
 	def orderplayers(self,players,first):
@@ -104,7 +109,7 @@ class ArrayPlayers:
 			return players
 		elif (firstPosition == 0):
 			return players
-		
+
 		newPlayer = []
 		newPlayer.append(first)
 		for i in range(1,(len(players)*2)):
@@ -118,5 +123,3 @@ class ArrayPlayers:
 		for i in players:
 			string += i.toString() + ", "
 		return string
-		
-
