@@ -255,7 +255,7 @@ class GameRulesTest(unittest.TestCase):
     def test_getplayercards(self):
         player =  HumanPlayers("Pepe",0,"orange")
         expected = None
-        self.assertEqual(expected,HumanPlayers.getcards(player))
+        self.assertEqual(expected,player.getcards())
 
 
         #checks if the number of cards per player at the end of a turn is ok
