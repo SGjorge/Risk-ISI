@@ -40,6 +40,24 @@ class Players:
 		cards = self.getcards()
 		return  len(cards)
 
+	def getcardtypenumber(self):
+		infCount = 0
+		chiCount = 0
+		artCount = 0
+		jokCount = 0
+		
+		cards = self.getcards()
+		for card in cards:
+			if card.getname() == "infantry":
+				infCount = infCount + 1
+			elif card.getname() == "chivalry":
+				chiCount = chiCount + 1
+			elif card.getname() == "artillery":
+				artCount = artCount + 1
+			elif card.getname() == "joker":
+				jokCount = jokCount + 1
+		return (infCount,chiCount,artCount,jokCount)
+
 	def addcards(self,newCards):
 		for card in newCards:
 			if card.getname() == "infantry":
@@ -50,6 +68,27 @@ class Players:
 				self.__CARDS.append(Artillery())
 			elif card.getname() == "joker":
 				self.__CARDS.append(Cards())
+		return True
+
+	def delcards(self,nameCard,num):
+		[infCount,chiCount,artCount,jokCount] = self.getcardtypenumber()
+		if nameCard == "infantry":
+			infCount = infCount - num
+		elif nameCard == "chivalry":
+			chiCount = chiCount - num
+		elif nameCard == "artillery":
+			artCount = artCount - num
+		elif nameCard == "joker":
+			jokCount = jokCount - num
+		self.__CARDS = [] #vaciamos la lista
+		for i in range(1,infCount):
+			cards.append(Infantry())
+		for i in range(1,chiCount):
+			cards.append(Chivalry())
+		for i in range(1,artCount):
+			cards.append(Artyllery())
+		for i in range(1,jokCount):
+			cards.append(Cards())
 		return True
 
 	def getusedbattalions(self):
