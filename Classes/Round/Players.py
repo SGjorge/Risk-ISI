@@ -102,6 +102,9 @@ class Players:
 	def modifyconquered(self,c):
 		self.__CONQUEREDCOUNTRIES = c
 
+	def changebattalions(self,battalions):
+		self.__BATTALIONS += battalions
+
 	def addconqueredcountry(self,country):
 		c = self.__CONQUEREDCOUNTRIES
 		c.append(country)
