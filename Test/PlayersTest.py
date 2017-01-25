@@ -101,6 +101,15 @@ class PlayersTest(unittest.TestCase):
 	def test_iaplayercards(self):
 		self.assertEqual(expectedCards,iaPlayer.getcards())
 
+	def test_changebattalions(self):
+		paux = HumanPlayers("Pepe",0,"orange",[])
+		paux.changebattalions(-1)
+		newbattalions = paux.getbattalions()
+		self.assertEqual(-1,newbattalions)
+		paux.changebattalions(5)
+		newbattalions = paux.getbattalions()
+		self.assertEqual(4,newbattalions)
+
 	def test_compareplayers(self):
 		self.assertEqual(True,humanPlayer.isequal(humanPlayer))
 		self.assertEqual(False,humanPlayer.isequal(iaPlayer))
