@@ -8,7 +8,7 @@ sys.path.append("../Classes/Round/")
 
 from GameRules import GameRules
 from Countries import Countries, Country
-from Players import Players, HumanPlayers, IAPlayers, ArrayPlayers
+from Players import Players, HumanPlayers, #IAPlayers, ArrayPlayers
 
 class GameRulesTest(unittest.TestCase):
 
@@ -250,16 +250,26 @@ class GameRulesTest(unittest.TestCase):
         expected = [0]
         self.assertEqual(expected,GameRules.getlostbattalions(rollsAtt,rollsDef))
 
-    def test_maximumcardsperhumanplayer(self):
-        player = HumanPlayers("Pepe",0,"orange",8)
-        expected = False
-        self.assertEqual(expected,GameRules.numberofcardsok(player))
 
-    def test_maximumcardsperIAplayer(self):
-        player = IAPlayers("Pepe",0,"orange",4)
+        #gets an array with all the cards from a player
+    def test_getplayercards(self):
+        player =  HumanPlayers("Pepe",0,"orange")
+        expected = None
+        self.assertEqual(expected,HumanPlayers.getcards(player))
+
+
+        #checks if the number of cards per player at the end of a turn is ok
+    def test_maximumcardsperplayer(self):
+        playerCards = [joker, chivalry, chivalry, artillery, infantry]
+        expected = False
+        self.assertEqual(expected,GameRules.numberofcardsok(playerCards))
+
+    def test_maximumcardsperotherplayer(self):
+        playerCards = [chivalry, chivalry, artillery, infantry]
         expected = True
-        self.assertEqual(expected,GameRules.numberofcardsok(player))
-        
+        self.assertEqual(expected,GameRules.numberofcardsok(playerCards))
+
+
 
 if __name__ == '__main__':
     unittest.main()
