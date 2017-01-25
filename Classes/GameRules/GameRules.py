@@ -3,8 +3,12 @@
 import sys
 sys.path.append("../")
 sys.path.append("../Clases/Round/")
+
+from Cards import Cards, Infantry, Chivalry, Artillery
 from CoreVariables import CoreVariables as CV
 from Countries import Countries, Country
+from Players import Players, HumanPlayers, IAPlayers
+
 
 class GameRules:
 
@@ -88,3 +92,9 @@ class GameRules:
             if rollsAtt[0] > rollsDef[0]:
                 lostAttBattalions[0] = 0
         return  lostAttBattalions
+
+    @classmethod
+    def checkcardsnum(self, player):
+        if (player.getcardsnumber() < 5):
+            return True
+        return False
