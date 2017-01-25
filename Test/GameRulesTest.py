@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import sys
 import unittest
 
@@ -7,7 +6,10 @@ sys.path.append("../Classes/GameRules/")
 sys.path.append("../Classes/Round/")
 
 from GameRules import GameRules
+from Cards import Cards, Infantry, Chivalry, Artillery
 from Countries import Countries, Country
+from Players import Players, HumanPlayers, IAPlayers
+
 
 class GameRulesTest(unittest.TestCase):
 
@@ -248,6 +250,26 @@ class GameRulesTest(unittest.TestCase):
         rollsDef = [5,4,3]
         expected = [0]
         self.assertEqual(expected,GameRules.getlostbattalions(rollsAtt,rollsDef))
+
+
+        #checks if the number of cards per player is ok (< 5)
+        #must be checked right at the very end of the turn.
+    def test_zerocardsok(self):
+        player = HumanPlayers("Pepe",0,"orange",[])
+        expected = True
+        self.assertEqual(expected,GameRules.checkcardsnum(player))
+
+    def test_fourcardsok(self):
+        cards = [Cards(),Infantry(),Chivalry(),Artillery()]
+        player = HumanPlayers("Pepe",0,"orange",cards)
+        expected = True
+        self.assertEqual(expected,GameRules.checkcardsnum(player))
+
+    def test_sixcardsok(self):
+        cards = [Cards(),Infantry(),Chivalry(),Artillery(),Cards(),Infantry()]
+        player = IAPlayers("Pepe",0,"orange",cards)
+        expected = False
+        self.assertEqual(expected,GameRules.checkcardsnum(player))
 
 
 
