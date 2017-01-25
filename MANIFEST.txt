@@ -43,8 +43,5 @@ CLASES PRINCIPALES
 			Artillery --> Clase derivada que implementa lo necesario de la carta de artillería.
 			Cavalry --> Clase derivada que implementa lo necesario de la carta de caballería.
 
-
-
-
 MÉTODOS
 	main() --> método principal del proyecto, no recibe parametros de entrada ni salida.
