@@ -16,12 +16,12 @@ class GameTest(unittest.TestCase):
 	global p1
 	global p2
 	global p3
-	global initBattalions 
+	global initBattalions
 
 	initBattalions = GameRules.getinitialbattalions(3)
-	p1 = HumanPlayers("Pepe",initBattalions,"orange")
-	p2 = HumanPlayers("Ana",initBattalions,"red")
-	p3 = HumanPlayers("Yo",initBattalions,"blue")
+	p1 = HumanPlayers("Pepe",initBattalions,"orange",[])
+	p2 = HumanPlayers("Ana",initBattalions,"red",[])
+	p3 = HumanPlayers("Yo",initBattalions,"blue",[])
 	playersExpected = [p1,p2,p3]
 
 	def test_initemptygame(self):
@@ -47,11 +47,11 @@ class GameTest(unittest.TestCase):
 	def test_initphaseplayerswithIA(self):
 		playersInitExpected = playersExpected
 		game = Game()
-		numPlayersExpected = 5 
+		numPlayersExpected = 5
 		game.initphaseplayers(5,playersExpected)
 		self.assertEqual(numPlayersExpected,len(game.getplayers()))
-		IA1 = IAPlayers("1",0,"green")
-		IA2 = IAPlayers("2",0,"white")
+		IA1 = IAPlayers("1",0,"green",[])
+		IA2 = IAPlayers("2",0,"white",[])
 		playersInitExpected.append(IA1)
 		playersInitExpected.append(IA2)
 		players = game.getplayers()
@@ -86,9 +86,9 @@ class GameTest(unittest.TestCase):
 			self.assertEqual(player,country.getconqueror())
 
 	def test_initfirstphasecompletewithoutIA(self):
-		p1 = HumanPlayers("Pepe",initBattalions,"orange")
-		p2 = HumanPlayers("Ana",initBattalions,"red")
-		p3 = HumanPlayers("Yo",initBattalions,"blue")
+		p1 = HumanPlayers("Pepe",initBattalions,"orange",[])
+		p2 = HumanPlayers("Ana",initBattalions,"red",[])
+		p3 = HumanPlayers("Yo",initBattalions,"blue",[])
 		playersExpected = [p1,p2,p3]
 		game = Game()
 		game.initboard()
@@ -110,9 +110,9 @@ class GameTest(unittest.TestCase):
 			self.assertEqual(usedBeforeBattalions,35)
 
 	def test_phaseonecomplete(self):
-		p1 = HumanPlayers("Pepe",initBattalions,"orange")
-		p2 = HumanPlayers("Ana",initBattalions,"red")
-		p3 = HumanPlayers("Yo",initBattalions,"blue")
+		p1 = HumanPlayers("Pepe",initBattalions,"orange",[])
+		p2 = HumanPlayers("Ana",initBattalions,"red",[])
+		p3 = HumanPlayers("Yo",initBattalions,"blue",[])
 		playersExpected = [p1,p2,p3]
 		tidyrolls = [3,5,2]
 		game = Game()

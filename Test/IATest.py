@@ -12,7 +12,7 @@ import unittest
 class IATest(unittest.TestCase):
     def test_abletoattack(self):
         expected = False
-        playerAux = IAPlayers("prueba", 5, "blue")
+        playerAux = IAPlayers("prueba", 5, "blue",[])
         self.assertEqual(expected, playerAux.attack("Europa"))
 
 
