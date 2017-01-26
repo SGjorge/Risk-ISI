@@ -204,7 +204,8 @@ class PlayersTest(unittest.TestCase):
 
 	def test_attack_IA_1 (self):
 		playerAux = IAPlayers("Pepe",35,"orange",[])
-
+		countryAux = Country("Europa del sur", playerAux)
+		playerAux.addconqueredcountry(countryAux)
 		expectedOrigin = None
 		expectedDestiny = None
 		expectedRoll = None
@@ -217,15 +218,43 @@ class PlayersTest(unittest.TestCase):
 
 	def test_attack_IA_2 (self):
 		playerAux = IAPlayers("Pepe",35,"orange",[])
-		paisAux = Country("Europa del sur", playerAux)
-		paisAux.changebattalions(6)
-		playerAux.addconqueredcountry(paisAux)
+		countryAux = Country("Europa del sur", playerAux)
+		countryAux.changebattalions(6)
+		playerAux.addconqueredcountry(countryAux)
 		expectedOrigin = "Europa del sur"
 		expectedDestiny = "Europa del norte"
 		attacked = playerAux.attack("Europa del sur", "Europa del norte")
 
 		self.assertEqual(expectedOrigin, attacked[0])
 		self.assertEqual(expectedDestiny, attacked[1])
+		#no se puede hacer assertEqual de la tirada PORQUE ES ALEATORIA. Siempre va a salir diferente.
+
+	def test_deffend_human(self):
+		playerAux = HumanPlayers("Pepe",35,"orange",[])
+		countryAux = Country("Europa del norte", playerAux)
+		expected = "Europa del norte"
+		deffended = playerAux.deffend("Europa del norte", 2)
+		self.assertEqual(expected, deffended[0])
+		#no se puede hacer assertEqual de la tirada PORQUE ES ALEATORIA. Siempre va a salir diferente.
+
+	def test_deffend_IA_1 (self):
+		playerAux = IAPlayers("Pepe",35,"orange",[])
+		countryAux = Country("Europa del norte", playerAux)
+		playerAux.addconqueredcountry(countryAux)
+		expected = None
+		expectedRoll = None
+		deffended = playerAux.deffend("Europa del norte")
+		self.assertEqual(expected, deffended[0])
+		self.assertEqual(expectedRoll, deffended[1])
+
+	def test_deffend_IA_2(self):
+		playerAux = IAPlayers("Pepe",35,"orange",[])
+		countryAux = Country("Europa del norte", playerAux)
+		countryAux.changebattalions(6)
+		playerAux.addconqueredcountry(countryAux)
+		deffended = playerAux.deffend("Europa del norte")
+		expectedCountry = "Europa del norte"
+		self.assertEqual(expectedCountry, deffended[0])
 		#no se puede hacer assertEqual de la tirada PORQUE ES ALEATORIA. Siempre va a salir diferente.
 if __name__ == '__main__':
 	unittest.main()
