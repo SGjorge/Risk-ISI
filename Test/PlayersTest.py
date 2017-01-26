@@ -246,5 +246,18 @@ class PlayersTest(unittest.TestCase):
 		expectedCountry = "Europa del norte"
 		self.assertEqual(expectedCountry, deffended[0])
 		#no se puede hacer assertEqual de la tirada PORQUE ES ALEATORIA. Siempre va a salir diferente.
+
+		#checks if a player can pic an aleatory card
+	def test_humanplayerpicsacard(self):
+		playerAux = IAPlayers("Pepe",35,"orange",[])
+		expected = 1
+		self.assertEqual(expected, playerAux.picacard())
+
+	def test_Iplayerpicsacard(self):
+		playerAux = IAPlayers("Pepe",35,"orange",[Infantry()])
+		expected = 2
+		self.assertEqual(expected, playerAux.picacard())
+
+
 if __name__ == '__main__':
 	unittest.main()
