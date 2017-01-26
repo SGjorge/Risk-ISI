@@ -70,6 +70,7 @@ class Players:
 		return self.getcardsnumber()
 
 	def delcards(self,nameCard,num):
+		#borra cartas de UN TIPO. Tantas llamadas como tipo de cartas
 		[jokCount,infCount,chiCount,artCount] = self.getcardtypenumber()
 		if nameCard == "infantry":
 			infCount = infCount - num
@@ -154,8 +155,24 @@ class Players:
 
 	def attack (self):
 		pass
+
 	def deffend (self):
 		pass
+
+	def changecards(self):
+		arrayCards = self.getcardtypenumber()
+		#(jokCount,infCount,chiCount,artCount)
+		jokCount = arrayCards[0]
+		infCount = arrayCards[1]
+		chiCount = arrayCards[2]
+		artCount = arrayCards[3]
+		total = self.getcardsnumber()
+		if artCount >= 3 and total >= 5:
+			return self.delcards("artillery", 3)
+		if chiCount >= 3 and total >= 5:
+			return self.delcards("chivalry", 3)
+		if infCount >= 3 and total >= 5:
+			return self.delcards("infantry", 3)
 
 # derivated class HumanPlayers to Players
 class HumanPlayers(Players):
