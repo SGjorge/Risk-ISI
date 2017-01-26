@@ -191,8 +191,10 @@ class PlayersTest(unittest.TestCase):
 
 		#returns the total num of cards the player has after deleting
 	def test_delcards(self):
-		expected = 2
-		self.assertEqual(expected,p2.delcards("infantry",2))
+		cards = [Infantry(),Artillery(),Infantry(),Cards(),Infantry(),Chivalry()]
+		playerAux = IAPlayers("Pepe",35,"orange",cards)
+		expected = 3
+		self.assertEqual(expected,playerAux.delcards("infantry",3))
 
 	#metodos "propios" de jugadores (humanos e IA)
 	def test_attack_human (self):
