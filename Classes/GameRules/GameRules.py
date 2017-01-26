@@ -109,3 +109,12 @@ class GameRules:
         if count >= 3:
             return True
         return False
+
+    @classmethod
+    def movebattalions(self,player,origCountry,destCountry,numBattalions):
+        if origCountry.conqueror != destCountry:
+            return False
+        if origCountry.areneighbours(destCountry):
+            return True
+        ####acabar###
+        return False
