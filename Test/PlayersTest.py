@@ -301,11 +301,22 @@ class PlayersTest(unittest.TestCase):
 		cardsleft = playerAux.changecards()
 		self.assertEqual(expected, cardsleft)
 
-	def test_changecards_4(self):
+	def test_changecards_4 (self):
 		playerAux = Players("Pepe",35,"orange",[])
 		card1 = Artillery()
 		card2 = Infantry()
 		card3 = Chivalry()
+		cards = [card1, card2, card3]
+		expected = 0
+		playerAux.addcards(cards)
+		cardsleft = playerAux.changecards()
+		self.assertEqual(expected, cardsleft)
+
+	def test_changecards_5 (self):
+		playerAux = Players("Pepe",35,"orange",[])
+		card1 = Artillery()
+		card2 = Cards()
+		card3 = Cards()
 		cards = [card1, card2, card3]
 		expected = 0
 		playerAux.addcards(cards)
