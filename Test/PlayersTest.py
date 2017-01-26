@@ -195,8 +195,12 @@ class PlayersTest(unittest.TestCase):
 	#metodos "propios" de jugadores (humanos e IA)
 	def test_attack_human (self):
 		playerAux = HumanPlayers("Pepe",35,"orange",[])
-		expected = True
-		self.assertEqual(expected, playerAux.attack("Europa del sur", "Europa del norte", 3))
+		expectedOrigin = "Europa del sur"
+		expectedDestiny = "Europa del norte"
+		attacked = playerAux.attack("Europa del sur", "Europa del norte", 3)
+		self.assertEqual(expectedOrigin, attacked[0])
+		self.assertEqual(expectedDestiny, attacked[1])
+		#no se puede hacer assertEqual de la tirada PORQUE ES ALEATORIA. Siempre va a salir diferente.
 
 	def test_attack_IA (self):
 		playerAux = IAPlayers("Pepe",35,"orange",[])
