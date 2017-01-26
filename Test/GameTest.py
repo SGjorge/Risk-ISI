@@ -174,7 +174,30 @@ class GameTest(unittest.TestCase):
 			usedBeforeBattalions = player.getusedbattalions()
 			self.assertEqual(usedBeforeBattalions,35)
 
-	
+	def test_phasetwocomplete(self):
+		print("vamos a simular todos los ataques")
+		p1 = HumanPlayers("Pepe",initBattalions,"orange",[])
+		p2 = HumanPlayers("Ana",initBattalions,"red",[])
+		p3 = HumanPlayers("Yo",initBattalions,"blue",[])
+		playersExpected = [p1,p2,p3]
+		game = Game()
+		game.initboard()
+		game.initphaseplayers(3,playersExpected)
+		players = game.getplayers()
+		world = game.getcountries()
+		for country in world:
+			index = world.index(country)
+			if( index != 0):
+				index = index % len(players)
+			player = players[index]
+			game.initconquers(country,player)
+		usedBattalions = int(len(world) / len(players))
+		for player in players:
+			usedBattalionsAux = player.getusedbattalions()
+			self.assertEqual(usedBattalions,usedBattalionsAux)
+			player.distributebatallions()
+			usedBeforeBattalions = player.getusedbattalions()
+			self.assertEqual(usedBeforeBattalions,35)
 
 if __name__ == '__main__':
 	unittest.main()
