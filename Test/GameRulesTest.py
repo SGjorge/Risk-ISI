@@ -294,22 +294,57 @@ class GameRulesTest(unittest.TestCase):
         expected = False
         self.assertEqual(expected,GameRules.cardstoexchangeok(player,"artillery"))
 
-        #check the total number of each type of cards
-    def test_numberofjockers(self):
-        expected = 2
-        self.assertEqual(expected,CV().jokersCards)
+        #checks if the battalion movement between two counries of a player is ok
+    def test_movebattalions1(self):
+        player = HumanPlayers("Pepe",10,"orange",playerCountries,[])
+        playerCountries = [Country("Europa del norte","orage"),Country("Europa del sur","orange")]
+        origCountry = Country("Europa del norte","orange")
+        origCountry.changebattalions(10)
+        destCountry = Country("Europa del sur","orage")
+        numBattalions = 5
+        expected = True
+        self.assertEqual(expected,GameRules.movebattalions(player,origCountry,destCountry,numBattalions))
 
-    def test_numberofinfantry(self):
-        expected = 14
-        self.assertEqual(expected,CV().infantryCards)
+    def test_movebattalions2(self):
+        player = HumanPlayers("Pepe",5,"orange",playerCountries,[])
+        playerCountries = [Country("Europa del norte","orage"),Country("Europa del sur","orange")]
+        origCountry = Country("Europa del norte","orage")
+        origCountry.changebattalions(5)
+        destCountry = Country("Europa del sur","orange")
+        numBattalions = 5
+        expected = False
+        self.assertEqual(expected,GameRules.movebattalions(player,origCountry,destCountry,numBattalions))
 
-    def test_numberofchivalry(self):
-        expected = 14
-        self.assertEqual(expected,CV().chivalryCards)
+    def test_movebattalions3(self):
+        player = HumanPlayers("Pepe",38,"orange",playerCountries,[])
+        playerCountries = [Country("Europa del norte","orage"),Country("Europa del sur","orange")]
+        origCountry = Country("Europa del norte","orange")
+        origCountry.changebattalions(5)
+        destCountry = Country("Islandia","red")
+        numBattalions = 1
+        expected = False
+        self.assertEqual(expected,GameRules.movebattalions(player,origCountry,destCountry,numBattalions))
 
-    def test_numberofartillery(self):
-        expected = 14
-        self.assertEqual(expected,CV().artilleryCards)
+    def test_movebattalions4(self):
+        player = HumanPlayers("Pepe",38,"orange",playerCountries,[])
+        playerCountries = [Country("Europa del norte","orange"),Country("Europa del sur","orange"),Country("África del norte","orange")]
+        origCountry = Country("Europa del norte","orange")
+        origCountry.changebattalions(5)
+        destCountry = Country("África del norte","orange")
+        numBattalions = 1
+        expected = True
+        self.assertEqual(expected,GameRules.movebattalions(player,origCountry,destCountry,numBattalions))
+
+    def test_movebattalions5(self):
+        player = HumanPlayers("Pepe",38,"orange",playerCountries,[])
+        playerCountries = [Country("Europa del norte","orange"),Country("Europa del sur","orange"),Country("África del norte","orange"),Country("Brasil","orange")]
+        origCountry = Country("Europa del norte","orange")
+        origCountry.changebattalions(5)
+        destCountry = Country("Brasil","orange")
+        numBattalions = 1
+        expected = True
+        self.assertEqual(expected,GameRules.movebattalions(player,origCountry,destCountry,numBattalions))
+
 
 
 if __name__ == '__main__':
