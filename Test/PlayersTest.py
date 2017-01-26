@@ -267,13 +267,38 @@ class PlayersTest(unittest.TestCase):
 		card1 = Infantry()
 		card2 = Infantry()
 		card3 = Infantry()
-		playerAux.addcards(card1)
-		playerAux.addcards(card2)
-		playerAux.addcards(card3)
-		expected = 0
-		playerAux.changecards()
-		cardsleft = playerAux.getcardsnumber()
+		card4 = Infantry()
+		card5 = Infantry()
+		cards = [card1, card2, card3, card4, card5]
+		expected = 2
+		playerAux.addcards(cards)
+		cardsleft = playerAux.changecards()
+		self.assertEqual(expected, cardsleft)
 
+	def test_changecards_2 (self):
+		playerAux = Players("Pepe",35,"orange",[])
+		card1 = Chivalry()
+		card2 = Chivalry()
+		card3 = Chivalry()
+		card4 = Chivalry()
+		card5 = Chivalry()
+		cards = [card1, card2, card3, card4, card5]
+		expected = 2
+		playerAux.addcards(cards)
+		cardsleft = playerAux.changecards()
+		self.assertEqual(expected, cardsleft)
+
+	def test_changecards_3 (self):
+		playerAux = Players("Pepe",35,"orange",[])
+		card1 = Artillery()
+		card2 = Artillery()
+		card3 = Artillery()
+		card4 = Artillery()
+		card5 = Artillery()
+		cards = [card1, card2, card3, card4, card5]
+		expected = 2
+		playerAux.addcards(cards)
+		cardsleft = playerAux.changecards()
 		self.assertEqual(expected, cardsleft)
 
 if __name__ == '__main__':
