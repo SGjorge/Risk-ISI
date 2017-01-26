@@ -262,6 +262,19 @@ class PlayersTest(unittest.TestCase):
 		expected = 2
 		self.assertEqual(expected, playerAux.picacard())
 
+	def test_changecards_1(self):
+		playerAux = Players("Pepe",35,"orange",[])
+		card1 = Infantry()
+		card2 = Infantry()
+		card3 = Infantry()
+		playerAux.addcards(card1)
+		playerAux.addcards(card2)
+		playerAux.addcards(card3)
+		expected = 0
+		playerAux.changecards()
+		cardsleft = playerAux.getcardsnumber()
+
+		self.assertEqual(expected, cardsleft)
 
 if __name__ == '__main__':
 	unittest.main()
