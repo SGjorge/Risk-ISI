@@ -45,7 +45,6 @@ class Players:
 		chiCount = 0
 		artCount = 0
 		jokCount = 0
-
 		cards = self.getcards()
 		for card in cards:
 			if card.getname() == "infantry":
@@ -56,7 +55,7 @@ class Players:
 				artCount = artCount + 1
 			elif card.getname() == "joker":
 				jokCount = jokCount + 1
-		return (infCount,chiCount,artCount,jokCount)
+		return (jokCount,infCount,chiCount,artCount)
 
 	def addcards(self,newCards):
 		for card in newCards:
@@ -68,10 +67,10 @@ class Players:
 				self.__CARDS.append(Artillery())
 			elif card.getname() == "joker":
 				self.__CARDS.append(Cards())
-		return True
+		return self.getcardsnumber()
 
 	def delcards(self,nameCard,num):
-		[infCount,chiCount,artCount,jokCount] = self.getcardtypenumber()
+		[jokCount,infCount,chiCount,artCount] = self.getcardtypenumber()
 		if nameCard == "infantry":
 			infCount = infCount - num
 		elif nameCard == "chivalry":
@@ -80,16 +79,18 @@ class Players:
 			artCount = artCount - num
 		elif nameCard == "joker":
 			jokCount = jokCount - num
+
 		self.__CARDS = [] #vaciamos la lista
-		for i in range(1,infCount):
-			cards.append(Infantry())
-		for i in range(1,chiCount):
-			cards.append(Chivalry())
-		for i in range(1,artCount):
-			cards.append(Artyllery())
-		for i in range(1,jokCount):
-			cards.append(Cards())
-		return True
+		for i in range(1,infCount+1):
+			self.__CARDS.append(Infantry())
+		for i in range(1,chiCount+1):
+			self.__CARDS.append(Chivalry())
+		for i in range(1,artCount+1):
+			self.__CARDS.append(Artillery())
+		for i in range(1,jokCount+1):
+			self.__CARDS.append(Cards())
+		return self.getcardsnumber()
+
 
 	def picacard(self):
 		type = randint(1,4)
