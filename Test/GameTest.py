@@ -24,6 +24,27 @@ class GameTest(unittest.TestCase):
 	p3 = HumanPlayers("Yo",initBattalions,"blue",[])
 	playersExpected = [p1,p2,p3]
 
+		#check the number of cards left
+	def test_getjockercardsleft(self):
+		game = Game()
+		expected = 2
+		self.assertEqual(expected, game.getjokernum())
+
+	def test_getinfantrycardsleft(self):
+		game = Game()
+		expected = 14
+		self.assertEqual(expected, game.getinfantrynum())
+
+	def test_getchivalrycardsleft(self):
+		game = Game()
+		expected = 14
+		self.assertEqual(expected, game.getchivalrynum())
+
+	def test_getartillerycardsleft(self):
+		game = Game()
+		expected = 14
+		self.assertEqual(expected, game.getartillerynum())
+
 	def test_initemptygame(self):
 		g1 = Game()
 		self.assertEqual(None,g1.getcountries())
@@ -109,6 +130,20 @@ class GameTest(unittest.TestCase):
 			usedBeforeBattalions = player.getusedbattalions()
 			self.assertEqual(usedBeforeBattalions,35)
 
+	def test_orderrolls(self):
+		p1 = HumanPlayers("Pepe",initBattalions,"orange",[])
+		p2 = HumanPlayers("Ana",initBattalions,"red",[])
+		p3 = HumanPlayers("Yo",initBattalions,"blue",[])
+		playersExpected = [p1,p2,p3]
+		tidyrolls = [3,5,2]
+		game = Game()
+		game.initboard()
+		firstPlayer = game.firstplayer(tidyrolls,playersExpected)
+		orderedPlayers = ArrayPlayers().orderplayers(playersExpected,firstPlayer)
+		self.assertEqual(orderedPlayers[0].isequal(playersExpected[1]),True)
+		self.assertEqual(orderedPlayers[1].isequal(playersExpected[0]),True)
+		self.assertEqual(orderedPlayers[2].isequal(playersExpected[2]),True)
+
 	def test_phaseonecomplete(self):
 		p1 = HumanPlayers("Pepe",initBattalions,"orange",[])
 		p2 = HumanPlayers("Ana",initBattalions,"red",[])
@@ -139,29 +174,7 @@ class GameTest(unittest.TestCase):
 			usedBeforeBattalions = player.getusedbattalions()
 			self.assertEqual(usedBeforeBattalions,35)
 
-
-		#check the number of cards left
-	def test_getjockercardsleft(self):
-		game = Game()
-		expected = 2
-		self.assertEqual(expected, game.getjokernum())
-
-	def test_getinfantrycardsleft(self):
-		game = Game()
-		expected = 14
-		self.assertEqual(expected, game.getinfantrynum())
-
-	def test_getchivalrycardsleft(self):
-		game = Game()
-		expected = 14
-		self.assertEqual(expected, game.getchivalrynum())
-
-	def test_getartillerycardsleft(self):
-		game = Game()
-		expected = 14
-		self.assertEqual(expected, game.getartillerynum())
-
-
+	
 
 if __name__ == '__main__':
 	unittest.main()
