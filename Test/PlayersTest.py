@@ -237,17 +237,7 @@ class PlayersTest(unittest.TestCase):
 		self.assertEqual(expected, deffended[0])
 		#no se puede hacer assertEqual de la tirada PORQUE ES ALEATORIA. Siempre va a salir diferente.
 
-	def test_deffend_IA_1 (self):
-		playerAux = IAPlayers("Pepe",35,"orange",[])
-		countryAux = Country("Europa del norte", playerAux)
-		playerAux.addconqueredcountry(countryAux)
-		expected = None
-		expectedRoll = None
-		deffended = playerAux.deffend("Europa del norte")
-		self.assertEqual(expected, deffended[0])
-		self.assertEqual(expectedRoll, deffended[1])
-
-	def test_deffend_IA_2(self):
+	def test_deffend_IA(self):
 		playerAux = IAPlayers("Pepe",35,"orange",[])
 		countryAux = Country("Europa del norte", playerAux)
 		countryAux.changebattalions(6)

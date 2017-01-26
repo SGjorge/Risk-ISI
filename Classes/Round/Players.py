@@ -149,9 +149,10 @@ class HumanPlayers(Players):
 	def __init__(self,name,battalions,color,cards):
 		super(self.__class__, self).__init__(name,battalions,color,cards)
 
-	#devuelve un array de tres cosas: el pais DESDE el que ataca, el pais AL que ataca
-	#y su tirada entera (con los battallones con lo que queria atacar)
+
 	def attack (self, origin, destiny, battalions):
+		#devuelve un array de tres cosas: el pais DESDE el que ataca, el pais AL que ataca
+		#y su tirada entera (con los battallones con lo que queria atacar)
 		attacked = self.rolls(battalions)
 		return [origin, destiny, attacked]
 
@@ -163,7 +164,12 @@ class IAPlayers(Players):
 	def __init__(self,name,battalions,color,cards):
 		name = name + "IA"
 		super(self.__class__, self).__init__(name,battalions,color,cards)
+
+	#siempre supongo que el pais con el que quiero atacar o defender es mio porque se comprueba antes
 	def attack (self, origin, destiny):
+		#solo va a atacar si tiene mas de cinco batallones en el pais origen, y devolvera
+		#los mismos valores que el attack de human. Si no los tiene, devuelve todos nulos
+		#devuelve el NOMBRE del pais
 		conquered = self.getconqueredcountries()
 		for i in range(len(conquered)):
 			if (conquered[i].name == origin):
@@ -172,11 +178,20 @@ class IAPlayers(Players):
 					attacked = self.rolls(3)
 					return [origin, destiny, attacked]
 		return [None, None, None]
-		#solo va a atacar si tiene mas de cinco batallones en el pais origen, y devolvera
-		#los mismos valores que el attack de human. Si no los tiene, devuelve todos nulos
 
 	def deffend (self, country):
-		pass
+		#devuelve el NOMBRE del pais y la tirada, siempre va a atacar con los maximos que pueda
+		conquered = self.getconqueredcountries()
+		for i in range(len(conquered)):
+			if (conquered[i].name == country):
+				countryDeffended = conquered[i]
+				if countryDeffended.battalions >= 2:
+					deffended = self.rolls(2)
+
+					return [country, deffended]
+				else:
+					deffended = self.rolls(countryDeffended.battalions)
+					return [country, deffended]
 # this class is an API to work about Players' array
 class ArrayPlayers:
 	# put first in first position array and the other to the left hand in order in new right hand array
