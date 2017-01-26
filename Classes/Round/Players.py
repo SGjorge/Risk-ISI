@@ -140,7 +140,10 @@ class Players:
 		return (self.__NAME + " " + str(self.__BATTALIONS) + " " +self.__COLOURID)
 
 	def attack (self):
-		return True
+		pass
+	def deffend (self):
+		pass
+
 # derivated class HumanPlayers to Players
 class HumanPlayers(Players):
 	def __init__(self,name,battalions,color,cards):
@@ -152,7 +155,9 @@ class HumanPlayers(Players):
 		attacked = self.rolls(battalions)
 		return [origin, destiny, attacked]
 
-
+	def deffend (self, country, battalions):
+		deffended = self.rolls(battalions)
+		return [country, deffended]
 # derivated class IAPlayers to Players
 class IAPlayers(Players):
 	def __init__(self,name,battalions,color,cards):
@@ -169,6 +174,9 @@ class IAPlayers(Players):
 		return [None, None, None]
 		#solo va a atacar si tiene mas de cinco batallones en el pais origen, y devolvera
 		#los mismos valores que el attack de human. Si no los tiene, devuelve todos nulos
+
+	def deffend (self, country):
+		pass
 # this class is an API to work about Players' array
 class ArrayPlayers:
 	# put first in first position array and the other to the left hand in order in new right hand array
