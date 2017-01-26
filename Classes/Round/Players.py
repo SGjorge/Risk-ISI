@@ -161,7 +161,6 @@ class Players:
 
 	def changecards(self):
 		arrayCards = self.getcardtypenumber()
-		#(jokCount,infCount,chiCount,artCount)
 		jokCount = arrayCards[0]
 		infCount = arrayCards[1]
 		chiCount = arrayCards[2]
@@ -173,6 +172,11 @@ class Players:
 			return self.delcards("chivalry", 3)
 		if infCount >= 3 and total >= 5:
 			return self.delcards("infantry", 3)
+		if infCount >= 1 and chiCount >= 1 and artCount >= 1:
+			self.delcards("artillery", 1)
+			self.delcards("chivalry", 1)
+			return self.delcards("infantry", 1)
+
 
 # derivated class HumanPlayers to Players
 class HumanPlayers(Players):
