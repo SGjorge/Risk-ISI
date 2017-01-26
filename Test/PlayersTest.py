@@ -193,15 +193,15 @@ class PlayersTest(unittest.TestCase):
 		self.assertEqual(expected,p2.delcards("infantry",2))
 
 	#metodos "propios" de jugadores (humanos e IA)
-	# def test_attack_human (self):
-	# 	playerAux = HumanPlayers("Pepe",35,"orange",[])
-	# 	expected = True
-	# 	self.assertEqual(expected, playerAux.attack("Europa del sur", "Europa del norte", 3))
-	#
-	# def test_attack_IA (self):
-	# 	playerAux = IAPlayers("Pepe",35,"orange",[])
-	# 	expected = True
-	# 	self.assertEqual(expected, playerAux.attack("Europa del sur", "Europa del norte", 3))
+	def test_attack_human (self):
+		playerAux = HumanPlayers("Pepe",35,"orange",[])
+		expected = True
+		self.assertEqual(expected, playerAux.attack("Europa del sur", "Europa del norte", 3))
+
+	def test_attack_IA (self):
+		playerAux = IAPlayers("Pepe",35,"orange",[])
+		expected = True
+		self.assertEqual(expected, playerAux.attack("Europa del sur", "Europa del norte"))
 
 if __name__ == '__main__':
 	unittest.main()

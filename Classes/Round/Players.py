@@ -45,7 +45,7 @@ class Players:
 		chiCount = 0
 		artCount = 0
 		jokCount = 0
-		
+
 		cards = self.getcards()
 		for card in cards:
 			if card.getname() == "infantry":
@@ -139,22 +139,23 @@ class Players:
 	def tostring(self):
 		return (self.__NAME + " " + str(self.__BATTALIONS) + " " +self.__COLOURID)
 
+	def attack (self):
+		return True
 # derivated class HumanPlayers to Players
 class HumanPlayers(Players):
 	def __init__(self,name,battalions,color,cards):
 		super(self.__class__, self).__init__(name,battalions,color,cards)
+
+	def attack (self, origin, destiny, battalions):
+		return True;
 
 # derivated class IAPlayers to Players
 class IAPlayers(Players):
 	def __init__(self,name,battalions,color,cards):
 		name = name + "IA"
 		super(self.__class__, self).__init__(name,battalions,color,cards)
-	def attack (self, country):
-		countriesAux = self.getconqueredcountries()
-		if (country in countriesAux):
-			if (country.battalions > 4):
-				return True
-		return False
+	def attack (self, origin, destiny):
+		return True;
 # this class is an API to work about Players' array
 class ArrayPlayers:
 	# put first in first position array and the other to the left hand in order in new right hand array
