@@ -184,12 +184,14 @@ class PlayersTest(unittest.TestCase):
 		self.assertEqual(conqueredCountries[1].tostring(),"Francia 8:Pepe")
 		self.assertEqual(conqueredCountries[2].tostring(),"Italia 12:Pepe")
 
+		#returns the total num of cards the player has after adding
 	def test_addcards(self):
-		expected = True
+		expected = 4
 		self.assertEqual(expected,p1.addcards(expectedCards))
 
+		#returns the total num of cards the player has after deleting
 	def test_delcards(self):
-		expected = True
+		expected = 2
 		self.assertEqual(expected,p2.delcards("infantry",2))
 
 	#metodos "propios" de jugadores (humanos e IA)
