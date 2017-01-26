@@ -116,6 +116,12 @@ class PlayersTest(unittest.TestCase):
 		self.assertEqual(True,humanPlayer.isequal(humanPlayer))
 		self.assertEqual(False,humanPlayer.isequal(iaPlayer))
 
+	def test_removeplayer(self):
+		players = [p1,p2,p3]
+		ArrayPlayers().removeplayer(players,p2)
+		self.assertEqual(True,players[0].isequal(p1))
+		self.assertEqual(True,players[1].isequal(p3))
+
 	def test_arrayplayerorderfisrt(self):
 		players = [p1,p2,p3]
 		nplayers = ArrayPlayers().orderplayers(players,p1)
