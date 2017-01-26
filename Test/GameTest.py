@@ -116,12 +116,7 @@ class GameTest(unittest.TestCase):
 		game.initphaseplayers(3,playersExpected)
 		players = game.getplayers()
 		world = game.getcountries()
-		for country in world:
-			index = world.index(country)
-			if( index != 0):
-				index = index % len(players)
-			player = players[index]
-			game.initconquers(country,player)
+		game.initallconquers()
 		usedBattalions = int(len(world) / len(players))
 		for player in players:
 			usedBattalionsAux = player.getusedbattalions()
@@ -152,16 +147,11 @@ class GameTest(unittest.TestCase):
 		tidyrolls = [3,5,2]
 		game = Game()
 		game.initboard()
-		firstPlayer = game.firstplayer(tidyrolls,playersExpected)
-		orderedPlayers = ArrayPlayers().orderplayers(playersExpected,firstPlayer)
-		self.assertEqual(orderedPlayers[0].isequal(playersExpected[1]),True)
-		self.assertEqual(orderedPlayers[1].isequal(playersExpected[0]),True)
-		self.assertEqual(orderedPlayers[2].isequal(playersExpected[2]),True)
-		game.initphaseplayers(3,orderedPlayers)
+		game.initphaseplayers(3,playersExpected)
 		game.initallconquers()
 		players = game.getplayers()
-		usedBattalions = int(len(world) / len(players))
 		world = game.getcountries()
+		usedBattalions = int(len(world) / len(players))
 		for player in players:
 			usedBattalionsAux = player.getusedbattalions()
 			self.assertEqual(usedBattalions,usedBattalionsAux)
@@ -182,12 +172,7 @@ class GameTest(unittest.TestCase):
 		game.initphaseplayers(3,orderedPlayers)
 		players = game.getplayers()
 		world = game.getcountries()
-		for country in world:
-			index = world.index(country)
-			if( index != 0):
-				index = index % len(players)
-			player = players[index]
-			game.initconquers(country,player)
+		game.initallconquers()
 		usedBattalions = int(len(world) / len(players))
 		for player in players:
 			usedBattalionsAux = player.getusedbattalions()
@@ -207,12 +192,7 @@ class GameTest(unittest.TestCase):
 		game.initphaseplayers(3,playersExpected)
 		players = game.getplayers()
 		world = game.getcountries()
-		for country in world:
-			index = world.index(country)
-			if( index != 0):
-				index = index % len(players)
-			player = players[index]
-			game.initconquers(country,player)
+		game.initallconquers()
 		usedBattalions = int(len(world) / len(players))
 		for player in players:
 			usedBattalionsAux = player.getusedbattalions()
