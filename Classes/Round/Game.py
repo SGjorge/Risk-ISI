@@ -1,6 +1,7 @@
 import sys
 sys.path.append("../Classes/GameRules/")
 
+from random import randint
 from GameRules import GameRules
 from CoreVariables import CoreVariables
 from Countries import Countries,World,Country
@@ -70,3 +71,22 @@ class Game:
 	def initallworldconquered(self):
 		for player in self.__PLAYERS:
 			player.distributebatallions()
+
+	def processresult(self,result):
+		if result == None:
+			return None
+		battalions = result[0]
+		origin = result[1]
+		destiny = result[2]
+		for roll in battalions:
+			if(roll == 0):
+				loser = destiny.getconqueror()
+				country = destiny
+			else:
+				loser = origin.getconqueror()
+				country = origin
+			conqueredCountries = loser.getconqueredcountries()
+			loser.changebattalions(roll)
+			auxIndex = conqueredCountries.index(country)
+			loserCountry = conqueredCountries[auxIndex]
+			loserCountry.changebattalions(-1)
