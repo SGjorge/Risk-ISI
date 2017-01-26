@@ -356,7 +356,7 @@ class PlayersTest(unittest.TestCase):
 		cardsleft = playerAux.changecards()
 		self.assertEqual(expected, cardsleft)
 
-	def test_changecards_8 (self):
+	def test_changecards_9 (self):
 		playerAux = Players("Pepe",35,"orange",[])
 		card1 = Infantry()
 		card2 = Infantry()
@@ -367,7 +367,7 @@ class PlayersTest(unittest.TestCase):
 		cardsleft = playerAux.changecards()
 		self.assertEqual(expected, cardsleft)
 
-	def test_changecards_8 (self):
+	def test_changecards_10 (self):
 		playerAux = Players("Pepe",35,"orange",[])
 		card1 = Artillery()
 		card2 = Artillery()
