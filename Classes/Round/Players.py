@@ -232,6 +232,10 @@ class ArrayPlayers:
 			newPlayer.append(players[firstPosition-i])
 		return newPlayer
 
+	def removeplayer(self,players,remove):
+		index = players.index(remove)
+		players.pop(index)
+
 	def tostring(self,players):
 		string = ''
 		for i in players:
