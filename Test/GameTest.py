@@ -156,6 +156,23 @@ class GameTest(unittest.TestCase):
 			usedBattalionsAux = player.getusedbattalions()
 			self.assertEqual(usedBattalions,usedBattalionsAux)
 
+	def test_initallworldconquered(self):
+		p1 = HumanPlayers("Pepe",initBattalions,"orange",[])
+		p2 = HumanPlayers("Ana",initBattalions,"red",[])
+		p3 = HumanPlayers("Yo",initBattalions,"blue",[])
+		playersExpected = [p1,p2,p3]
+		tidyrolls = [3,5,2]
+		game = Game()
+		game.initboard()
+		game.initphaseplayers(3,playersExpected)
+		game.initallconquers()
+		world = game.getcountries()
+		players = game.getplayers()
+		game.initallworldconquered()
+		for player in players:
+			usedBeforeBattalions = player.getusedbattalions()
+			self.assertEqual(usedBeforeBattalions,35)
+
 	def test_phaseonecomplete(self):
 		p1 = HumanPlayers("Pepe",initBattalions,"orange",[])
 		p2 = HumanPlayers("Ana",initBattalions,"red",[])
