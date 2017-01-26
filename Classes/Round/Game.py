@@ -9,12 +9,28 @@ from Players import Players,HumanPlayers,IAPlayers,ArrayPlayers
 class Game:
 	__COUNTRIES = None
 	__PLAYERS = None
+	__JOKERS = 2
+	__INFANTRY = 14
+	__CHIVALRY = 14
+	__ARTYLLERY = 14
 
 	def getcountries(self):
 		return self.__COUNTRIES
 
 	def getplayers(self):
 		return self.__PLAYERS
+
+	def getjokernum(self):
+		return self.__JOKERS
+
+	def getinfantrynum(self):
+		return self.__INFANTRY
+
+	def getchivalrynum(self):
+		return self.__CHIVALRY
+
+	def getartillerynum(self):
+		return self.__ARTYLLERY
 
 	def initboard(self):
 		self.__COUNTRIES = World().world
