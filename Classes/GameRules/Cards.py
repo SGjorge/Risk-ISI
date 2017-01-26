@@ -5,8 +5,6 @@ sys.path.append("../")
 from CoreVariables import CoreVariables as CV
 
 class Cards:
-    total = 2
-
     def __init__(self):
         self.name = "joker"
 
@@ -21,21 +19,15 @@ class Cards:
 
 
 class Infantry(Cards):
-    total = 14
-
     def __init__(self):
         self.name = "infantry"
 
 
 class Chivalry(Cards):
-    total = 14
-
     def __init__(self):
         self.name = "chivalry"
 
 
 class Artillery(Cards):
-    total = 14
-
     def __init__(self):
         self.name = "artillery"
