@@ -204,8 +204,15 @@ class PlayersTest(unittest.TestCase):
 
 	def test_attack_IA (self):
 		playerAux = IAPlayers("Pepe",35,"orange",[])
-		expected = True
-		self.assertEqual(expected, playerAux.attack("Europa del sur", "Europa del norte"))
+		expectedOrigin = None
+		expectedDestiny = None
+		expectedRoll = None
+		attacked = playerAux.attack("Europa del sur", "Europa del norte")
+
+		self.assertEqual(expectedOrigin, attacked[0])
+		self.assertEqual(expectedDestiny, attacked[1])
+		self.assertEqual(expectedRoll, attacked[2])
+		#no se puede hacer assertEqual de la tirada PORQUE ES ALEATORIA. Siempre va a salir diferente.
 
 if __name__ == '__main__':
 	unittest.main()
