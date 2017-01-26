@@ -140,6 +140,28 @@ class GameTest(unittest.TestCase):
 			self.assertEqual(usedBeforeBattalions,35)
 
 
+		#check the number of cards left
+	def test_getjockercardsleft(self):
+		game = Game()
+		expected = 2
+		self.assertEqual(expected, game.getjokernum())
+
+	def test_getinfantrycardsleft(self):
+		game = Game()
+		expected = 14
+		self.assertEqual(expected, game.getinfantrynum())
+
+	def test_getchivalrycardsleft(self):
+		game = Game()
+		expected = 14
+		self.assertEqual(expected, game.getchivalrynum())
+
+	def test_getartillerycardsleft(self):
+		game = Game()
+		expected = 14
+		self.assertEqual(expected, game.getartillerynum())
+
+
 
 if __name__ == '__main__':
 	unittest.main()
