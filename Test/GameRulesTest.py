@@ -4,11 +4,14 @@ import unittest
 
 sys.path.append("../Classes/GameRules/")
 sys.path.append("../Classes/Round/")
+sys.path.append("../")
 
 from GameRules import GameRules
 from Cards import Cards, Infantry, Chivalry, Artillery
 from Countries import Countries, Country
 from Players import Players, HumanPlayers, IAPlayers
+from CoreVariables import CoreVariables as CV
+
 
 
 class GameRulesTest(unittest.TestCase):
@@ -294,19 +297,19 @@ class GameRulesTest(unittest.TestCase):
         #check the total number of each type of cards
     def test_numberofjockers(self):
         expected = 2
-        assertEqual(expected,CV().jokersCards)
+        self.assertEqual(expected,CV().jokersCards)
 
     def test_numberofinfantry(self):
         expected = 14
-        assertEqual(expected,CV().infantryCards)
+        self.assertEqual(expected,CV().infantryCards)
 
     def test_numberofchivalry(self):
         expected = 14
-        assertEqual(expected,CV().chivalryCards)
+        self.assertEqual(expected,CV().chivalryCards)
 
     def test_numberofartillery(self):
         expected = 14
-        assertEqual(expected,CV().artilleryCards)
+        self.assertEqual(expected,CV().artilleryCards)
 
 
 if __name__ == '__main__':
