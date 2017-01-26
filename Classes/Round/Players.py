@@ -147,7 +147,9 @@ class HumanPlayers(Players):
 		super(self.__class__, self).__init__(name,battalions,color,cards)
 
 	def attack (self, origin, destiny, battalions):
-		return True;
+		attacked = self.rolls(battalions)
+		return [origin, destiny, attacked]
+		
 
 # derivated class IAPlayers to Players
 class IAPlayers(Players):
@@ -155,7 +157,7 @@ class IAPlayers(Players):
 		name = name + "IA"
 		super(self.__class__, self).__init__(name,battalions,color,cards)
 	def attack (self, origin, destiny):
-		return True;
+		return True
 # this class is an API to work about Players' array
 class ArrayPlayers:
 	# put first in first position array and the other to the left hand in order in new right hand array
