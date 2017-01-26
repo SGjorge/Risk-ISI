@@ -45,6 +45,14 @@ class Game:
 				IA = IAPlayers(str(i),0,CoreVariables().colorPlayers[len(players)+1],[])
 				self.__PLAYERS.append(IA)
 
+	def initallconquers(self):
+		for country in self.__COUNTRIES:
+			index = self.__COUNTRIES.index(country)
+			if( index != 0):
+				index = index % len(self.__PLAYERS)
+			player = self.__PLAYERS[index]
+			self.initconquers(country,player)
+
 	def initconquers(self,country,player):
 		country.changebattalions(1)
 		country.changeconqueror(player)
@@ -58,3 +66,7 @@ class Game:
 			if (rolls.index(roll) == len(rolls)):
 				break
 		return players[rolls.index(first)]
+
+	def initallworldconquered(self):
+		for player in self.__PLAYERS:
+			player.distributebatallions()
