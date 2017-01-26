@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import sys
 sys.path.append("../Classes/Round/")
 sys.path.append("../Classes/GameRules")
@@ -145,7 +147,7 @@ class PlayersTest(unittest.TestCase):
 			self.assertIn(roll,range(1,7))
 
 	def test_addconqueredcountry(self):
-		country = Country("España",p1.getname())
+		country = Country("Europa del sur",p1.getname())
 		p1.addconqueredcountry(country)
 		conqueredCountries = p1.getconqueredcountries()
 		for c in conqueredCountries:
@@ -153,7 +155,7 @@ class PlayersTest(unittest.TestCase):
 
 	def test_usedbattalions(self):
 		paux = HumanPlayers("Pepe",35,"orange",[])
-		country1 = Country("España",paux.getname())
+		country1 = Country("Europa del sur",paux.getname())
 		country2 = Country("Francia",paux.getname())
 		country3 = Country("Italia",paux.getname())
 		country1.changebattalions(7)
@@ -166,7 +168,7 @@ class PlayersTest(unittest.TestCase):
 
 	def test_distributebattalions(self):
 		paux = HumanPlayers("Pepe",35,"orange",[])
-		country1 = Country("España",paux.getname())
+		country1 = Country("Europa del sur",paux.getname())
 		country2 = Country("Francia",paux.getname())
 		country3 = Country("Italia",paux.getname())
 		country1.changebattalions(7)
@@ -178,7 +180,7 @@ class PlayersTest(unittest.TestCase):
 		paux.distributebatallions()
 		self.assertEqual(paux.getusedbattalions(),35)
 		conqueredCountries = paux.getconqueredcountries()
-		self.assertEqual(conqueredCountries[0].tostring(),"España 15:Pepe")
+		self.assertEqual(conqueredCountries[0].tostring(),"Europa del sur 15:Pepe")
 		self.assertEqual(conqueredCountries[1].tostring(),"Francia 8:Pepe")
 		self.assertEqual(conqueredCountries[2].tostring(),"Italia 12:Pepe")
 
@@ -190,7 +192,16 @@ class PlayersTest(unittest.TestCase):
 		expected = True
 		self.assertEqual(expected,p2.delcards("infantry",2))
 
-
+	#metodos "propios" de jugadores (humanos e IA)
+	# def test_attack_human (self):
+	# 	playerAux = HumanPlayers("Pepe",35,"orange",[])
+	# 	expected = True
+	# 	self.assertEqual(expected, playerAux.attack("Europa del sur", "Europa del norte", 3))
+	#
+	# def test_attack_IA (self):
+	# 	playerAux = IAPlayers("Pepe",35,"orange",[])
+	# 	expected = True
+	# 	self.assertEqual(expected, playerAux.attack("Europa del sur", "Europa del norte", 3))
 
 if __name__ == '__main__':
 	unittest.main()
