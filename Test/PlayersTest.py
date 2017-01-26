@@ -323,5 +323,28 @@ class PlayersTest(unittest.TestCase):
 		cardsleft = playerAux.changecards()
 		self.assertEqual(expected, cardsleft)
 
+	def test_changecards_6 (self):
+		playerAux = Players("Pepe",35,"orange",[])
+		card1 = Infantry()
+		card2 = Cards()
+		card3 = Cards()
+		cards = [card1, card2, card3]
+		expected = 0
+		playerAux.addcards(cards)
+		cardsleft = playerAux.changecards()
+		self.assertEqual(expected, cardsleft)
+
+	def test_changecards_5 (self):
+		playerAux = Players("Pepe",35,"orange",[])
+		card1 = Chivalry()
+		card2 = Cards()
+		card3 = Cards()
+		cards = [card1, card2, card3]
+		expected = 0
+		playerAux.addcards(cards)
+		cardsleft = playerAux.changecards()
+		self.assertEqual(expected, cardsleft)
+
+
 if __name__ == '__main__':
 	unittest.main()
