@@ -91,6 +91,18 @@ class Players:
 			cards.append(Cards())
 		return True
 
+	def picacard(self):
+		type = randint(1,4)
+		if type == 1:
+			self.__CARDS.append(Cards())
+		elif type == 2:
+			self.__CARDS.append(Infantry())
+		if type == 3:
+			self.__CARDS.append(Chivalry())
+		if type == 4:
+			self.__CARDS.append(Artillery())
+		return self.getcardsnumber()
+
 	def getusedbattalions(self):
 		countries = self.getconqueredcountries()
 		usedbattalion = 0
