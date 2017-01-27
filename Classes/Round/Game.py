@@ -111,7 +111,6 @@ class Game:
 			origin.changebattalions(-battalions)
 			destiny.changebattalions(battalions)
 
-
 	# simula el ataque al azar de un jugador a un pais no conquistado
 	def roundplayerphasetworoll(self,player):
 		if player == None:
