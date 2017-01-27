@@ -8,7 +8,7 @@ sys.path.append("../")
 
 from GameRules import GameRules
 from Cards import Cards, Infantry, Chivalry, Artillery
-from Countries import Countries, Country
+from Countries import Countries, Country, Neighbours
 from Players import Players, HumanPlayers, IAPlayers
 from CoreVariables import CoreVariables as CV
 
@@ -329,6 +329,7 @@ class GameRulesTest(unittest.TestCase):
         expected = False
         self.assertEqual(expected,GameRules.movebattalions(player,origCountry,destCountry,numBattalions))
 
+    @unittest.skip("skip")
     def test_movebattalions4(self):
         player = HumanPlayers("Pepe",38,"orange",[])
         playerCountries = [Country("Europa del norte","orange"),Country("Europa del sur","orange"),Country("África del norte","orange")]
@@ -340,6 +341,7 @@ class GameRulesTest(unittest.TestCase):
         expected = True
         self.assertEqual(expected,GameRules.movebattalions(player,origCountry,destCountry,numBattalions))
 
+    @unittest.skip("skip")
     def test_movebattalions5(self):
         player = HumanPlayers("Pepe",38,"orange",[])
         playerCountries = [Country("Europa del norte","orange"),Country("Europa del sur","orange"),Country("África del norte","orange"),Country("Brasil","orange")]
