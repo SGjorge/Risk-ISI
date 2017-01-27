@@ -2,6 +2,7 @@ import sys
 sys.path.append("../Classes/Round/")
 sys.path.append("../Classes/GameRules/")
 
+from random import randint
 from Players import Players,HumanPlayers,IAPlayers,ArrayPlayers
 from Countries import Countries,Country
 from Game import Game
@@ -260,7 +261,18 @@ class GameTest(unittest.TestCase):
 				if (r < 0):
 					Battalions += -1
 			self.assertEqual(Battalions,BeforeBattalions)
-			game.reorderbattalions(player,)
+			countries = player.getconqueredcountries()
+			originIndex = randint(0,len(countries)-1)
+			origin = countries[originIndex]
+			destinyIndex = randint(0,len(countries)-1)
+			destiny = countries[originIndex]
+			originBattalions = origin.getbattalions()
+			reorderbattalions = randint(1,originBattalions-1)
+			originBattalions += - reorderbattalions
+			destinyBattalions = destiny.getbattalions() + reorderbattalions
+			game.reorderbattalions(player,origin,destiny,reorderbattalions)
+			self.assertEqual(origin.getbattalions(),originBattalions)
+			self.assertEqual(destiny.getbattalions(),destinyBattalions)
 
 if __name__ == '__main__':
 	unittest.main()
