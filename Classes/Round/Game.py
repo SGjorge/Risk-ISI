@@ -79,6 +79,7 @@ class Game:
 			player.removeconqueredcountry(countryLost)
 			winner.addconqueredcountry(countryLost)
 			countryLost.changebattalions(1)
+			countryLost.changeconqueror(winner)
 
 	def processresult(self,result):
 		if result == None:
@@ -103,6 +104,12 @@ class Game:
 		self.lostconqueredcountry(playerDestiny,destiny,playerOrigin)
 		return True
 
+	def reorderbattalions(self,player,origin,destiny,battalions):
+		isNeigbours = True #Aqui va la regla
+		correctMoveBattalions = (origin.getbattalions() - battalions) >= 1
+		if (isNeigbours) and (correctMoveBattalions):
+			origin.changebattalions(-battalions)
+			destiny.changebattalions(battalions)
 
 	# simula el ataque al azar de un jugador a un pais no conquistado
 	def roundplayerphasetworoll(self,player):
@@ -131,6 +138,3 @@ class Game:
 			return [result,origin,destiny]
 		else:
 			return None
-
-	def reorderbattalions(self,player):
-		print("vamos a reordenar")
