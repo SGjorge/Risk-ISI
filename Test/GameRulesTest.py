@@ -294,8 +294,9 @@ class GameRulesTest(unittest.TestCase):
         expected = False
         self.assertEqual(expected,GameRules.cardstoexchangeok(player,"artillery"))
 
-
+ 
         #checks if the battalion movement between two counries of a player is ok
+    @unittest.skip("skip")
     def test_movebattalions1(self):
         player = HumanPlayers("Pepe",10,"Orange",[])
         origCountry = Country("Europa del norte",player)
@@ -331,7 +332,7 @@ class GameRulesTest(unittest.TestCase):
         expected = False #no son vecinos ni hay camino
         self.assertEqual(expected,GameRules.movebattalions(player,origCountry,destCountry,numBattalions))
 
-    @unittest.skip("skip")
+    #@unittest.skip("skip")
     def test_movebattalions4(self):
         player = HumanPlayers("Pepe",38,"orange",[])
         origCountry = Country("Europa del norte",player)

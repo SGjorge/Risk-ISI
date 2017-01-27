@@ -112,9 +112,41 @@ class GameRules:
 
     @classmethod
     def movebattalions(self,player,origCountry,destCountry,numBattalions):
-        if origCountry.conqueror != destCountry:
+        #mismo jugador
+        if origCountry.getconqueror() != destCountry.getconqueror():
             return False
-        if origCountry.areneighbours(destCountry):
+
+        #tropas correctas
+        totalBattalions = origCountry.getbattalions()
+        if totalBattalions - numBattalions < 1 :
+            return False
+
+        #vecinos directos
+        if (destCountry.getname() in origCountry.neighbours.getarray()):
             return True
-        ####acabar###
+
+	#buscamos camino por los paises del jugador
+        path = []
+	#cogemos todos los vecinos directos de pais ORIGEN
+        directOrigNeighbours = origCountry.neighbours.getarray()
+        for directOrigNeighbour in directOrigNeighbours:
+            print("\n\n********* 1\n")
+            if directOrigNeighbour in player.getconqueredcountries():
+                print("\n\n********* 2\n")
+                #creamos array solo con los vecinos directos de ORIGEN que pertenecen al JUGADOR.
+                path.append (directOrigNeighbour)
+        #para cada pais vecino de origen q es del jugador = country, 
+        for country in path:
+            # miramos si es vecino directo de DESTINO
+            if destCountry in country.neighbours.getarray():
+                return True
+            #si no, miramos los vecinos del "country"
+            #para cada vecino de country = countryNeigh,
+            for countryNeigh in country.neighbours.getarray():
+                #miramos si pertenece al jugador, si no está en el path, y si no es origen
+                if (directOrigNeighbour in player.getconqueredcountries()) & \
+                        (directOrigNeighbour.getname() not in path) & \
+                        directOrigNeighbour.getname() != origCountry.getname():
+                    #entonces se añade al path y se vuelve a empezar
+                    path.append(countryNeigh)
         return False
