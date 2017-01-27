@@ -398,7 +398,8 @@ class PlayersTest(unittest.TestCase):
 		countryA5 = Country("Europa occidental", playerAuxDeff)
 		countryA5.changebattalions(2)
 		playerAuxDeff.addconqueredcountry(countryA5)
-		#meter los jugadores en un array o algo asi
+		players = [playerAuxAtak, playerAuxDeff]
+		ArrayPlayers().orderplayers(players, playerAuxAtak)
 		expected = True
 		out = playerAuxAtak.algoattack()
 

@@ -113,7 +113,7 @@ class Players:
 			usedbattalion += battalionscountry
 		return usedbattalion
 
-	def modifyconquered(self,c):
+	def modifyconqueredcountries(self,c):
 		self.__CONQUEREDCOUNTRIES = c
 
 	def changebattalions(self,battalions):
@@ -199,6 +199,8 @@ class Players:
 			self.delcards("artillery", 2)
 			return self.delcards("joker", 1)
 
+	def algoattack (self):
+		pass
 
 # derivated class HumanPlayers to Players
 class HumanPlayers(Players):
@@ -213,6 +215,7 @@ class HumanPlayers(Players):
 		return [origin, destiny, attacked]
 
 	def deffend (self, country, battalions):
+		#solo devuelve el pais que es a defender y la tirada aleatoria
 		deffended = self.rolls(battalions)
 		return [country, deffended]
 # derivated class IAPlayers to Players
@@ -248,6 +251,9 @@ class IAPlayers(Players):
 				else:
 					deffended = self.rolls(countryDeffended.battalions)
 					return [country, deffended]
+
+	def algoattack (self):
+		return True
 # this class is an API to work about Players' array
 class ArrayPlayers:
 	# put first in first position array and the other to the left hand in order in new right hand array
