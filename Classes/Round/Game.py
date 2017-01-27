@@ -72,6 +72,14 @@ class Game:
 		for player in self.__PLAYERS:
 			player.distributebatallions()
 
+	def lostconqueredcountry(self,player,countryLost,winner):
+		destinyBattalions = countryLost.getbattalions()
+		if(destinyBattalions == 0):
+			conqueredCountries = player.getconqueredcountries()
+			player.removeconqueredcountry(countryLost)
+			winner.addconqueredcountry(countryLost)
+			countryLost.changebattalions(1)
+
 	def processresult(self,result):
 		if result == None:
 			return None
@@ -90,3 +98,39 @@ class Game:
 			auxIndex = conqueredCountries.index(country)
 			loserCountry = conqueredCountries[auxIndex]
 			loserCountry.changebattalions(-1)
+		playerDestiny = destiny.getconqueror()
+		playerOrigin = origin.getconqueror()
+		self.lostconqueredcountry(playerDestiny,destiny,playerOrigin)
+		return True
+
+
+	# simula el ataque al azar de un jugador a un pais no conquistado
+	def roundplayerphasetworoll(self,player):
+		if player == None:
+			return None
+		conqueredCountries = player.getconqueredcountries()
+		index = -1
+		while(index == -1):
+			rndIndex = randint(0,len(self.__COUNTRIES)-1)
+			w = self.__COUNTRIES[rndIndex]
+			try:
+				auxIndex = conqueredCountries.index(w)
+				index = auxIndex
+			except:
+				continue
+		rndIndex = randint(0,len(conqueredCountries)-1)
+		origin = conqueredCountries[rndIndex]
+		destiny = self.__COUNTRIES[index]
+		battalions = randint(1,3)
+		if(GameRules().battalionstoattackok(origin,battalions)) and (GameRules().countriesokforthebattle(origin,destiny)):
+			attackRolls = player.attack(origin,destiny,battalions)
+			deffendPlayer = destiny.getconqueror()
+			battalions = randint(1,2)
+			deffendRolls = deffendPlayer.defence(destiny,battalions)
+			result = GameRules().getlostbattalions(attackRolls,deffendRolls)
+			return [result,origin,destiny]
+		else:
+			return None
+
+	def reorderbattalions(self,player):
+		print("vamos a reordenar")
