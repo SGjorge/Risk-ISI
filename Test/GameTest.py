@@ -194,8 +194,22 @@ class GameTest(unittest.TestCase):
 		result = [rollResult,c2,c1]
 		game.processresult(result)
 		self.assertEqual(1,c1.getbattalions())
-		self.assertEqual(p2,c1.getconqueror())
+		self.assertEqual(p2.isequal(c1.getconqueror()),True)
 
+	def test_reorderbattalions(self):
+		p1 = HumanPlayers("Pepe",35,"orange",[])
+		c1 = Country('Europa del norte', p1)
+		c1.changebattalions(3)
+		c2 = Country('América central', p1)
+		c2.changebattalions(7)
+		p1.addconqueredcountry(c1)
+		p2.addconqueredcountry(c1)
+		playersExpected = [p1]
+		game = Game()
+		game.initplayers(playersExpected)
+		game.reorderbattalions(p1,c2,c1,5)
+		self.assertEqual(8,c1.getbattalions())
+		self.assertEqual(2,c2.getbattalions())
 
 	def test_phaseonecomplete(self):
 		p1 = HumanPlayers("Pepe",initBattalions,"orange",[])
@@ -246,6 +260,7 @@ class GameTest(unittest.TestCase):
 				if (r < 0):
 					Battalions += -1
 			self.assertEqual(Battalions,BeforeBattalions)
+			game.reorderbattalions(player,)
 
 if __name__ == '__main__':
 	unittest.main()
