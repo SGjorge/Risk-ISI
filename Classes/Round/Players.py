@@ -124,6 +124,10 @@ class Players:
 		c.append(country)
 		self.__CONQUEREDCOUNTRIES = c
 
+	def removeconqueredcountry(self,country):
+		index = self.__CONQUEREDCOUNTRIES.index(country)
+		self.__CONQUEREDCOUNTRIES.pop(index)
+
 	def isequal(self,player):
 		return ((self.__NAME == player.getname()) and \
 			    (self.__BATTALIONS == player.getbattalions()) and \
@@ -274,6 +278,10 @@ class ArrayPlayers:
 				break
 			newPlayer.append(players[firstPosition-i])
 		return newPlayer
+
+	def removeplayer(self,players,remove):
+		index = players.index(remove)
+		players.pop(index)
 
 	def tostring(self,players):
 		string = ''

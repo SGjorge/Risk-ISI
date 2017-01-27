@@ -2,6 +2,7 @@ import sys
 sys.path.append("../Classes/Round/")
 sys.path.append("../Classes/GameRules/")
 
+from random import randint
 from Players import Players,HumanPlayers,IAPlayers,ArrayPlayers
 from Countries import Countries,Country
 from Game import Game
@@ -190,7 +191,26 @@ class GameTest(unittest.TestCase):
 		game.processresult(result)
 		self.assertEqual(2,c1.getbattalions())
 		self.assertEqual(6,c2.getbattalions())
+		rollResult = [0,0]
+		result = [rollResult,c2,c1]
+		game.processresult(result)
+		self.assertEqual(1,c1.getbattalions())
+		self.assertEqual(p2.isequal(c1.getconqueror()),True)
 
+	def test_reorderbattalions(self):
+		p1 = HumanPlayers("Pepe",35,"orange",[])
+		c1 = Country('Europa del norte', p1)
+		c1.changebattalions(3)
+		c2 = Country('América central', p1)
+		c2.changebattalions(7)
+		p1.addconqueredcountry(c1)
+		p2.addconqueredcountry(c1)
+		playersExpected = [p1]
+		game = Game()
+		game.initplayers(playersExpected)
+		game.reorderbattalions(p1,c2,c1,5)
+		self.assertEqual(8,c1.getbattalions())
+		self.assertEqual(2,c2.getbattalions())
 
 	def test_phaseonecomplete(self):
 		p1 = HumanPlayers("Pepe",initBattalions,"orange",[])
@@ -216,6 +236,43 @@ class GameTest(unittest.TestCase):
 			player.distributebatallions()
 			usedBeforeBattalions = player.getusedbattalions()
 			self.assertEqual(usedBeforeBattalions,35)
+
+	def test_phasetwocomplete(self):
+		p1 = HumanPlayers("Pepe",initBattalions,"orange",[])
+		p2 = HumanPlayers("Ana",initBattalions,"red",[])
+		p3 = HumanPlayers("Yo",initBattalions,"blue",[])
+		playersExpected = [p1,p2,p3]
+		game = Game()
+		game.initboard()
+		game.initphaseplayers(3,playersExpected)
+		game.initallconquers()
+		game.initallworldconquered()
+		players = game.getplayers()
+		world = game.getcountries()
+		Battalions = 35
+		for player in players:
+			roundPlayer = game.roundplayerphasetworoll(player)
+			if (roundPlayer == None):
+				continue
+			game.processresult(roundPlayer)
+			BeforeBattalions = player.getbattalions()
+			roll = roundPlayer[0]
+			for r in roll:
+				if (r < 0):
+					Battalions += -1
+			self.assertEqual(Battalions,BeforeBattalions)
+			countries = player.getconqueredcountries()
+			originIndex = randint(0,len(countries)-1)
+			origin = countries[originIndex]
+			destinyIndex = randint(0,len(countries)-1)
+			destiny = countries[originIndex]
+			originBattalions = origin.getbattalions()
+			reorderbattalions = randint(1,originBattalions-1)
+			originBattalions += - reorderbattalions
+			destinyBattalions = destiny.getbattalions() + reorderbattalions
+			game.reorderbattalions(player,origin,destiny,reorderbattalions)
+			self.assertEqual(origin.getbattalions(),originBattalions)
+			self.assertEqual(destiny.getbattalions(),destinyBattalions)
 
 if __name__ == '__main__':
 	unittest.main()
