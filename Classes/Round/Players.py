@@ -70,6 +70,7 @@ class Players:
 		return self.getcardsnumber()
 
 	def delcards(self,nameCard,num):
+		#borra cartas de UN TIPO. Tantas llamadas como tipo de cartas
 		[jokCount,infCount,chiCount,artCount] = self.getcardtypenumber()
 		if nameCard == "infantry":
 			infCount = infCount - num
@@ -154,8 +155,50 @@ class Players:
 
 	def attack (self):
 		pass
+
 	def deffend (self):
 		pass
+
+	def changecards(self):
+		arrayCards = self.getcardtypenumber()
+		jokCount = arrayCards[0]
+		infCount = arrayCards[1]
+		chiCount = arrayCards[2]
+		artCount = arrayCards[3]
+		total = self.getcardsnumber()
+		#tres cartas iguales
+		if artCount >= 3:
+			return self.delcards("artillery", 3)
+		if chiCount >= 3:
+			return self.delcards("chivalry", 3)
+		if infCount >= 3:
+			return self.delcards("infantry", 3)
+		#una carta de cada
+		if infCount >= 1 and chiCount >= 1 and artCount >= 1:
+			self.delcards("artillery", 1)
+			self.delcards("chivalry", 1)
+			return self.delcards("infantry", 1)
+		#una carta y dos comodines
+		if infCount >= 1 and jokCount >= 2:
+			self.delcards("infantry", 1)
+			return self.delcards("joker", 2)
+		if chiCount >= 1 and jokCount >= 2:
+			self.delcards("chivalry", 1)
+			return self.delcards("joker", 2)
+		if artCount >= 1 and jokCount >= 2:
+			self.delcards("artillery", 1)
+			return self.delcards("joker", 2)
+		#dos cartas y un comodin
+		if infCount >= 2 and jokCount >= 1:
+			self.delcards("infantry", 2)
+			return self.delcards("joker", 1)
+		if chiCount >= 2 and jokCount >= 1:
+			self.delcards("chivalry", 2)
+			return self.delcards("joker", 1)
+		if artCount >= 2 and jokCount >= 1:
+			self.delcards("artillery", 2)
+			return self.delcards("joker", 1)
+
 
 # derivated class HumanPlayers to Players
 class HumanPlayers(Players):
