@@ -190,6 +190,11 @@ class GameTest(unittest.TestCase):
 		game.processresult(result)
 		self.assertEqual(2,c1.getbattalions())
 		self.assertEqual(6,c2.getbattalions())
+		rollResult = [0,0]
+		result = [rollResult,c2,c1]
+		game.processresult(result)
+		self.assertEqual(1,c1.getbattalions())
+		self.assertEqual(p2,c1.getconqueror())
 
 
 	def test_phaseonecomplete(self):
@@ -216,6 +221,31 @@ class GameTest(unittest.TestCase):
 			player.distributebatallions()
 			usedBeforeBattalions = player.getusedbattalions()
 			self.assertEqual(usedBeforeBattalions,35)
+
+	def test_phasetwocomplete(self):
+		p1 = HumanPlayers("Pepe",initBattalions,"orange",[])
+		p2 = HumanPlayers("Ana",initBattalions,"red",[])
+		p3 = HumanPlayers("Yo",initBattalions,"blue",[])
+		playersExpected = [p1,p2,p3]
+		game = Game()
+		game.initboard()
+		game.initphaseplayers(3,playersExpected)
+		game.initallconquers()
+		game.initallworldconquered()
+		players = game.getplayers()
+		world = game.getcountries()
+		Battalions = 35
+		for player in players:
+			roundPlayer = game.roundplayerphasetworoll(player)
+			if (roundPlayer == None):
+				continue
+			game.processresult(roundPlayer)
+			BeforeBattalions = player.getbattalions()
+			roll = roundPlayer[0]
+			for r in roll:
+				if (r < 0):
+					Battalions += -1
+			self.assertEqual(Battalions,BeforeBattalions)
 
 if __name__ == '__main__':
 	unittest.main()
