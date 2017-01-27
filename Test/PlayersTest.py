@@ -159,6 +159,22 @@ class PlayersTest(unittest.TestCase):
 		for c in conqueredCountries:
 			self.assertEqual(c.getname(),country.getname())
 
+	def test_removeconqueredcountry(self):
+		paux = HumanPlayers("Pepe",35,"orange",[])
+		c1 = Country("Europa del sur",paux)
+		c2 = Country("Francia",paux)
+		c3 = Country("Italia",paux)
+		paux.addconqueredcountry(c1)
+		conqueredCountries = paux.getconqueredcountries()
+		paux.addconqueredcountry(c2)
+		conqueredCountries = paux.getconqueredcountries()
+		paux.addconqueredcountry(c3)
+		conqueredCountries = paux.getconqueredcountries()
+		paux.removeconqueredcountry(c2)
+		conqueredCountries = paux.getconqueredcountries()
+		self.assertEqual(c1.isequal(conqueredCountries[0]),True)
+		self.assertEqual(c3.isequal(conqueredCountries[1]),True)
+
 	def test_usedbattalions(self):
 		paux = HumanPlayers("Pepe",35,"orange",[])
 		country1 = Country("Europa del sur",paux.getname())
