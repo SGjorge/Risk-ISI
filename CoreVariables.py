@@ -32,7 +32,7 @@ class CoreVariables():
     tableContinents = {'Europa': counEuropa, 'Asia': counAsia, 'Oceanía': counOceania, 'África': counAfrica, 'América del sur': counASur, 'América del norte': counANorte}
     #neighbours
     #europa
-    neighboursEuropaNorte = ['Europa del Sur', 'Europa occidental','Ucrania', 'Escandinavia', "Gran Bretaña"]
+    neighboursEuropaNorte = ['Europa del sur', 'Europa occidental','Ucrania', 'Escandinavia', "Gran Bretaña"]
     neighboursEuropaSur = ['Europa del norte', 'Europa occidental', "Ucrania", 'África del norte', 'Egipto', 'Oriente medio']
     neighboursEuropaOcc = ['Gran Bretaña', 'Europa del norte', 'Europa del sur', 'África del norte']
     neighboursGB = ['Islandia', 'Escandinavia', 'Europa del norte', 'Europa occidental']
