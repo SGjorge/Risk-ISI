@@ -129,13 +129,17 @@ class GameRules:
         path = []
 	#cogemos todos los vecinos directos de pais ORIGEN
         directOrigNeighbours = origCountry.neighbours.getarray()
+        conqueredCountries = player.getconqueredcountries()
+        conquered = []
+        for pais in conqueredCountries:
+            conquered.append(pais.name)
+        print ("conquered = " + conquered)
         for directOrigNeighbour in directOrigNeighbours:
-            print("\n\n********* 1\n")
-            if directOrigNeighbour in player.getconqueredcountries():
-                print("\n\n********* 2\n")
+            if directOrigNeighbour in conquered:
                 #creamos array solo con los vecinos directos de ORIGEN que pertenecen al JUGADOR.
                 path.append (directOrigNeighbour)
-        #para cada pais vecino de origen q es del jugador = country, 
+                print ("\nPATH " + directOrigNeighbour)
+        #para cada pais vecino de origen q es del jugador = country,
         for country in path:
             # miramos si es vecino directo de DESTINO
             if destCountry in country.neighbours.getarray():
