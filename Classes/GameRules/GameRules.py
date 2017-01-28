@@ -133,7 +133,7 @@ class GameRules:
         conquered = []
         for pais in conqueredCountries:
             conquered.append(pais.name)
-        print ("conquered = " + conquered)
+            print ("conquered = " + pais.name)
         for directOrigNeighbour in directOrigNeighbours:
             if directOrigNeighbour in conquered:
                 #creamos array solo con los vecinos directos de ORIGEN que pertenecen al JUGADOR.
