@@ -83,6 +83,12 @@ class Country(Countries):
             return True
         else:
             return False
+
+    def isequal(self,country):
+        if(self.name == country.getname()):
+            return True
+        return False
+
 class Neighbours(Countries):
 
     global absolutes
