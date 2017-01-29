@@ -294,64 +294,73 @@ class GameRulesTest(unittest.TestCase):
         expected = False
         self.assertEqual(expected,GameRules.cardstoexchangeok(player,"artillery"))
 
-
+ 
         #checks if the battalion movement between two counries of a player is ok
+    @unittest.skip("skip")
     def test_movebattalions1(self):
-        player = HumanPlayers("Pepe",10,"orange",[])
-        origCountry = Country("Europa del norte","orange")
+        player = HumanPlayers("Pepe",10,"Orange",[])
+        origCountry = Country("Europa del norte",player)
         origCountry.changebattalions(10)
         player.addconqueredcountry(origCountry)
-        destCountry = Country("Europa del sur","orange")
-        player.addconqueredcountry(origCountry)
+        destCountry = Country("Europa del sur",player)
+        player.addconqueredcountry(destCountry)
         numBattalions = 5
-        expected = True
+        expected = True #vecinos directos
         self.assertEqual(expected,GameRules.movebattalions(player,origCountry,destCountry,numBattalions))
 
     @unittest.skip("skip")
     def test_movebattalions2(self):
         player = HumanPlayers("Pepe",5,"orange",[])
-        playerCountries = [Country("Europa del norte","orange"),Country("Europa del sur","orange")]
-        player.addconqueredcountry(playerCountries)
-        origCountry = Country("Europa del norte","orange")
+        origCountry = Country("Europa del norte",player)
+        destCountry = Country("Europa del sur",player)
+        player.addconqueredcountry(origCountry)
+        player.addconqueredcountry(destCountry)
         origCountry.changebattalions(5)
-        destCountry = Country("Europa del sur","orange")
         numBattalions = 5
-        expected = False
+        expected = False #Numero tropas incorrecto
         self.assertEqual(expected,GameRules.movebattalions(player,origCountry,destCountry,numBattalions))
     @unittest.skip("skip")
     def test_movebattalions3(self):
         player = HumanPlayers("Pepe",38,"orange",[])
-        playerCountries = [Country("Europa del norte","orange"),Country("Europa del sur","orange")]
-        player.addconqueredcountry(playerCountries)
-        origCountry = Country("Europa del norte","orange")
+        origCountry = Country("Europa del norte",player)
+        otherCountry = Country("Europa del sur",player)
+        player.addconqueredcountry(origCountry)
+        player.addconqueredcountry(otherCountry)
         origCountry.changebattalions(5)
         destCountry = Country("Islandia","red")
         numBattalions = 1
-        expected = False
+        expected = False #no son vecinos ni hay camino
         self.assertEqual(expected,GameRules.movebattalions(player,origCountry,destCountry,numBattalions))
 
-    @unittest.skip("skip")
+    #@unittest.skip("skip")
     def test_movebattalions4(self):
         player = HumanPlayers("Pepe",38,"orange",[])
-        playerCountries = [Country("Europa del norte","orange"),Country("Europa del sur","orange"),Country("África del norte","orange")]
-        player.addconqueredcountry(playerCountries)
-        origCountry = Country("Europa del norte","orange")
+        origCountry = Country("Europa del norte",player)
+        otherCountry = Country("Europa del sur",player)
+        destCountry = Country("África del norte",player)
+        player.addconqueredcountry(origCountry)
+        player.addconqueredcountry(otherCountry)
+        player.addconqueredcountry(destCountry)      
         origCountry.changebattalions(5)
-        destCountry = Country("África del norte","orange")
         numBattalions = 1
-        expected = True
+        expected = True #no vecinos directos pero sí hay camino
         self.assertEqual(expected,GameRules.movebattalions(player,origCountry,destCountry,numBattalions))
 
     @unittest.skip("skip")
     def test_movebattalions5(self):
-        player = HumanPlayers("Pepe",38,"orange",[])
-        playerCountries = [Country("Europa del norte","orange"),Country("Europa del sur","orange"),Country("África del norte","orange"),Country("Brasil","orange")]
-        player.addconqueredcountry(playerCountries)
-        origCountry = Country("Europa del norte","orange")
+        player = HumanPlayers("Pepe",38,"orange",[])      
+        origCountry = Country("Europa del norte",player)
+        otherCountry = Country("Europa del sur",player)
+        anotherCountry = Country("África del norte",player)
+        lastCountry = Country("Brasil",player)
+        player.addconqueredcountry(origCountry)
+        player.addconqueredcountry(otherCountry)
+        player.addconqueredcountry(anotherCountry)
+        player.addconqueredcountry(lastCountry)
         origCountry.changebattalions(5)
         destCountry = Country("Brasil","orange")
         numBattalions = 1
-        expected = True
+        expected = True #hay camino entre vecinos
         self.assertEqual(expected,GameRules.movebattalions(player,origCountry,destCountry,numBattalions))
 
 

@@ -6,6 +6,7 @@ sys.path.append("../Classes/Round")
 
 from CoreVariables import CoreVariables
 from Countries import Countries, Country, Neighbours, World, Continent
+from Players import Players
 import unittest
 
 class BoardTest(unittest.TestCase):
@@ -105,6 +106,13 @@ class BoardTest(unittest.TestCase):
         self.assertEqual(expectedName, continentAux.nameCont)
         self.assertEqual(expectedColor, continentAux.color)
         self.assertEqual(expectedCountries, continentAux.countries)
+
+    def test_ithasneigh (self):
+        absolutes = CoreVariables()
+        playerAux = Players("Pepe",35,"orange",[])
+        countryAux = Country("Islandia", playerAux)
+        expected = absolutes.neighboursIsl
+        self.assertEqual(expected, countryAux.neighbours.getarray())
 
 if __name__ == '__main__':
     unittest.main()
