@@ -210,9 +210,6 @@ class Players:
                 destCountry.changebattalions(numBattalions)
                 return True
 
-	def algoattack (self):
-		pass
-
 # derivated class HumanPlayers to Players
 class HumanPlayers(Players):
 	def __init__(self,name,battalions,color,cards):
