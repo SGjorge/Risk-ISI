@@ -2,8 +2,6 @@
 # -*- coding: utf-8 -*-
 import sys
 sys.path.append("../Classes/Round/")
-sys.path.append("../Classes/GameRules/")
-
 
 from random import randint
 from Cards import Cards, Infantry, Chivalry, Artillery
@@ -206,6 +204,11 @@ class Players:
 		if artCount >= 2 and jokCount >= 1:
 			self.delcards("artillery", 2)
 			return self.delcards("joker", 1)
+
+	def movebattalions(self,origCountry,destCountry,numBattalions):
+                origCountry.changebattalions(-numBattalions)
+                destCountry.changebattalions(numBattalions)
+                return True
 
 	def algoattack (self):
 		pass
