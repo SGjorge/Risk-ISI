@@ -76,13 +76,19 @@ class Country(Countries):
             return (str(self.name) + " "+ str(self.battalions) + ":" + str(self.conqueror))
 
     def areneighbours(self, country):
-        #return country.name in CoreVariables().getneighbours(self.name)
         return country.name in self.neighbours.getarray()
+
     def ithasneighbourhood (self):
         if len(self.neighbours.getarray())> 0:
             return True
         else:
             return False
+
+    def isequal(self,country):
+        if(self.name == country.getname()):
+            return True
+        return False
+
 class Neighbours(Countries):
 
     global absolutes

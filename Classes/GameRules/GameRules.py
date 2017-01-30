@@ -128,29 +128,35 @@ class GameRules:
 	#buscamos camino por los paises del jugador
         path = []
 	#cogemos todos los vecinos directos de pais ORIGEN
-        directOrigNeighbours = origCountry.neighbours.getarray()
-        conqueredCountries = player.getconqueredcountries()
-        conquered = []
-        for pais in conqueredCountries:
-            conquered.append(pais.name)
-            print ("conquered = " + pais.name)
+        directOrigNeighbours = origCountry.neighbours.getarray() # == strings
+
+	#cogemos todos los paises del jugador (son objetos Country)
+        conqueredCountries = player.getconqueredcountries() # == objetos
+        playerCountries = []
+        for conqueredCountry in conqueredCountries:
+            playerCountries.append(conqueredCountry.name) # cogemos todos los paises del jugador como strings
+       
         for directOrigNeighbour in directOrigNeighbours:
-            if directOrigNeighbour in conquered:
+            if directOrigNeighbour in playerCountries:
                 #creamos array solo con los vecinos directos de ORIGEN que pertenecen al JUGADOR.
                 path.append (directOrigNeighbour)
-                print ("\nPATH " + directOrigNeighbour)
-        #para cada pais vecino de origen q es del jugador = country,
+
+        #para cada pais vecino de origen que es del jugador = country,
         for country in path:
             # miramos si es vecino directo de DESTINO
-            if destCountry in country.neighbours.getarray():
+            if (destCountry.getname() in CV.tableNeighbours[country]): #country.neighbours.getarray():
                 return True
             #si no, miramos los vecinos del "country"
             #para cada vecino de country = countryNeigh,
-            for countryNeigh in country.neighbours.getarray():
+            for countryNeigh in CV.tableNeighbours[country]: #country.neighbours.getarray():
                 #miramos si pertenece al jugador, si no está en el path, y si no es origen
-                if (directOrigNeighbour in player.getconqueredcountries()) & \
-                        (directOrigNeighbour.getname() not in path) & \
-                        directOrigNeighbour.getname() != origCountry.getname():
+                if (countryNeigh in playerCountries) & (countryNeigh not in path) & (not (countryNeigh is origCountry.getname())):
                     #entonces se añade al path y se vuelve a empezar
                     path.append(countryNeigh)
         return False
+
+
+
+
+
+
