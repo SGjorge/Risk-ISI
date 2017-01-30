@@ -51,7 +51,7 @@ class BoardTest(unittest.TestCase):
         self.assertEqual(expectedNeighbours, neighbourAux.getarray())
 
     def test_neighbourhood_1(self):
-        expectedNeighbours = ['Europa del Sur', 'Europa occidental','Ucrania', 'Escandinavia', "Gran Bretaña"]
+        expectedNeighbours = ['Europa del sur', 'Europa occidental','Ucrania', 'Escandinavia', "Gran Bretaña"]
         self.assertEqual(expectedNeighbours, CoreVariables().neighboursEuropaNorte)
 
     #@unittest.skip("skip")
@@ -93,10 +93,12 @@ class BoardTest(unittest.TestCase):
             self.assertEqual(absolutes.countries[i], expectedWorld.world[i].getname())
 
     def test_changeconqueror(self):
-        expectedNew = "Blue"
-        countryAux = Country("Islandia", "Red")
-        countryAux.changeconqueror("Blue")
-        self.assertEqual(expectedNew, countryAux.conqueror)
+        Aux = Players("Luis", 0, "red", [])
+        Aux2 = Players("Pepe", 0, "red", [])
+        countryAux = Country("Islandia", Aux)
+        countryAux.changeconqueror(Aux2)
+        expected = "Pepe"
+        self.assertEqual(expected, countryAux.conqueror.getname())
 
     def test_createEuropa(self):
         expectedName = 'Europa'

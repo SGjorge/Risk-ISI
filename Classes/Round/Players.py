@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import sys
 sys.path.append("../Classes/Round/")
+sys.path.append("../Classes/GameRules")
 
 from random import randint
 from Cards import Cards, Infantry, Chivalry, Artillery
@@ -209,9 +210,6 @@ class Players:
                 origCountry.changebattalions(-numBattalions)
                 destCountry.changebattalions(numBattalions)
                 return True
-
-	def algoattack (self):
-		pass
 
 # derivated class HumanPlayers to Players
 class HumanPlayers(Players):
