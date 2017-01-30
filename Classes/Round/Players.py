@@ -218,7 +218,6 @@ class HumanPlayers(Players):
 	def __init__(self,name,battalions,color,cards):
 		super(self.__class__, self).__init__(name,battalions,color,cards)
 
-
 	def attack (self, origin, destiny, battalions):
 		#devuelve un array de tres cosas: el pais DESDE el que ataca, el pais AL que ataca
 		#y su tirada entera (con los battallones con lo que queria atacar)
@@ -229,6 +228,18 @@ class HumanPlayers(Players):
 		#solo devuelve el pais que es a defender y la tirada aleatoria
 		deffended = self.rolls(battalions)
 		return [country, deffended]
+	
+	# vamos a definir una pequeña User interface destinada a la shell, según donde se vaya a implantar
+	# habría que hacer su propia interface
+	def whoattack(self):
+		return input("Atacar a: ")
+
+	def howmanyattack(self):
+		return input("Batallones de ataque: ")
+
+	def howmanydeffend(self):
+		return input("Batallones de defensa: ")
+
 # derivated class IAPlayers to Players
 class IAPlayers(Players):
 	def __init__(self,name,battalions,color,cards):
