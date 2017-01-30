@@ -1,10 +1,12 @@
 import sys
-sys.path.append("../Classes/GameRules/")
 sys.path.append("../../")
+sys.path.append("../Classes/GameRules")
+
 
 from random import randint
 from Cards import Cards, Infantry, Chivalry, Artillery
 from CoreVariables import CoreVariables
+from GameRules import GameRules
 
 
 class Players:
@@ -259,6 +261,7 @@ class IAPlayers(Players):
 		if len(players) <= 1:
 			return False
 		else:
+			mybatt = self.getbattalions()
 			battLost = 0
 			attacked = 0
 			myConquered = self.getconqueredcountries()
@@ -269,8 +272,17 @@ class IAPlayers(Players):
 			pares = Neighbours.items()
 			for country, neigh in pares:
 				for l in neigh:
-					if l not in myConquered:
-						attacked = self.attack(country, l)
+					if GameRules().countriesokforthebattle(country, l):
+						while lost < 10 and l.getbattalions() > 0:
+							attacked = self.attack(country, l)
+							if attacked[0] >= 0:
+								deffended = self.deffend(l)
+								lost = getlostbattalions(attacked, deffended)
+								battLost = battLost + lost
+							else:
+								break
+					else:
+						continue
 			return True
 # this class is an API to work about Players' array
 class ArrayPlayers:
