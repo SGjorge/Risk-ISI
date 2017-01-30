@@ -10,10 +10,10 @@ from Players import Players,HumanPlayers,IAPlayers,ArrayPlayers
 class Game:
 	__COUNTRIES = None
 	__PLAYERS = None
-	__JOKERS = CoreVariables.maxJokers
-	__INFANTRY = CoreVariables.maxInfantry
-	__CHIVALRY = CoreVariables.maxChivalry
-	__ARTYLLERY = CoreVariables.maxArtillery
+	__JOKERS = CoreVariables().maxJokers
+	__INFANTRY = CoreVariables().maxInfantry
+	__CHIVALRY = CoreVariables().maxChivalry
+	__ARTYLLERY = CoreVariables().maxArtillery
 
 	def getcountries(self):
 		return self.__COUNTRIES
