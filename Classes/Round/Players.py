@@ -268,7 +268,9 @@ class IAPlayers(Players):
 				Neighbours[country.name] = neig
 			pares = Neighbours.items()
 			for country, neigh in pares:
-				print (country + str(neigh))
+				for l in neigh:
+					if l not in myConquered:
+						attacked = self.attack(country, l)
 			return True
 # this class is an API to work about Players' array
 class ArrayPlayers:
