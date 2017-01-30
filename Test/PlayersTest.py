@@ -412,7 +412,7 @@ class PlayersTest(unittest.TestCase):
 		countryA3 = Country("África del norte", playerAuxAtak)
 		countryA3.changebattalions(6)
 		playerAuxAtak.addconqueredcountry(countryA3)
-		#necesito tener un jugador al que atacar 
+		#necesito tener un jugador al que atacar
 		playerAuxDeff = IAPlayers("Nerea",35,"blue",[])
 		countryA4 = Country("Egipto", playerAuxDeff)
 		countryA4.changebattalions(3)
@@ -424,6 +424,7 @@ class PlayersTest(unittest.TestCase):
 		players = ArrayPlayers().orderplayers(players, playerAuxAtak)
 		expected = True
 		out = playerAuxAtak.algoattack(players)
+		self.assertEqual(out, expected)
 
 
 if __name__ == '__main__':
