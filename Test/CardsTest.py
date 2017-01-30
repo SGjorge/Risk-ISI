@@ -12,19 +12,19 @@ class CardsTest(unittest.TestCase):
         #checks the number of cards for every type
     def test_totaljokers(self):
         expected = 2
-        self.assertEqual(expected, Cards().gettotal())
+        self.assertEqual(expected, CV().maxJokers)
 
     def test_totalinfantery(self):
         expected = 14
-        self.assertEqual(expected, Infantry().gettotal())
+        self.assertEqual(expected, CV().maxInfantry)
 
     def test_totalchivalry(self):
         expected = 14
-        self.assertEqual(expected, Chivalry().gettotal())
+        self.assertEqual(expected, CV().maxChivalry)
 
     def test_totalartillery(self):
         expected = 14
-        self.assertEqual(expected, Artillery().gettotal())
+        self.assertEqual(expected, CV().maxArtillery)
 
 
         #checks the name of every type of card
