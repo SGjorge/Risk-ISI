@@ -138,3 +138,35 @@ class Game:
 			return [result,origin,destiny]
 		else:
 			return None
+
+	#algoritmo que simula la ronda de ataque de un jugador IA
+	def algoattack (self, players, attaker):
+		if len(players) <= 1:
+			return False
+		else:
+			mybatt = attaker.getbattalions()
+			battLost = 0
+			attacked = 0
+			myConquered = attaker.getconqueredcountries()
+			Neighbours = {}
+			for country in myConquered:
+				neig = country.neighbours.getarray()
+				Neighbours[country.name] = neig
+			pares = Neighbours.items()
+			for country, neigh in pares:
+				for n in neigh:
+					deff = n.getconqueror()
+					if battLost > 10:
+						break
+					if countriesokforthebattle(country, n):
+						while n.getbattalions() > 0:
+							attacked = attaker.attack(country, n)
+							if 0:
+								deffended = deff.deffend(n)
+								lost = GameRules().getlostbattalions(attacked, deffended)
+								battLost = battLost + lost
+							else:
+								break
+					else:
+						continue
+			return True

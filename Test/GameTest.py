@@ -297,7 +297,7 @@ class GameTest(unittest.TestCase):
 			players = [playerAuxAtak, playerAuxDeff]
 			players = ArrayPlayers().orderplayers(players, playerAuxAtak)
 			expected = True
-			out = playerAuxAtak.algoattack(players)
+			out = playerAuxAtak.algoattack(playerAuxAtak, players)
 			self.assertEqual(out, expected)
 
 if __name__ == '__main__':
