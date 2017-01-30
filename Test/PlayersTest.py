@@ -427,5 +427,31 @@ class PlayersTest(unittest.TestCase):
 		self.assertEqual(out, expected)
 
 
+		#checks if a player can move battalions
+	def test_movebattalions1(self):
+		player = HumanPlayers("Pepe",38,"orange",[])
+		origCountry = Country("Europa del norte",player)
+		destCountry = Country("Brasil",player)
+		player.addconqueredcountry(origCountry)
+		player.addconqueredcountry(destCountry)
+		origCountry.changebattalions(5)
+		numBattalions = 1
+		expected = True
+		self.assertEqual(expected,player.movebattalions(origCountry,destCountry,numBattalions))
+
+	def test_movebattalions2(self):
+		player = HumanPlayers("Pepe",38,"orange",[])
+		origCountry = Country("Europa del norte",player)
+		destCountry = Country("Europa del sur",player)
+		player.addconqueredcountry(origCountry)
+		player.addconqueredcountry(destCountry)
+		origCountry.changebattalions(5)
+		numBattalions = 4
+		expected = True
+		self.assertEqual(expected,player.movebattalions(origCountry,destCountry,numBattalions))
+
+
+
+
 if __name__ == '__main__':
 	unittest.main()
