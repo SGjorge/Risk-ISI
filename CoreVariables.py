@@ -15,6 +15,10 @@ class CoreVariables():
             "Australia occidental", "Australia oriental"]
         self.cardsTotalNum = 44
         self.maxCards = 4  #maximum number of cards per player at the end of its turn.
+        self.maxJokers = 2
+        self.maxInfantry = 14
+        self.maxChivalry = 14
+        self.maxArtillery = 14
         self.maxCountries = 42
         self.minPlayers = 3
         self.maxPlayers = 6
