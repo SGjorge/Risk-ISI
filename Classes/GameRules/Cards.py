@@ -11,9 +11,6 @@ class Cards:
     def getname(self):
         return self.name
 
-    def gettotal(self):
-        return self.total
-
     def getcardstotal(self):
         return CV().cardsTotalNum
 
