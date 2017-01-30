@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import sys
 sys.path.append("../Classes/Round/")
+sys.path.append("../Classes/GameRules")
 
 from random import randint
 from Cards import Cards, Infantry, Chivalry, Artillery
