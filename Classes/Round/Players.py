@@ -262,33 +262,7 @@ class IAPlayers(Players):
 					deffended = self.rolls(countryDeffended.battalions)
 					return [country, deffended]
 
-	def algoattack (self, players):
-		if len(players) <= 1:
-			return False
-		else:
-			mybatt = self.getbattalions()
-			battLost = 0
-			attacked = 0
-			myConquered = self.getconqueredcountries()
-			Neighbours = {}
-			for country in myConquered:
-				neig = country.neighbours.getarray()
-				Neighbours[country.name] = neig
-			pares = Neighbours.items()
-			for country, neigh in pares:
-				for l in neigh:
-					if l not in myConquered:
-						while battLost < 10:
-							attacked = self.attack(country, l)
-							if 0:
-								deffended = self.deffend(l)
-								lost = getlostbattalions(attacked, deffended)
-								battLost = battLost + lost
-							else:
-								break
-					else:
-						continue
-			return True
+
 # this class is an API to work about Players' array
 class ArrayPlayers:
 	# put first in first position array and the other to the left hand in order in new right hand array

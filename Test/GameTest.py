@@ -274,5 +274,31 @@ class GameTest(unittest.TestCase):
 			self.assertEqual(origin.getbattalions(),originBattalions)
 			self.assertEqual(destiny.getbattalions(),destinyBattalions)
 
+		def test_algo_attack (self):
+			#el que va a atacar
+			playerAuxAtak = IAPlayers("Eva",35,"orange",[])
+			countryA1 = Country("Europa del norte", playerAuxAtak)
+			countryA1.changebattalions(6)
+			playerAuxAtak.addconqueredcountry(countryA1)
+			countryA2 = Country("Europa del sur", playerAuxAtak)
+			countryA2.changebattalions(8)
+			playerAuxAtak.addconqueredcountry(countryA2)
+			countryA3 = Country("África del norte", playerAuxAtak)
+			countryA3.changebattalions(6)
+			playerAuxAtak.addconqueredcountry(countryA3)
+			#necesito tener un jugador al que atacar
+			playerAuxDeff = IAPlayers("Nerea",35,"blue",[])
+			countryA4 = Country("Egipto", playerAuxDeff)
+			countryA4.changebattalions(3)
+			playerAuxDeff.addconqueredcountry(countryA4)
+			countryA5 = Country("Europa occidental", playerAuxDeff)
+			countryA5.changebattalions(2)
+			playerAuxDeff.addconqueredcountry(countryA5)
+			players = [playerAuxAtak, playerAuxDeff]
+			players = ArrayPlayers().orderplayers(players, playerAuxAtak)
+			expected = True
+			out = playerAuxAtak.algoattack(playerAuxAtak, players)
+			self.assertEqual(out, expected)
+
 if __name__ == '__main__':
 	unittest.main()
