@@ -1,12 +1,14 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import sys
-sys.path.append("../../")
-sys.path.append("../Classes/GameRules")
+sys.path.append("../Classes/Round/")
+sys.path.append("../Classes/GameRules/")
 
 
 from random import randint
 from Cards import Cards, Infantry, Chivalry, Artillery
 from CoreVariables import CoreVariables
-from GameRules import GameRules
+
 
 
 class Players:
@@ -272,10 +274,10 @@ class IAPlayers(Players):
 			pares = Neighbours.items()
 			for country, neigh in pares:
 				for l in neigh:
-					if GameRules().countriesokforthebattle(country, l):
-						while lost < 10 and l.getbattalions() > 0:
+					if l not in myConquered:
+						while battLost < 10:
 							attacked = self.attack(country, l)
-							if attacked[0] >= 0:
+							if 0:
 								deffended = self.deffend(l)
 								lost = getlostbattalions(attacked, deffended)
 								battLost = battLost + lost
