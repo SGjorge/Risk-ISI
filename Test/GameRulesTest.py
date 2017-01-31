@@ -88,68 +88,79 @@ class GameRulesTest(unittest.TestCase):
 
         #Checks if the number of battalions is ok to attack
     def test_is1battaliontoattackok(self):
-        country = Country("Islandia","red")
+        pAux = Players("Pepe",0,"orange",[])
+        country = Country("Islandia",pAux)
         country.changebattalions(25) #25 battalions
         expected = True
         self.assertEqual(expected, GameRules.battalionstoattackok(country,1))
 
     def test_are2battalionstoattackok(self):
-        country = Country("Islandia","red")
+        pAux = Players("Pepe",0,"orange",[])
+        country = Country("Islandia",pAux)
         country.changebattalions(25) #25 battalions
         expected = True
         self.assertEqual(expected, GameRules.battalionstoattackok(country,2))
 
     def test_are3battalionstoattackok(self):
-        country = Country("Islandia","red")
+        pAux = Players("Pepe",0,"orange",[])
+        country = Country("Islandia",pAux)
         country.changebattalions(25) #25 battalions
         expected = True
         self.assertEqual(expected, GameRules.battalionstoattackok(country,3))
 
     def test_are4battalionstoattackok(self):
-        country = Country("Islandia","red")
+        pAux = Players("Pepe",0,"orange",[])
+        country = Country("Islandia",pAux)
         country.changebattalions(25) #25 battalions
         expected = False
         self.assertEqual(expected, GameRules.battalionstoattackok(country,4))
 
     def test_is1battalionoktoattack(self):
-        country = Country("Islandia","red")
+        pAux = Players("Pepe",0,"orange",[])
+        country = Country("Islandia",pAux)
         country.changebattalions(2) #2 battalions
         expected = True
         self.assertEqual(expected, GameRules.battalionstoattackok(country,1))
 
     def test_are2battalionsoktoattack(self):
-        country = Country("Islandia","red")
+        pAux = Players("Pepe",0,"orange",[])
+        country = Country("Islandia",pAux)
         country.changebattalions(2) #2 battalions
         expected = False
         self.assertEqual(expected, GameRules.battalionstoattackok(country,2))
 
         #Checks if the number of battalions is ok to defend
     def test_is1battaliontodefendok(self):
-        country = Country("Groenlandia","blue")
+        pAux = Players("Pepe",0,"orange",[])
+        country = Country("Groenlandia",pAux)
         country.changebattalions(4) #4 battalions
         expected = True
         self.assertEqual(expected, GameRules.battalionstodefendok(country,1))
 
     def test_are2battalionstodefendok(self):
-        country = Country("Groenlandia","blue")
+        pAux = Players("Pepe",0,"orange",[])
+        country = Country("Groenlandia",pAux)
         country.changebattalions(2) #2 battalions
         expected = True
         self.assertEqual(expected, GameRules.battalionstodefendok(country,2))
 
     def test_are3battalionstodefendok(self):
-        country = Country("Groenlandia","blue")
+        pAux = Players("Pepe",0,"orange",[])
+        country = Country("Groenlandia",pAux)
         country.changebattalions(8) #8 battalions
         expected = False
         self.assertEqual(expected, GameRules.battalionstodefendok(country,3))
 
     def test_are2battalionsoktodefend(self):
-        country = Country("Groenlandia","blue")
+        pAux = Players("Pepe",0,"orange",[])
+        country = Country("Groenlandia",pAux)
         country.changebattalions(1) #1 battalion
         expected = False
         self.assertEqual(expected, GameRules.battalionstodefendok(country,2))
 
     def test_are0battalionstodefendok(self):
-        country = Country("Groenlandia","blue")
+        pAux = Players("Pepe",0,"orange",[])
+        country = Country("Groenlandia",pAux)
         country.changebattalions(1) #1 battalion
         expected = False
         self.assertEqual(expected, GameRules.battalionstodefendok(country,0))
@@ -157,20 +168,25 @@ class GameRulesTest(unittest.TestCase):
 
         #Checks if a battle can happen between two countries
     def test_canislandattackgroenland(self):
-        countryAtt = Country("Islandia","red")
-        countryDef = Country("Groenlandia","blue")
+        pAux1 = Players("Pepe",0,"orange",[])
+        pAux2 = Players("Nerea",0,"blue",[])
+        countryAtt = Country("Islandia",pAux1)
+        countryDef = Country("Groenlandia",pAux2)
         expected = True
         self.assertEqual(expected,GameRules.countriesokforthebattle(countryAtt,countryDef))
 
     def test_canislandattackbrazil(self):
-        countryAtt = Country("Islandia","red")
-        countryDef = Country("Brasil","blue")
+        pAux1 = Players("Pepe",0,"orange",[])
+        pAux2 = Players("Nerea",0,"blue",[])
+        countryAtt = Country("Islandia",pAux1)
+        countryDef = Country("Brasil",pAux2)
         expected = False
         self.assertEqual(expected,GameRules.countriesokforthebattle(countryAtt,countryDef))
 
     def test_canredattackred(self):
-        countryAtt = Country("Islandia","red")
-        countryDef = Country("Groenlandia","red")
+        pAux1 = Players("Pepe",0,"orange",[])
+        countryAtt = Country("Islandia",pAux1)
+        countryDef = Country("Groenlandia",pAux1)
         expected = False
         self.assertEqual(expected,GameRules.countriesokforthebattle(countryAtt,countryDef))
 
@@ -294,7 +310,7 @@ class GameRulesTest(unittest.TestCase):
         expected = False
         self.assertEqual(expected,GameRules.cardstoexchangeok(player,"artillery"))
 
- 
+
         #checks if the battalion movement between two counries of a player is ok
     def test_movebattalions1(self):
         player = HumanPlayers("Pepe",10,"Orange",[])
@@ -325,7 +341,8 @@ class GameRulesTest(unittest.TestCase):
         player.addconqueredcountry(origCountry)
         player.addconqueredcountry(otherCountry)
         origCountry.changebattalions(5)
-        destCountry = Country("Islandia","red")
+        player2 = HumanPlayers("Nerea",38,"red",[])
+        destCountry = Country("Islandia",player2)
         numBattalions = 1
         expected = False #no son vecinos ni hay camino
         self.assertEqual(expected,GameRules.movebattalions(player,origCountry,destCountry,numBattalions))
@@ -337,14 +354,14 @@ class GameRulesTest(unittest.TestCase):
         destCountry = Country("África del norte",player)
         player.addconqueredcountry(origCountry)
         player.addconqueredcountry(otherCountry)
-        player.addconqueredcountry(destCountry)      
+        player.addconqueredcountry(destCountry)
         origCountry.changebattalions(5)
         numBattalions = 1
         expected = True #no vecinos directos pero sí hay camino
         self.assertEqual(expected,GameRules.movebattalions(player,origCountry,destCountry,numBattalions))
 
     def test_movebattalions5(self):
-        player = HumanPlayers("Pepe",38,"orange",[])      
+        player = HumanPlayers("Pepe",38,"orange",[])
         origCountry = Country("Europa del norte",player)
         otherCountry = Country("Europa del sur",player)
         anotherCountry = Country("África del norte",player)
@@ -353,7 +370,7 @@ class GameRulesTest(unittest.TestCase):
         player.addconqueredcountry(otherCountry)
         player.addconqueredcountry(anotherCountry)
         player.addconqueredcountry(destCountry)
-        origCountry.changebattalions(5)  
+        origCountry.changebattalions(5)
         numBattalions = 1
         expected = True #hay camino entre vecinos
         self.assertEqual(expected,GameRules.movebattalions(player,origCountry,destCountry,numBattalions))
