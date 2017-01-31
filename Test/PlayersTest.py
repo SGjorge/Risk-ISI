@@ -153,7 +153,7 @@ class PlayersTest(unittest.TestCase):
 			self.assertIn(roll,range(1,7))
 
 	def test_addconqueredcountry(self):
-		country = Country("Europa del sur",p1.getname())
+		country = Country("Europa del sur",p1)
 		p1.addconqueredcountry(country)
 		conqueredCountries = p1.getconqueredcountries()
 		for c in conqueredCountries:
@@ -177,9 +177,9 @@ class PlayersTest(unittest.TestCase):
 
 	def test_usedbattalions(self):
 		paux = HumanPlayers("Pepe",35,"orange",[])
-		country1 = Country("Europa del sur",paux.getname())
-		country2 = Country("Francia",paux.getname())
-		country3 = Country("Italia",paux.getname())
+		country1 = Country("Europa del sur",paux)
+		country2 = Country("Francia",paux)
+		country3 = Country("Italia",paux)
 		country1.changebattalions(7)
 		country2.changebattalions(1)
 		country3.changebattalions(5)
@@ -190,9 +190,9 @@ class PlayersTest(unittest.TestCase):
 
 	def test_distributebattalions(self):
 		paux = HumanPlayers("Pepe",35,"orange",[])
-		country1 = Country("Europa del sur",paux.getname())
-		country2 = Country("Francia",paux.getname())
-		country3 = Country("Italia",paux.getname())
+		country1 = Country("Europa del sur",paux)
+		country2 = Country("Francia",paux)
+		country3 = Country("Italia",paux)
 		country1.changebattalions(7)
 		country2.changebattalions(1)
 		country3.changebattalions(5)
@@ -202,9 +202,9 @@ class PlayersTest(unittest.TestCase):
 		paux.distributebatallions()
 		self.assertEqual(paux.getusedbattalions(),35)
 		conqueredCountries = paux.getconqueredcountries()
-		self.assertEqual(conqueredCountries[0].tostring(),"Europa del sur 15:Pepe")
-		self.assertEqual(conqueredCountries[1].tostring(),"Francia 8:Pepe")
-		self.assertEqual(conqueredCountries[2].tostring(),"Italia 12:Pepe")
+		self.assertEqual(conqueredCountries[0].tostring(),"Europa del sur 15:Pepe 35 orange")
+		self.assertEqual(conqueredCountries[1].tostring(),"Francia 8:Pepe 35 orange")
+		self.assertEqual(conqueredCountries[2].tostring(),"Italia 12:Pepe 35 orange")
 
 		#returns the total num of cards the player has after adding
 	def test_addcards(self):
