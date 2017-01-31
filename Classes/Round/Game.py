@@ -158,7 +158,7 @@ class Game:
 					deff = n.getconqueror()
 					if battLost > 10:
 						break
-					if countriesokforthebattle(country, n):
+					if GameRules().countriesokforthebattle(country, n):
 						while n.getbattalions() > 0:
 							attacked = attaker.attack(country, n)
 							if 0:
